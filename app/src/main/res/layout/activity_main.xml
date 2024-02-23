@@ -4,15 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/BG_full"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/op_bg"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="700sp"
+            android:orientation="horizontal"
+            android:layout_above="@id/action_bar">
+            <ImageView
+                android:id="@+id/BG"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/ic_launcher_background"></ImageView>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="100sp"
+            android:background="@color/black"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            tools:layout_editor_absoluteX="0dp" >
+
+            <ImageButton
+                android:id="@+id/homeButton"
+                android:layout_width="190dp"
+                android:layout_height="100sp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:background="#00000000"
+                app:srcCompat="@drawable/home" />
+            <ImageButton
+                android:id="@+id/scannerButton"
+                android:layout_width="190dp"
+                android:layout_height="100sp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:background="#00000000"
+                app:srcCompat="@drawable/scanner" />
+            <ImageButton
+                android:id="@+id/eventButton"
+                android:layout_width="190dp"
+                android:layout_height="100sp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:background="#00000000"
+                app:srcCompat="@drawable/event" />
+            <ImageButton
+                android:id="@+id/organizerButton"
+                android:layout_width="190dp"
+                android:layout_height="100sp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:background="#00000000"
+                app:srcCompat="@drawable/organizer" />
+            <ImageButton
+                android:id="@+id/adminButton"
+                android:layout_width="190dp"
+                android:layout_height="100sp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:background="#00000000"
+                app:srcCompat="@drawable/admin" />
+            <ImageButton
+                android:id="@+id/profileButton"
+                android:layout_width="190dp"
+                android:layout_height="100sp"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/profile" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
