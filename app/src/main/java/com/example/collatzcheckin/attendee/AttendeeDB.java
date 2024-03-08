@@ -75,6 +75,8 @@ public class AttendeeDB {
             userData.put("Name", user.getName());
             userData.put("Email", user.getEmail());
             userData.put("Uid", user.getUid());
+            userData.put("Attending",user.getAttendingEvents().toString());
+            userData.put("Organizing",user.getOrganizingEvents().toString());
             if (user.getGeolocation()) {
                 userData.put("Geo", "Enabled");
             }else {
