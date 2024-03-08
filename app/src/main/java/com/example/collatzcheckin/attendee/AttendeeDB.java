@@ -13,21 +13,36 @@ import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.HashMap;
 
+
+
+/**
+ * AttendeeDB interacts with the database collectction that holds user info
+ */
 public class AttendeeDB {
         private AttendeeDBConnecter userDB;
         public CollectionReference userRef;
 
-        private static final String TAG = "TESTING____";
+    /**
+     * This constructs instance of database and sets the collection to 'user'
+     */
+    public AttendeeDB() {
+        this.userDB = new AttendeeDBConnecter();
+        this.userRef = userDB.db.collection("user");
+    }
 
-        public AttendeeDB() {
-            this.userDB = new AttendeeDBConnecter();
-            this.userRef = userDB.db.collection("user");
-        }
-
+    /**
+     * This returns the object 'CollectionReference' which holds information about the
+     * collection that is being interacted with
+     * @return CollectionReference
+     */
     public CollectionReference getUserRef() {
         return userRef;
     }
 
+    /**
+     * Query to extract user data
+     * @param uuid The unique idenitfier assigned to the user using Firebase Authenticator
+     */
     public HashMap<String, String> findUser(String uuid) {
             HashMap<String, String> userData = new HashMap<>();
             userRef.document(uuid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -50,25 +65,28 @@ public class AttendeeDB {
                     }
                 }
             });
-
             return userData;
         }
 
-
-
+    /**
+     * Query to add/update user data
+     * @param user Object of type user that holds user data
+     */
         public void addUser(User user) {
             HashMap<String, String> userData = new HashMap<>();
             userData.put("Name", user.getName());
             userData.put("Email", user.getEmail());
             userData.put("Uid", user.getUid());
+            userData.put("Geo", String.valueOf(user.getGeolocation()));
+            userData.put("Notif", String.valueOf(user.getNotifications()));
             Log.d("Firestore", "DocumentSnapshot successfully written!");
-            userRef.document(user.getUid())
+            String userUid = user.getUid() != null ? user.getUid() : "defaultUid"; // Prevents crashing while app is in development
+            userRef.document(userUid)
                     .set(userData)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Log.d("Firestore", "DocumentSnapshot successfully written!");
-                            //return null;
                         }
                     });
     }
