@@ -79,7 +79,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 }
 
                 if(isVaild) {
-                    user = new User(userUuid, nameEdit, emailEdit);
+                    user = new User(nameEdit, emailEdit, userUuid);
                     attendeeDB.addUser(user);
                     finish();
                 }

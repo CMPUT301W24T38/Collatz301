@@ -75,8 +75,16 @@ public class AttendeeDB {
             userData.put("Name", user.getName());
             userData.put("Email", user.getEmail());
             userData.put("Uid", user.getUid());
-            userData.put("Geo", user.getGeolocation());
-            userData.put("Notif", user.getNotifications());
+            if (user.getGeolocation()) {
+                userData.put("Geo", "Enabled");
+            }else {
+                userData.put("Geo", "Disabled");
+            }
+            if (user.getNotifications()) {
+                userData.put("Notifications", "Enabled");
+            }else {
+                userData.put("Notifications", "Disabled");
+            }
             Log.d("Firestore", "DocumentSnapshot successfully written!");
             userRef.document(user.getUid())
                     .set(userData)

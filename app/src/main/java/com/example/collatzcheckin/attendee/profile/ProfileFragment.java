@@ -34,6 +34,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * ProfileFragment displays user their profile information
@@ -95,18 +96,17 @@ public class ProfileFragment extends Fragment {
                         User updatedUser = (User) data.getSerializableExtra("updatedUser");
                         assert updatedUser != null;
                         name.setText(updatedUser.getName());
-                        username.setText(updatedUser.getUsername());
                         email.setText(updatedUser.getEmail());
                         if(updatedUser.isGeolocation()) {
-                            geo.setText("enabled");
+                            geo.setText("Enabled");
                         } else {
-                            geo.setText("disabled");
+                            geo.setText("Disabled");
                         }
 
                         if(updatedUser.isNotifications()) {
-                            notification.setText("enabled");
+                            notification.setText("Enabled");
                         } else {
-                            notification.setText("disabled");
+                            notification.setText("Disabled");
                         }
                         if (updatedUser.getPfp() != null) {
                             pfp.setImageURI(Uri.parse(updatedUser.getPfp()));
@@ -124,21 +124,20 @@ public class ProfileFragment extends Fragment {
                 boolean geo_value;
                 boolean notif_value;
                 String user_name = name.getText().toString();
-                String user_username = username.getText().toString();
                 String user_email = email.getText().toString();
                 String geo_settings = geo.getText().toString();
                 String notif_settings = notification.getText().toString();
-                if(geo_settings == "enabled") {
+                if (geo_settings.equals("Enabled")) {
                     geo_value = true;
                 } else {
                     geo_value = false;
                 }
-                if(notif_settings == "enabled") {
+                if (notif_settings.equals("Enabled")) {
                     notif_value = true;
                 } else {
                     notif_value = false;
                 }
-                user = new User(user_name,user_username,user_email, uuid, geo_value, notif_value);
+                user = new User(user_name,user_email, uuid, geo_value, notif_value);
                 intent.putExtra("user", (Serializable) user);
                 launchEditProfileActivity.launch(intent);
 
@@ -148,7 +147,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 pfp.setImageResource(R.drawable.baseline_person_24);
-                StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("images/" + user.getUsername());
+                StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("images/" + user.getUid());
                 imageRef.delete();
 
             }
@@ -174,18 +173,18 @@ public class ProfileFragment extends Fragment {
                         notification.setText(document.getString("Notif"));
                         geo.setText(document.getString("Geo"));
 
-                        if(document.getString("Geo") == "true") {
-                            geo.setText("enabled");
+                        if(Objects.equals(document.getString("Geo"), "Enabled")) {
+                            geo.setText("Enabled");
                             Log.d(TAG, " such document" + document.getString("Geo"));
                         } else {
-                            geo.setText("disabled");
+                            geo.setText("Disabled");
                             Log.d(TAG, " such document" + document.getString("Geo"));
                         }
 
-                        if(document.getString("Notif") == "true") {
-                            notification.setText("enabled");
+                        if(Objects.equals(document.getString("Notifications"), "Enabled")) {
+                            notification.setText("Enabled");
                         } else {
-                            notification.setText("disabled");
+                            notification.setText("Disabled");
                         }
 
                     } else {

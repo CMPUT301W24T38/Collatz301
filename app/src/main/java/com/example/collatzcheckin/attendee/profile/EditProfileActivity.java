@@ -65,17 +65,19 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!user.getName().equals("")){
             name.setText(user.getName());
         }
-        if (!user.getUsername().equals("")){
-            username.setText(user.getUsername());
-        }
         if (!user.getEmail().equals("")){
             email.setText(user.getEmail());
         }
         if (user.getPfp()!=null){
             pfp.setImageURI(Uri.parse(user.getPfp()));
         }
-        geo.setChecked(user.isGeolocation());
-        notif.setChecked(user.isNotifications());
+        if (user.getGeolocation()) {
+            geo.setChecked(user.isGeolocation());
+        }
+        if (user.getNotifications()){
+            notif.setChecked(user.isNotifications());
+        }
+
 
 
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -92,8 +94,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 String newName = name.getText().toString();
                 user.setName(newName);
-                String newUsername = username.getText().toString();
-                user.setUsername(newUsername);
                 String newEmail = email.getText().toString();
                 user.setEmail(newEmail);
                 user.setGeolocation(geo.isChecked());
@@ -101,7 +101,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
                 if (imagePath!=null) {
-                    FirebaseStorage.getInstance().getReference("images/" + user.getUsername()).putFile(imagePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                    FirebaseStorage.getInstance().getReference("images/" + user.getUid()).putFile(imagePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                             if (task.isSuccessful()) {

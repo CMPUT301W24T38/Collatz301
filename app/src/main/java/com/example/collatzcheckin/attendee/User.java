@@ -14,7 +14,6 @@ import java.util.List;
 public class User implements Serializable {
     private String name;
     private String  pfp;
-    private String username;
     private String email;
     private List<Event> events;
     private boolean notifications;
@@ -46,29 +45,20 @@ public class User implements Serializable {
      * @param name name of user
      * @param contactInformation user email
      */
-    public User(String uid, String name, String contactInformation) {
-        this.name = name;
-        this.email = contactInformation;
-        this.uid = uid;
-        this.events = new ArrayList<Event>();
-        this.geolocation = false;
-        this.notifications = false;
-    }
+
 
     /**
      * This constructs a user class
      * @param name name of user
-     * @param username username for homepage
      * @param contactInformation user email
      * @param uuid The unique identifier for this user to reference in firestore to find their
      *              item collection
      */
-    public User( String name, String username, String contactInformation, String uid) {
+    public User( String name, String contactInformation, String uid) {
         this.name = name;
         this.email = contactInformation;
         this.uid = uid;
         this.events = new ArrayList<Event>();
-        this.username = username;
         this.geolocation = false;
         this.notifications = false;
 
@@ -84,12 +74,11 @@ public class User implements Serializable {
      * @param geolocation Geolocation perferences ('true' for enabled, 'false' for disabled)
      * @param notifications Notifications perferences ('true' for enabled, 'false' for disabled)
      */
-    public User( String name, String username, String contactInformation, String uid, boolean geolocation, boolean notifications) {
+    public User( String name, String contactInformation, String uid, boolean geolocation, boolean notifications) {
         this.name = name;
         this.email = contactInformation;
         this.uid = uid;
         this.events = new ArrayList<Event>();
-        this.username = username;
         this.geolocation = geolocation;
         this.notifications = notifications;
 
@@ -125,22 +114,6 @@ public class User implements Serializable {
      */
     public void setPfp(String pfp) {
         this.pfp = pfp;
-    }
-
-    /**
-     * Getter for username for homepage
-     * @return username
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * Setter for username for homepage
-     * @param username
-     */
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     /**
@@ -187,11 +160,11 @@ public class User implements Serializable {
      * Convert boolean value to string equivalent
      * @return string equivalent of geolocation perferences
      */
-    public String getGeolocation() {
+    public Boolean getGeolocation() {
         if(geolocation) {
-            return "true";
+            return true;
         } else {
-            return "false";
+            return false;
         }
     }
 
@@ -211,11 +184,11 @@ public class User implements Serializable {
      * Convert boolean value to string equivalent
      * @return string equivalent of notification perferences
      */
-    public String getNotifications() {
+    public boolean getNotifications() {
         if(notifications) {
-            return "true";
+            return true;
         } else {
-            return "false";
+            return false;
         }
     }
 
