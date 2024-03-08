@@ -13,9 +13,10 @@ import java.util.List;
  */
 public class User implements Serializable {
     private String name;
-    private String  pfp;
+    private String pfp;
     private String email;
-    private List<Event> events;
+    private List<String> attendingEvents;
+    private List<String> organizingEvents;
     private boolean notifications;
     private boolean geolocation;
     private String uid;
@@ -58,7 +59,8 @@ public class User implements Serializable {
         this.name = name;
         this.email = contactInformation;
         this.uid = uid;
-        this.events = new ArrayList<Event>();
+        this.organizingEvents = new ArrayList<String>();
+        this.attendingEvents = new ArrayList<String>();
         this.geolocation = false;
         this.notifications = false;
 
@@ -78,7 +80,8 @@ public class User implements Serializable {
         this.name = name;
         this.email = contactInformation;
         this.uid = uid;
-        this.events = new ArrayList<Event>();
+        this.organizingEvents = new ArrayList<String>();
+        this.attendingEvents = new ArrayList<String>();
         this.geolocation = geolocation;
         this.notifications = notifications;
 
@@ -136,17 +139,23 @@ public class User implements Serializable {
      * Getter for a list of events that the user has signed up to attend
      * @return email
      */
-    public List<Event> getEvents() {
-        return events;
+    public List<String> getAttendingEvents() {
+        return this.attendingEvents;
+    }
+    public List<String> getOrganizingEvents() {
+        return this.organizingEvents;
     }
 
     /**
      * Add an event to the list of events that the user is attending
      * @param event event the user will be attending
      */
-    public void addEvent(Event event) {
-        events.add(event);
+    public void addOrganizingEvent(Event event) {
+
+        organizingEvents.add(event.getEventTitle());
     }
+    public void AddAttendingEvent(Event event) {
+        attendingEvents.add(event.getEventTitle());}
 
     /**
      * Getter for if user has geolocation enabled
