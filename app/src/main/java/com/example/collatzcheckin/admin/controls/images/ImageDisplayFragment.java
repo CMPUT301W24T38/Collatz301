@@ -23,7 +23,7 @@ import com.google.firebase.storage.StorageReference;
 /**
  * Fragment responsible for displaying an image with options to delete or navigate back.
  */
-public class ImageDisplayFragment extends Fragment { // The listview does not currently update after deletion
+public class ImageDisplayFragment extends Fragment {                     // Known issue to be addressed soon. Listview does not currently update on app after deletion. Firestore does update. This causes issues if an admin trys to select the deleted image from the listview.
 
     /**
      * Inflates the layout for this fragment and sets up the UI components
