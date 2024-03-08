@@ -17,11 +17,19 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class for interacting with the database for administrative tasks
+ */
 public class AdministratorDB {
     private AdministratorDBConnector adminDB;
     private CollectionReference eventRef;
     private CollectionReference profileRef;
     private CollectionReference imageRef;
+
+
+    /**
+     * Constructor to initialize the database connections
+     */
     public AdministratorDB() {
         this.adminDB = new AdministratorDBConnector();
         this.eventRef = adminDB.db.collection("events");
@@ -88,7 +96,10 @@ public class AdministratorDB {
         return images;
     }
 
-    // Methods to remove events, profiles, and images
+    /**
+     * Remove an event from the database
+     * @param event The event to be removed
+     */
     public void removeEvent(Event event) {
         // Code to remove event from EventDB
         String eventTitle = event.getEventTitle(); // Get the title of the event
@@ -109,7 +120,10 @@ public class AdministratorDB {
                 });
     }
 
-
+    /**
+     * Remove a user profile from the database
+     * @param user The user profile to be removed
+     */
     public void removeProfile(User user) {
         // Code to remove profile from AttendeeDB
         String userUid = user.getUid(); // Get the UID of the user

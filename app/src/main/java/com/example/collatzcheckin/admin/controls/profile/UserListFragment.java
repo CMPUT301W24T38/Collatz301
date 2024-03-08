@@ -23,6 +23,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+/**
+ * Fragment for displaying a list of users for administrators
+ */
 public class UserListFragment extends Fragment {
     ListView userList;
 
@@ -34,6 +37,14 @@ public class UserListFragment extends Fragment {
 
     AttendeeDB db;
 
+    /**
+     * Inflates the layout for this fragment, initializes views, and sets up event listeners
+     *
+     * @param inflater           The LayoutInflater object that can be used to inflate views in the fragment
+     * @param container          If non null, this is the parent view that the fragment's UI should be attached to
+     * @param savedInstanceState If non null, this fragment is being re-constructed from a previous saved state
+     * @return the View for the fragment's UI
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -73,8 +84,6 @@ public class UserListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3) {
                 User user = (User) adapter.getItemAtPosition(position);
-                // Handle user click, for example:
-                // Show user details or navigate to user profile
                 ((MainActivity) getActivity()).showAdminUserView(user);
             }
         });

@@ -15,20 +15,34 @@ import com.example.collatzcheckin.attendee.User;
 
 import java.util.ArrayList;
 
+/**
+ * Custom ArrayAdapter for displaying a list of Users
+ */
 public class UserArrayAdapter extends ArrayAdapter<User> {
     private ArrayList<User> users;
     private Context context;
 
+    /**
+     * Constructor for UserArrayAdapter
+     * @param context The current context
+     * @param users The list of users to be displayed
+     */
     public UserArrayAdapter(Context context, ArrayList<User> users) {
         super(context,0, users);
         this.users = users;
         this.context = context;
     }
 
+    /**
+     * Get a View that displays the data at the specified position in the data set
+     * @param position The position of the item within the adapter's data set
+     * @param convertView The old view to reuse, if possible
+     * @param parent The parent that this view will eventually be attached to
+     * @return A View for the data at the specified position
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//        return super.getView(position, convertView, parent);
         View view = convertView;
 
         if(view == null){
@@ -37,9 +51,6 @@ public class UserArrayAdapter extends ArrayAdapter<User> {
         User user = users.get(position);
 
         TextView userName = view.findViewById(R.id.user_name_display);
-
-        //String[] wordList = event.getEventDate().split(" ");
-        //String parsedString = wordList[0] + " " + wordList[1] + ", " + wordList[wordList.length - 1];
 
         userName.setText(user.getName());
         return view;

@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.collatzcheckin.R;
@@ -19,13 +19,10 @@ import java.lang.String;
 
 public final class ActivityUpdateProfileBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final Button adminButton;
-
-  @NonNull
-  public final Button cancelButton;
 
   @NonNull
   public final Button doneButton;
@@ -39,12 +36,11 @@ public final class ActivityUpdateProfileBinding implements ViewBinding {
   @NonNull
   public final EditText username;
 
-  private ActivityUpdateProfileBinding(@NonNull LinearLayout rootView, @NonNull Button adminButton,
-      @NonNull Button cancelButton, @NonNull Button doneButton, @NonNull EditText email,
+  private ActivityUpdateProfileBinding(@NonNull ConstraintLayout rootView,
+      @NonNull Button adminButton, @NonNull Button doneButton, @NonNull EditText email,
       @NonNull TextView updateText, @NonNull EditText username) {
     this.rootView = rootView;
     this.adminButton = adminButton;
-    this.cancelButton = cancelButton;
     this.doneButton = doneButton;
     this.email = email;
     this.updateText = updateText;
@@ -53,7 +49,7 @@ public final class ActivityUpdateProfileBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -84,12 +80,6 @@ public final class ActivityUpdateProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.cancel_button;
-      Button cancelButton = ViewBindings.findChildViewById(rootView, id);
-      if (cancelButton == null) {
-        break missingId;
-      }
-
       id = R.id.done_button;
       Button doneButton = ViewBindings.findChildViewById(rootView, id);
       if (doneButton == null) {
@@ -114,8 +104,8 @@ public final class ActivityUpdateProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityUpdateProfileBinding((LinearLayout) rootView, adminButton, cancelButton,
-          doneButton, email, updateText, username);
+      return new ActivityUpdateProfileBinding((ConstraintLayout) rootView, adminButton, doneButton,
+          email, updateText, username);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

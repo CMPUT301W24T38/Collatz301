@@ -50,7 +50,7 @@ public class EventListFragment extends Fragment {
                     eventDataList.clear();
                     for (QueryDocumentSnapshot doc : querySnapshots) {
                         String eventTitle = doc.getId();
-                        Organizer eventOrganizer = new Organizer(doc.getString("Event Organizer"));
+                        String eventOrganizer = doc.getString("Event Organizer");
                         String eventDate = doc.getString("Event Date");
                         String eventDescription = doc.getString("Event Description");
                         String eventPoster = doc.getString("Event Poster");
@@ -77,12 +77,6 @@ public class EventListFragment extends Fragment {
                 // do what you intend to do on click of listview row
             }
         });
-
-
-
-
-
-
 
 
         return view;

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import com.example.collatzcheckin.admin.controls.events.AdminEventListFragment;
 import com.example.collatzcheckin.admin.controls.events.AdminEventViewFragment;
+import com.example.collatzcheckin.admin.controls.images.ImageIdListFragment;
 import com.example.collatzcheckin.admin.controls.profile.UserListFragment;
 import com.example.collatzcheckin.admin.controls.profile.UserViewFragment;
 import com.example.collatzcheckin.attendee.User;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_view_organizer);
+        showImageIdList();
+        /*
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         if(authentication.updateUI(MainActivity.this)) {
@@ -65,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             //TODO: navigate to camera so users can scan QR code
 
             return true;
-        });
+        });*/
     }
 
     /**
@@ -120,6 +123,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container_user, new UserViewFragment(user))
                 .addToBackStack(null)
+                .commit();
+    }
+    private void showImageIdList() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, new ImageIdListFragment())
                 .commit();
     }
 }

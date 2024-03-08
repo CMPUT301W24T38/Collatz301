@@ -26,7 +26,9 @@ import com.google.firebase.firestore.EventListener;
 
         import java.util.ArrayList;
 
-
+/**
+ * Fragment for displaying a list of events for administrators
+ */
 public class AdminEventListFragment extends Fragment {
     ListView eventList;
     ArrayAdapter<Event> eventArrayAdapter;
@@ -34,6 +36,14 @@ public class AdminEventListFragment extends Fragment {
     private View view;
     EventDB db;
 
+    /**
+     * Inflates the layout for this fragment, initializes views, and sets up event listeners.
+     *
+     * @param inflater           The LayoutInflater object that can be used to inflate views in the fragment
+     * @param container          If non null, this is the parent view that the fragment's UI should be attached to
+     * @param savedInstanceState If non null, this fragment is being re-constructed from a previous saved state
+     * @return the View for the fragment's UI
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

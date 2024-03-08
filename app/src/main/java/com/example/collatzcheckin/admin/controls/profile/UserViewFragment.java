@@ -14,6 +14,9 @@ import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.admin.controls.AdministratorDB;
 import com.example.collatzcheckin.attendee.User;
 
+/**
+ * Fragment for displaying details of a user profile for administrators
+ */
 public class UserViewFragment extends Fragment {
     private User user;
     private View view;
@@ -24,10 +27,22 @@ public class UserViewFragment extends Fragment {
     TextView userEmail;
     TextView userUid;
 
+    /**
+     * Constructor for UserViewFragment
+     * @param user The user whose profile details are to be displayed
+     */
     public UserViewFragment(User user) {
         this.user = user;
     }
 
+    /**
+     * Inflates the layout for this fragment, initializes views, and sets up event listeners
+     *
+     * @param inflater           The LayoutInflater object that can be used to inflate views in the fragment
+     * @param container          If non null, this is the parent view that the fragment's UI should be attached to
+     * @param savedInstanceState If non null, this fragment is being re-constructed from a previous saved state
+     * @return the View for the fragment's UI
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_admin_user_view, container, false);

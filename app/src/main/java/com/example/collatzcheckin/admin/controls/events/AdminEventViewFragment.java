@@ -17,6 +17,9 @@ package com.example.collatzcheckin.admin.controls.events;
         import com.example.collatzcheckin.admin.controls.AdministratorDB;
 
 
+/**
+ * Fragment for displaying detailed view of an event for administrators and handles deletion interaction
+ */
 public class AdminEventViewFragment extends Fragment {
     private AdministratorDB db;
     private View view;
@@ -31,10 +34,22 @@ public class AdminEventViewFragment extends Fragment {
     TextView eventDay;
     TextView eventTime;
 
+    /**
+     * Constructor to initialize the fragment with an event
+     * @param event The event to display details of
+     */
     public AdminEventViewFragment(Event event) {
         this.event = event;
     }
 
+    /**
+     * Inflates the layout for this fragment, initializes views, and sets up event listeners.
+     *
+     * @param inflater           The LayoutInflater object that can be used to inflate views in the fragment
+     * @param container          If non null, this is the parent view that the fragment's UI should be attached to
+     * @param savedInstanceState If non null, this fragment is being re-constructed from a previous saved state
+     * @return the View for the fragment's UI
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
