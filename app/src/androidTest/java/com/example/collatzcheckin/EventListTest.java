@@ -20,11 +20,54 @@ public class EventListTest {
     public ActivityScenarioRule<MainActivity> scenario = new ActivityScenarioRule<MainActivity>(MainActivity.class);
 
     @Test
-    public void eventListView() {
-        onView(withId(R.id.event_list_view)).check(matches(isDisplayed()));
+    public void eventListView() throws InterruptedException {
+        Thread.sleep(5000);
+        //click nav bar
+        onView(withId(R.id.home)).perform(click());
+        Thread.sleep(5000);
+        //check if on events page
+        onView(withText("Your Events")).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void createEventButton() {
+        Thread.sleep(5000);
+        //click nav bar
+        onView(withId(R.id.home)).perform(click());
+        Thread.sleep(5000);
+
+        onView(withId(R.id.create_event)).perform(click());
+        //add event button is there
+        onView(withText("Add Event")).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void viewEventInfo() throws InterruptedException {
+        Thread.sleep(5000);
+        //click nav bar
+        onView(withId(R.id.home)).perform(click());
+        Thread.sleep(5000);
+
+        onData(is(instanceOf(String.class))).inAdapterView(withId(R.id.event_list_view
+        )).atPosition(0).perform(click());
+        Thread.sleep(5000);
+        onView(withText("Send Notification")).check(matches(isDisplayed()));
+    }
+
+    public void back() throws InterruptedException {
+        Thread.sleep(5000);
+        //click nav bar
+        onView(withId(R.id.home)).perform(click());
+        Thread.sleep(5000);
+
+        onData(is(instanceOf(String.class))).inAdapterView(withId(R.id.event_list_view
+        )).atPosition(0).perform(click());
+        Thread.sleep(5000);
+        //click back button
+        onView(withId(R.id.back_button)).perform(click());
+        //check if back on page
+        onView(withText("Your Events")).check(matches(isDisplayed()));
     }
 
 
 }
-
-
