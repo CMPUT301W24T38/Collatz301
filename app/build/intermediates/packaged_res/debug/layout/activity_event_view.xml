@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:id="@+id/poster_image"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/image_placeholder"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/constraintLayout2"/>
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -164,6 +164,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BACK"
+        android:backgroundTint="@color/primary_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <FrameLayout

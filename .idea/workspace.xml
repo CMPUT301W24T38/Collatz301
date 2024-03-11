@@ -5,6 +5,16 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_attendee_list.xml">
+        <config>
+          <theme>@style/Theme.CollatzCheckIn</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml">
+        <config>
+          <theme>@style/Theme.CollatzCheckIn</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_event_view.xml">
         <config>
           <theme>@style/Theme.CollatzCheckIn</theme>
@@ -20,12 +30,57 @@
           <theme>@style/Theme.CollatzCheckIn</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/content.xml">
+        <config>
+          <theme>@style/Theme.CollatzCheckIn</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/event_list_content.xml">
+        <config>
+          <theme>@style/Theme.CollatzCheckIn</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/event_view_organizer.xml">
         <config>
           <theme>@style/Theme.CollatzCheckIn</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_attendee_list.xml">
+        <config>
+          <theme>@style/Theme.CollatzCheckIn</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_event_view.xml">
+        <config>
+          <theme>@style/Theme.CollatzCheckIn</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_user_list.xml">
+        <config>
+          <theme>@style/Theme.CollatzCheckIn</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_user_view.xml">
+        <config>
+          <theme>@style/Theme.CollatzCheckIn</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_event.xml">
+        <config>
+          <theme>@style/Theme.CollatzCheckIn</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_event_list.xml">
+        <config>
+          <theme>@style/Theme.CollatzCheckIn</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_event_view.xml">
+        <config>
+          <theme>@style/Theme.CollatzCheckIn</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/list_item_user.xml">
         <config>
           <theme>@style/Theme.CollatzCheckIn</theme>
         </config>
@@ -57,7 +112,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8241e9d1-9f76-40b7-9b3a-48c92879850a" name="Changes" comment="commit">
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_event.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_event_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_event_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/event_view_organizer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/event_view_organizer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_event_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_event_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_user_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_user_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_user_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_user_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_event.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_event.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_event_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_event_view.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +214,7 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "merge-test",
     "last_directory_selection": "C:/Users/micha/OneDrive/Documents/301 proj/Collatz301/app/src/main/java",
-    "last_opened_file_path": "/Users/nathanthai/AndroidStudioProjects/indev/Collatz301"
+    "last_opened_file_path": "/Users/nathanthai/AndroidStudioProjects/Collatz301"
   }
 }]]></component>
   <component name="RecentsManager">
