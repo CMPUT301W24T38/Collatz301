@@ -1,5 +1,6 @@
 package com.example.collatzcheckin;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> data;
     EventDB db = new EventDB();
 
+
+    private static final int UPDATE_PROFILE_REQUEST_CODE = 1001;
+
     /**
      * Method to run on creation of the activity. Handles user authentication and creates the bottomnav fragment
      * @param savedInstanceState If the activity is being re-initialized after
@@ -54,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(authentication.updateUI(MainActivity.this) || (uuidVerify==null)) {
             Intent i = new Intent(MainActivity.this, UpdateProfileActivity.class);
-            startActivity(i);
+            startActivityForResult(i, UPDATE_PROFILE_REQUEST_CODE);
         }
         String uuid = authentication.identifyUser();
         AttendeeDB db = new AttendeeDB();
@@ -89,13 +93,52 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param fragment Fragment to switch to
      */
-    private void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == UPDATE_PROFILE_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            String buttonClicked = data.getStringExtra("buttonClicked");
+            if ("admin".equals(buttonClicked)) {
+                setContentView(R.layout.activity_main);
+                BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+                String uuidVerify = authentication.identifyUser();
+
+
+                String uuid = authentication.identifyUser();
+                AttendeeDB db = new AttendeeDB();
+                HashMap<String,String> userData = db.findUser(uuid);
+                user = new User(userData.get("Uid"), userData.get("Name"), userData.get("Email"));
+
+                EventDB eventDB = new EventDB();
+                // creating the nav bar
+                // adds functionality to allow attendee to navigate
+                bottomNavigationView.setOnItemSelectedListener(item -> {
+
+                    int iconPressed= item.getItemId();
+
+                    // navigate to profile page
+                    if (iconPressed == R.id.profile) {
+                        replaceFragment(new UserListFragment());
+                    }
+                    //TODO: navigate to home page (where users can browse events)
+                    if (iconPressed == R.id.home) {
+                        replaceFragment(new AdminEventListFragment());
+                    }
+                    //TODO: navigate to camera so users can scan QR code
+
+                    return true;
+                });
+            }
+            }
+        }
 
 
 

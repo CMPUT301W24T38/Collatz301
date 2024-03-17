@@ -80,9 +80,8 @@ public class AdminEventListFragment extends Fragment {
             {
 
                 Event event = (Event)adapter.getItemAtPosition(position);
-//                ((MainActivity)getActivity()).showAdminEventView(event);
-                // assuming string and if you want to get the value on click of list item
-                // do what you intend to do on click of listview row
+                AdminEventViewFragment adminEventViewFragment = new AdminEventViewFragment(event);
+                ((MainActivity) requireActivity()).replaceFragment(adminEventViewFragment);
             }
         });
         return view;

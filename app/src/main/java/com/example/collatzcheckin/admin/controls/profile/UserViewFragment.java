@@ -51,7 +51,8 @@ public class UserViewFragment extends Fragment {
 
                 // Call the removeEvent method passing event as parameter
                 administratorDB.removeProfile(user);
-                ((MainActivity) getActivity()).showUserList();
+                UserListFragment userListFragment = new UserListFragment();
+                ((MainActivity) requireActivity()).replaceFragment(userListFragment);
             }
         });
 
@@ -59,7 +60,8 @@ public class UserViewFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Navigate back to the user list
-                ((MainActivity) getActivity()).showUserList();
+                UserListFragment userListFragment = new UserListFragment();
+                ((MainActivity) requireActivity()).replaceFragment(userListFragment);
             }
         });
 

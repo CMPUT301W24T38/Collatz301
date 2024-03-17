@@ -3362,7 +3362,6 @@ int id event_description 0x7f0800e0
 int id event_description_input 0x7f0800e1
 int id event_edit_frame 0x7f0800e2
 int id event_frame_view 0x7f0800e3
-int id event_list 0x7f0800e4
 int id event_list_date 0x7f0800e5
 int id event_list_title 0x7f0800e6
 int id event_list_view 0x7f0800e7

@@ -3,6 +3,7 @@ package com.example.collatzcheckin.attendee.profile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +34,7 @@ import java.util.HashMap;
 public class UpdateProfileActivity extends AppCompatActivity {
 
     private Button doneButton;
+    private Button adminButton;
     private EditText userName;
     private EditText userEmail;
     private String userUuid;
@@ -82,10 +84,45 @@ public class UpdateProfileActivity extends AppCompatActivity {
                     user = new User(userUuid, nameEdit, emailEdit);
                     attendeeDB.addUser(user);
                     finish();
+
                 }
 
             }
         });
+        adminButton = findViewById(R.id.admin_button);
+        adminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setResultAndFinish(Activity.RESULT_OK, "admin");
+                }
+        });
+    }
+
+    private void setResultAndFinish(int resultCode, String buttonClicked) {
+        String nameEdit = userName.getText().toString();
+        String emailEdit = userEmail.getText().toString();
+        if (nameEdit.length() < 1) {
+            userName.setError("Please enter your name.");
+            isVaild = false;
+        } else {
+            userName.setError(null);
+        }
+
+        if (emailEdit.length() < 1) {
+            userEmail.setError("Please enter your email.");
+            isVaild = false;
+        } else {
+            userEmail.setError(null);
+        }
+
+        if (isVaild) {
+            user = new User(userUuid, nameEdit, emailEdit);
+            attendeeDB.addUser(user);
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("buttonClicked", buttonClicked);
+            setResult(resultCode, resultIntent);
+            finish();
+        }
     }
 
 }
