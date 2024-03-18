@@ -14,6 +14,8 @@ import org.checkerframework.common.returnsreceiver.qual.This;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+
 /**
  * This class is used to add events to the event database
  * in Firebase
@@ -34,7 +36,7 @@ public class EventDB {
     * This is an event to add
     */
     public void addEvent(Event event) {
-        HashMap<String, String> eventData = new HashMap<>();
+        HashMap<String, Object> eventData = new HashMap<>();
         eventData.put("Event Title", event.getEventTitle());
         eventData.put("Event Organizer", event.getEventOrganizer());
         eventData.put("Event Date", event.getEventDate());
@@ -42,6 +44,7 @@ public class EventDB {
         eventData.put("Event Poster", event.getEventPoster());
         eventData.put("Event Location", event.getEventLocation());
         eventData.put("Member Limit", Integer.toString(event.getMemberLimit()));
+        eventData.put("Attendees", event.getAttendees());
         eventRef.document(event.getEventID()).set(eventData);
     }
 

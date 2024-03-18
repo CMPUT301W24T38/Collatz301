@@ -32,6 +32,8 @@ public class User implements Serializable {
     public User() {
     }
 
+
+
     /**
      * This constructs a user class where unique identifier is set
      * This is used for the Firebase Authentication

@@ -4,6 +4,8 @@ package com.example.collatzcheckin;
 import android.graphics.Bitmap;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This is a class that defines an event.
@@ -17,6 +19,7 @@ public class Event implements Serializable {
     private String eventPoster;
     private String eventLocation;
     private int memberLimit;
+    private Map<String, String> attendees;
 
     /**
      * This constructs a  user class where atrributes are not set
@@ -54,6 +57,18 @@ public class Event implements Serializable {
         this.eventLocation = eventLocation;
         this.memberLimit = memberLimit;
         this.eventID = eventID;
+    }
+
+    public Event(String eventTitle, String eventOrganizer, String eventDate, String eventDescription, String eventPoster, String eventLocation, int memberLimit, String eventID, HashMap<String, String> attendees) {
+        this.eventTitle = eventTitle;
+        this.eventOrganizer = eventOrganizer;
+        this.eventDate = eventDate;
+        this.eventDescription = eventDescription;
+        this.eventPoster = eventPoster;
+        this.eventLocation = eventLocation;
+        this.memberLimit = memberLimit;
+        this.eventID = eventID;
+        this.attendees = attendees;
     }
 
     /**
@@ -199,6 +214,10 @@ public class Event implements Serializable {
      */
     public void setEventID(String eventID) {
         this.eventID = eventID;
+    }
+
+    public Map<String, String> getAttendees() {
+        return attendees;
     }
 }
 

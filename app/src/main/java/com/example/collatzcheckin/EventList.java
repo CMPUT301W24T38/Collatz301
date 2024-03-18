@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 public class EventList extends AppCompatActivity {
     ListView eventList;
@@ -67,12 +68,13 @@ public class EventList extends AppCompatActivity {
                             String eventPoster = doc.getString("Event Poster");
                             String eventLocation = doc.getString("Event Location");
                             String memberLimit = doc.getString("Member Limit");
+                            HashMap<String, String> attendees = (HashMap<String,String>) doc.get("Attendees");
                             int parsedMemberLimit = 0; // Default value, you can change it based on your requirements
 
                             if (memberLimit != null && !memberLimit.isEmpty()) {
                                 parsedMemberLimit = Integer.parseInt(memberLimit);
                             }
-                            eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId));
+                            eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId, attendees));
                         }
                     }
 

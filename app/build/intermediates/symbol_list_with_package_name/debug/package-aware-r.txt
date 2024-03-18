@@ -3242,7 +3242,9 @@ id anticipate
 id arc
 id asConfigured
 id async
+id attendee_checkin_count
 id attendee_list
+id attendee_name
 id attending_button
 id auto
 id autoComplete
@@ -3880,6 +3882,7 @@ layout activity_create_event
 layout activity_event_view
 layout activity_main
 layout activity_update_profile
+layout attendee_list_content
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout content

@@ -3241,7 +3241,9 @@ int id anticipate 0x7f080053
 int id arc 0x7f080054
 int id asConfigured 0x7f080055
 int id async 0x7f080056
+int id attendee_checkin_count 0x7f08025d
 int id attendee_list 0x7f080057
+int id attendee_name 0x7f08025e
 int id attending_button 0x7f080058
 int id auto 0x7f080059
 int id autoComplete 0x7f08005a
@@ -3879,6 +3881,7 @@ int layout activity_create_event 0x7f0b001d
 int layout activity_event_view 0x7f0b001e
 int layout activity_main 0x7f0b001f
 int layout activity_update_profile 0x7f0b0020
+int layout attendee_list_content 0x7f0b0080
 int layout browser_actions_context_menu_page 0x7f0b0021
 int layout browser_actions_context_menu_row 0x7f0b0022
 int layout content 0x7f0b0023

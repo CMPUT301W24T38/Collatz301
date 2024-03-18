@@ -26,6 +26,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class CreateEvent extends AppCompatActivity {
@@ -69,7 +71,7 @@ public class CreateEvent extends AppCompatActivity {
                 String date = eventDate.getText().toString();
                 String location = eventLocation.getText().toString();
                 String description = eventDescription.getText().toString();
-
+                String limit = eventLimit.getText().toString();
                 //Update user and event db
                 EventDB db = new EventDB();
                 AttendeeDB userDb = new AttendeeDB();
@@ -92,7 +94,7 @@ public class CreateEvent extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                         String uri = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-                        Event event = new Event(title, uuid, date, description, uri, location, 333, id, qr);
+                        Event event = new Event(title, uuid, date, description, uri, location, Integer.parseInt(limit), id, new HashMap<String,String>());
                         db.addEvent(event);
                         finish();
                     }

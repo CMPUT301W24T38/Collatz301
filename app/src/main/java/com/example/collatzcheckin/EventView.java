@@ -77,7 +77,6 @@ public class EventView extends AppCompatActivity {
 
         posterImage = findViewById(R.id.poster_image);
         ImageView ivQR = findViewById(R.id.qr);
-        ivQR.setImageBitmap(event.getQr());
         String eventid = event.getEventTitle();
         storageReference = FirebaseStorage.getInstance().getReference("posters/"+eventid);
         try {
@@ -107,7 +106,7 @@ public class EventView extends AppCompatActivity {
         viewAttendees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewAttendeesList();
+                viewAttendeesList(event);
             }
         });
 
@@ -125,8 +124,9 @@ public class EventView extends AppCompatActivity {
         });
     }
 
-    public void viewAttendeesList() {
+    public void viewAttendeesList(Event event) {
         Intent intent = new Intent(this, AttendeeList.class);
+        intent.putExtra("Event", event);
         startActivity(intent);
     }
 }

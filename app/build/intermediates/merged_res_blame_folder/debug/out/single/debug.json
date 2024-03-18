@@ -84,10 +84,6 @@
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.collatzcheckin.app-merged_res-39:/layout_fragment_event_view.xml.flat",
-        "source": "com.example.collatzcheckin.app-main-41:/layout/fragment_event_view.xml"
-    },
-    {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\drawable_baseline_home_24.xml.flat",
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\drawable\\baseline_home_24.xml"
     },
@@ -128,6 +124,10 @@
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\activity_main.xml"
     },
     {
+        "merged": "com.example.collatzcheckin.app-merged_res-39:/layout_attendee_list_content.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-41:/layout/attendee_list_content.xml"
+    },
+    {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_profile_edit.xml.flat",
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\profile_edit.xml"
     },
@@ -142,6 +142,10 @@
     {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_activity_create_event.xml.flat",
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\activity_create_event.xml"
+    },
+    {
+        "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_attendee_list_content.xml.flat",
+        "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\attendee_list_content.xml"
     },
     {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_fragment_edit_event.xml.flat",
