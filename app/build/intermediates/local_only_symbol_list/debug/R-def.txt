@@ -45,6 +45,7 @@ id constraintLayout3
 id constraintLayout4
 id constraintLayout5
 id constraintLayout6
+id constraintLayout7
 id container_user
 id create_event
 id delete_event
@@ -92,6 +93,7 @@ id organizer_button
 id pfp
 id poster_image
 id profile
+id qr
 id remove
 id scanner
 id select_poster_button

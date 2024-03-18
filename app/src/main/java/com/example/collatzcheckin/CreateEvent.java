@@ -1,14 +1,32 @@
 package com.example.collatzcheckin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.collatzcheckin.attendee.User;
 import com.example.collatzcheckin.attendee.AttendeeDB;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
+
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
+import java.util.Random;
 
 public class CreateEvent extends AppCompatActivity {
     View view;
@@ -17,6 +35,7 @@ public class CreateEvent extends AppCompatActivity {
     TextView eventDate;
     TextView eventDescription;
     TextView eventLimit;
+    StorageReference storageReference;
     //User user;
     /**
      * Method to run on creation of the activity. Handles create event
@@ -29,7 +48,7 @@ public class CreateEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
         Intent intent = getIntent();
-        com.example.collatzcheckin.attendee.User user = (User) intent.getSerializableExtra("user");
+        String uuid = intent.getStringExtra("uuid");
 
         eventTitle = findViewById(R.id.edit_event_name);
         eventDate = findViewById(R.id.edit_event_date);
@@ -40,8 +59,6 @@ public class CreateEvent extends AppCompatActivity {
 
 
         Button backButton = findViewById(R.id.back_button_create_event);
-
-
         Button addEventButton = findViewById(R.id.add_event);
 
         addEventButton.setOnClickListener(new View.OnClickListener() {
@@ -56,11 +73,33 @@ public class CreateEvent extends AppCompatActivity {
                 //Update user and event db
                 EventDB db = new EventDB();
                 AttendeeDB userDb = new AttendeeDB();
-                Event event = new Event(title, user.getUid(), date, description, "URL", location, 333);
-                db.addEvent(event);
-                user.addOrganizingEvent(event);
-                userDb.addUser(user);
-                finish();
+                String id = generateRandomString(16);
+                Bitmap qr = generateQR(id);
+                storageReference = FirebaseStorage.getInstance().getReference("/qr");
+                StorageReference imgRef = storageReference.child(id + ".jpg");
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                qr.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] data = baos.toByteArray();
+
+                UploadTask uploadTask = imgRef.putBytes(data);
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                        String uri = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+                        Event event = new Event(title, uuid, date, description, uri, location, 333, id, qr);
+                        db.addEvent(event);
+                        finish();
+                    }
+                });
+
+
+
             }
         });
 
@@ -72,5 +111,31 @@ public class CreateEvent extends AppCompatActivity {
             }
         });
 
+    }
+
+    public static String generateRandomString(int length) {
+        String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(CHARACTERS.length());
+            char randomChar = CHARACTERS.charAt(randomIndex);
+            sb.append(randomChar);
+        }
+        return sb.toString();
+    }
+
+    public static Bitmap generateQR(String id) {
+        MultiFormatWriter writer = new MultiFormatWriter();
+        try {
+            BitMatrix matrix = writer.encode(id, BarcodeFormat.QR_CODE, 600, 600);
+            BarcodeEncoder encoder = new BarcodeEncoder();
+            Bitmap bitmap = encoder.createBitmap(matrix);
+            return  bitmap;
+        }
+        catch (WriterException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

@@ -55,7 +55,8 @@ public class AdminEventListFragment extends Fragment {
                 if (querySnapshots != null) {
                     eventDataList.clear();
                     for (QueryDocumentSnapshot doc : querySnapshots) {
-                        String eventTitle = doc.getId();
+                        String eventId = doc.getId();
+                        String eventTitle = doc.getString("Event Title");
                         String eventOrganizer = doc.getString("Event Organizer");
                         String eventDate = doc.getString("Event Date");
                         String eventDescription = doc.getString("Event Description");
@@ -64,9 +65,9 @@ public class AdminEventListFragment extends Fragment {
                         String memberLimit = doc.getString("Member Limit");
 
                         if (memberLimit != null) {
-                            eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, Integer.parseInt(memberLimit)));
+                            eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, Integer.parseInt(memberLimit), eventId));
                         } else {
-                            eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation));
+                            eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, eventId));
                         }}
 
                     eventArrayAdapter.notifyDataSetChanged();

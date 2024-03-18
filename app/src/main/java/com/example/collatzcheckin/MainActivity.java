@@ -57,9 +57,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
         }
         String uuid = authentication.identifyUser();
-        AttendeeDB db = new AttendeeDB();
-        HashMap<String,String> userData = db.findUser(uuid);
-        user = new User(userData.get("Uid"), userData.get("Name"), userData.get("Email"));
+
 
         EventDB eventDB = new EventDB();
         // creating the nav bar
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             //TODO: navigate to home page (where users can browse events)
             if (iconPressed == R.id.home) {
                 Intent i = new Intent(this,EventList.class);
-                i.putExtra("user", user);
+                i.putExtra("uuid", uuid);
                 startActivity(i);
             }
             //TODO: navigate to camera so users can scan QR code

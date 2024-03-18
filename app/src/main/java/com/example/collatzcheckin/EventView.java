@@ -76,6 +76,8 @@ public class EventView extends AppCompatActivity {
         eventLocation.setText(event.getEventLocation());
 
         posterImage = findViewById(R.id.poster_image);
+        ImageView ivQR = findViewById(R.id.qr);
+        ivQR.setImageBitmap(event.getQr());
         String eventid = event.getEventTitle();
         storageReference = FirebaseStorage.getInstance().getReference("posters/"+eventid);
         try {

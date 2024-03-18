@@ -41,6 +41,7 @@ dependencies {
     implementation("androidx.ads:ads-identifier:1.0.0-alpha05")
     implementation("com.google.guava:guava:28.0-android")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation("com.google.firebase:firebase-storage:20.3.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

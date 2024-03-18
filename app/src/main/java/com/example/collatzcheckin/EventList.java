@@ -38,7 +38,7 @@ public class EventList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_view_organizer);
         Intent intent = getIntent();
-        User user = (User) intent.getSerializableExtra("user");
+        String uuid = intent.getStringExtra("uuid");
 
         db = new EventDB();
         eventList = findViewById(R.id.event_list_view);
@@ -57,22 +57,23 @@ public class EventList extends AppCompatActivity {
                     eventDataList.clear();
 
                     for (QueryDocumentSnapshot doc : querySnapshots) {
-                        String eventOrganizer = doc.getString("Event Organizer");
-                        if (user.getUid() != null && eventOrganizer != null && !user.getUid().equals(eventOrganizer)) {
-                            continue;
-                        }
-                        String eventTitle = doc.getId();
-                        String eventDate = doc.getString("Event Date");
-                        String eventDescription = doc.getString("Event Description");
-                        String eventPoster = doc.getString("Event Poster");
-                        String eventLocation = doc.getString("Event Location");
-                        String memberLimit = doc.getString("Member Limit");
-                        int parsedMemberLimit = 0; // Default value, you can change it based on your requirements
+                        String organizer = doc.getString("Event Organizer");
+                        if (organizer.matches(uuid)) {
+                            String eventId = doc.getId();
+                            String eventOrganizer = doc.getString("Event Organizer");
+                            String eventTitle = doc.getString("Event Title");
+                            String eventDate = doc.getString("Event Date");
+                            String eventDescription = doc.getString("Event Description");
+                            String eventPoster = doc.getString("Event Poster");
+                            String eventLocation = doc.getString("Event Location");
+                            String memberLimit = doc.getString("Member Limit");
+                            int parsedMemberLimit = 0; // Default value, you can change it based on your requirements
 
-                        if (memberLimit != null && !memberLimit.isEmpty()) {
-                            parsedMemberLimit = Integer.parseInt(memberLimit);
+                            if (memberLimit != null && !memberLimit.isEmpty()) {
+                                parsedMemberLimit = Integer.parseInt(memberLimit);
+                            }
+                            eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId));
                         }
-                        eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit));
                     }
 
                     eventArrayAdapter.notifyDataSetChanged();
@@ -95,7 +96,7 @@ public class EventList extends AppCompatActivity {
         createEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeCreateEvent(user);
+                changeCreateEvent(uuid);
             }
         });
         Button backButton = findViewById(R.id.back_button);
@@ -114,9 +115,9 @@ public class EventList extends AppCompatActivity {
         startActivity(myIntent);
     }
 
-    public void changeCreateEvent(User user) {
+    public void changeCreateEvent(String uuid) {
         Intent myIntent = new Intent(this, CreateEvent.class);
-        myIntent.putExtra("user", user);
+        myIntent.putExtra("uuid", uuid);
         startActivity(myIntent);
     }
 

@@ -35,13 +35,14 @@ public class EventDB {
     */
     public void addEvent(Event event) {
         HashMap<String, String> eventData = new HashMap<>();
+        eventData.put("Event Title", event.getEventTitle());
         eventData.put("Event Organizer", event.getEventOrganizer());
         eventData.put("Event Date", event.getEventDate());
         eventData.put("Event Description", event.getEventDescription());
         eventData.put("Event Poster", event.getEventPoster());
         eventData.put("Event Location", event.getEventLocation());
         eventData.put("Member Limit", Integer.toString(event.getMemberLimit()));
-        eventRef.document(event.getEventTitle()).set(eventData);
+        eventRef.document(event.getEventID()).set(eventData);
     }
 
 }
