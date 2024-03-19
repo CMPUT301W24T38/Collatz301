@@ -19,6 +19,7 @@ color white
 drawable baseline_camera_alt_24
 drawable baseline_home_24
 drawable baseline_person_24
+drawable baseline_search_24
 drawable bg
 drawable container
 drawable event_list_background
@@ -62,6 +63,7 @@ id edit_event_name
 id editpfp
 id email
 id emailText
+id email_text
 id enablegeo
 id enablenotif
 id event_date_input
@@ -85,7 +87,9 @@ id frame_layout
 id geo
 id geotext
 id home
+id name
 id nameText
+id name_text
 id notif
 id notiftext
 id organizer_button
@@ -94,7 +98,9 @@ id poster_image
 id profile
 id remove
 id scanner
+id search
 id select_poster_button
+id sign_up
 id submit_event_edit_button
 id textView
 id textView2
@@ -116,6 +122,7 @@ id usernameText
 id view_attendee
 layout activity_attendee_list
 layout activity_create_event
+layout activity_event_sign_up
 layout activity_event_view
 layout activity_main
 layout activity_update_profile
@@ -126,9 +133,12 @@ layout fragment_admin_attendee_list
 layout fragment_admin_event_view
 layout fragment_admin_user_list
 layout fragment_admin_user_view
+layout fragment_blank
+layout fragment_browse_events
 layout fragment_edit_event
 layout fragment_event_list
 layout fragment_event_view
+layout fragment_sign_up_confirmation
 layout list_item_user
 layout profile_edit
 layout profile_fragment

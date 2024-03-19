@@ -14,11 +14,11 @@ import android.os.Bundle;
         import android.widget.ArrayAdapter;
         import android.widget.ListView;
 
-        import com.example.collatzcheckin.Event;
-        import com.example.collatzcheckin.EventArrayAdapter;
-        import com.example.collatzcheckin.EventDB;
-        import com.example.collatzcheckin.MainActivity;
-        import com.example.collatzcheckin.R;
+        import com.example.collatzcheckin.event.Event;
+        import com.example.collatzcheckin.event.EventArrayAdapter;
+        import com.example.collatzcheckin.event.EventDB;
+
+import com.example.collatzcheckin.R;
 import com.google.firebase.firestore.EventListener;
         import com.google.firebase.firestore.FirebaseFirestoreException;
         import com.google.firebase.firestore.QueryDocumentSnapshot;

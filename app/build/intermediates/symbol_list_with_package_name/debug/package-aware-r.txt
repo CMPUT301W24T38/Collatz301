@@ -3008,6 +3008,7 @@ drawable avd_show_password
 drawable baseline_camera_alt_24
 drawable baseline_home_24
 drawable baseline_person_24
+drawable baseline_search_24
 drawable bg
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
@@ -3350,6 +3351,7 @@ id editpfp
 id elastic
 id email
 id emailText
+id email_text
 id embed
 id enablegeo
 id enablenotif
@@ -3499,7 +3501,9 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id name
 id nameText
+id name_text
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3584,6 +3588,7 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
+id search
 id search_badge
 id search_bar
 id search_button
@@ -3604,6 +3609,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id sign_up
 id sin
 id skipCollapsed
 id skipped
@@ -3842,6 +3848,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_attendee_list
 layout activity_create_event
+layout activity_event_sign_up
 layout activity_event_view
 layout activity_main
 layout activity_update_profile
@@ -3870,9 +3877,12 @@ layout fragment_admin_attendee_list
 layout fragment_admin_event_view
 layout fragment_admin_user_list
 layout fragment_admin_user_view
+layout fragment_blank
+layout fragment_browse_events
 layout fragment_edit_event
 layout fragment_event_list
 layout fragment_event_view
+layout fragment_sign_up_confirmation
 layout list_item_user
 layout m3_alert_dialog
 layout m3_alert_dialog_actions

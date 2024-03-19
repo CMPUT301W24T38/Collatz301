@@ -27,6 +27,7 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:debuggable="true"
+        android:enableOnBackInvokedCallback="true"
         android:extractNativeLibs="false"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -36,16 +37,19 @@
         android:testOnly="true"
         android:theme="@style/Theme.CollatzCheckIn" >
         <activity
-            android:name="com.example.collatzcheckin.EventView"
+            android:name="com.example.collatzcheckin.attendee.events.EventSignUp"
             android:exported="false" />
         <activity
-            android:name="com.example.collatzcheckin.CreateEvent"
+            android:name="com.example.collatzcheckin.event.EventView"
             android:exported="false" />
         <activity
-            android:name="com.example.collatzcheckin.AttendeeList"
+            android:name="com.example.collatzcheckin.event.CreateEvent"
             android:exported="false" />
         <activity
-            android:name="com.example.collatzcheckin.EventList"
+            android:name="com.example.collatzcheckin.event.AttendeeList"
+            android:exported="false" />
+        <activity
+            android:name="com.example.collatzcheckin.event.EventList"
             android:exported="false" />
         <activity
             android:name="com.example.collatzcheckin.MainActivity"
@@ -57,7 +61,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.collatzcheckin.attendee.profile.UpdateProfileActivity"
+            android:name="com.example.collatzcheckin.attendee.profile.CreateProfileActivity"
             android:exported="false" />
         <activity
             android:name="com.example.collatzcheckin.attendee.profile.ProfileFragment"

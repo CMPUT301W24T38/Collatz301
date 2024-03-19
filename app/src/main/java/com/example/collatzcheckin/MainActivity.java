@@ -1,5 +1,7 @@
 package com.example.collatzcheckin;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -10,11 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import com.example.collatzcheckin.attendee.AttendeeDB;
-import java.net.Authenticator;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,10 +21,18 @@ import com.example.collatzcheckin.admin.controls.events.AdminEventViewFragment;
 import com.example.collatzcheckin.admin.controls.profile.UserListFragment;
 import com.example.collatzcheckin.admin.controls.profile.UserViewFragment;
 import com.example.collatzcheckin.attendee.User;
+import com.example.collatzcheckin.attendee.events.BrowseEventsFragment;
 import com.example.collatzcheckin.attendee.profile.ProfileFragment;
-import com.example.collatzcheckin.attendee.profile.UpdateProfileActivity;
+import com.example.collatzcheckin.attendee.profile.CreateProfileActivity;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import com.example.collatzcheckin.event.EditEventFragment;
+import com.example.collatzcheckin.event.Event;
+import com.example.collatzcheckin.event.EventDB;
+import com.example.collatzcheckin.event.EventList;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * MainActivity of the application, handles setting up the bottom nav fragment and the user
@@ -50,18 +56,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        String uuidVerify = authentication.identifyUser();
 
-        if(authentication.updateUI(MainActivity.this) || (uuidVerify==null)) {
-            Intent i = new Intent(MainActivity.this, UpdateProfileActivity.class);
+        // check if user is a new or returning user
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        // if new user prompt the user to create a profile
+        if(currentUser == null) {
+            //authentication.updateUI(this);
+            Log.d(TAG, "signInAnon");
+            Intent i = new Intent(MainActivity.this, CreateProfileActivity.class);
             startActivity(i);
         }
+
+        // show home page
+        replaceFragment(new BrowseEventsFragment());
+
         String uuid = authentication.identifyUser();
         AttendeeDB db = new AttendeeDB();
         HashMap<String,String> userData = db.findUser(uuid);
         user = new User(userData.get("Uid"), userData.get("Name"), userData.get("Email"));
 
-        EventDB eventDB = new EventDB();
+
         // creating the nav bar
         // adds functionality to allow attendee to navigate
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -72,9 +86,13 @@ public class MainActivity extends AppCompatActivity {
             if (iconPressed == R.id.profile) {
                 replaceFragment(new ProfileFragment());
             }
-            //TODO: navigate to home page (where users can browse events)
+            // navigate to page to browse events
+            if (iconPressed == R.id.search) {
+                replaceFragment(new BrowseEventsFragment());
+            }
+
             if (iconPressed == R.id.home) {
-                Intent i = new Intent(this,EventList.class);
+                Intent i = new Intent(this, EventList.class);
                 i.putExtra("user", user);
                 startActivity(i);
             }
@@ -94,40 +112,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
-    }
-
-
-
-
-    public void showAdminEventList() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.event_frame_view, new AdminEventListFragment())
-                .addToBackStack(null)
-                .commit();
-    }
-    public void showAdminEventView(Event e) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.event_frame_view, new AdminEventViewFragment(e))
-                .addToBackStack(null)
-                .commit();
-    }
-    public void showUserList() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container_user, new UserListFragment())
-                .addToBackStack(null)
-                .commit();
-    }
-    public void showAdminUserView(User user) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container_user, new UserViewFragment(user))
-                .addToBackStack(null)
-                .commit();
-    }
-    public void showEditEvent(Event e) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.event_frame_view, new EditEventFragment(e))
-                .addToBackStack(null)
-                .commit();
     }
 
 }

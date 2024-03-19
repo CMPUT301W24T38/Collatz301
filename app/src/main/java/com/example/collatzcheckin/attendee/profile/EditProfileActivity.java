@@ -20,11 +20,15 @@ import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeDB;
 import com.example.collatzcheckin.attendee.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -38,6 +42,7 @@ public class EditProfileActivity extends AppCompatActivity {
     TextView name, username, email;
     Switch geo, notif;
     AttendeeDB attendeeDB = new AttendeeDB();
+    User user;
 
 
     /**
@@ -55,7 +60,7 @@ public class EditProfileActivity extends AppCompatActivity {
         confirm = findViewById(R.id.confirm_button);
         pfp = findViewById(R.id.editpfp);
         Intent intent = getIntent();
-        User user = (User) intent.getSerializableExtra("user");
+        user = (User) intent.getSerializableExtra("user");
         name = findViewById(R.id.editName);
         username = findViewById(R.id.editUsername);
         email = findViewById(R.id.editEmail);
@@ -65,14 +70,12 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!user.getName().equals("")){
             name.setText(user.getName());
         }
-        if (!user.getUsername().equals("")){
-            username.setText(user.getUsername());
-        }
+
         if (!user.getEmail().equals("")){
             email.setText(user.getEmail());
         }
         if (user.getPfp()!=null){
-            pfp.setImageURI(Uri.parse(user.getPfp()));
+            getPfp(user.getPfp(), user.getName(), user.getUid());
         }
         geo.setChecked(user.isGeolocation());
         notif.setChecked(user.isNotifications());
@@ -92,16 +95,16 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 String newName = name.getText().toString();
                 user.setName(newName);
-                String newUsername = username.getText().toString();
-                user.setUsername(newUsername);
                 String newEmail = email.getText().toString();
                 user.setEmail(newEmail);
                 user.setGeolocation(geo.isChecked());
                 user.setNotifications(notif.isChecked());
 
 
+
                 if (imagePath!=null) {
-                    FirebaseStorage.getInstance().getReference("images/" + user.getUsername()).putFile(imagePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                    user.setPfp("UserCreated");
+                    FirebaseStorage.getInstance().getReference("images/" + user.getUid()).putFile(imagePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                             if (task.isSuccessful()) {
@@ -110,13 +113,12 @@ public class EditProfileActivity extends AppCompatActivity {
                         }
                     });
 
-                    user.setPfp(imagePath.toString());
-                }
 
-                attendeeDB.addUser(user);
+                }
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("updatedUser", user);
                 setResult(RESULT_OK, resultIntent);
+                attendeeDB.addUser(user);
                 finish();
             }
         });
@@ -136,6 +138,7 @@ public class EditProfileActivity extends AppCompatActivity {
         if (request_Code == 1 && resultCode == RESULT_OK && data != null) {
             imagePath = data.getData();
             getImageInImageView();
+            user.setPfp("userCreated");
         }
     }
     private void getImageInImageView() {
@@ -146,9 +149,48 @@ public class EditProfileActivity extends AppCompatActivity {
                 e.printStackTrace();
         }
         pfp.setImageBitmap(bitmap);
-
+        user.setPfp("userCreated");
 
         }
+
+    public void getPfp(String type, String name, String uuid){
+
+        String nameLetter = String.valueOf(name.charAt(0));
+        nameLetter = nameLetter.toUpperCase();
+
+        if(type.equals("generated")) {
+            StorageReference pfpRef = FirebaseStorage.getInstance().getReference().child("generatedpfp/" + nameLetter + ".png");
+            try {
+                final File localFile = File.createTempFile("temp", "png");
+                pfpRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        // Set the downloaded image to the ImageView
+                        pfp.setImageURI(Uri.fromFile(localFile));
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle exception
+            }
+        } else if(type.equals("userCreated")) {
+            StorageReference pfpRef = FirebaseStorage.getInstance().getReference().child("images/" + uuid);
+            try {
+                final File localFile = File.createTempFile("images", "jpg");
+                pfpRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        // Set the downloaded image to the ImageView
+                        pfp.setImageURI(Uri.fromFile(localFile));
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle exception
+            }
+        }
+    }
+
     }
 
 

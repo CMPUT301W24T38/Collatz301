@@ -1,8 +1,6 @@
 package com.example.collatzcheckin.attendee;
 
-import android.net.Uri;
-
-import com.example.collatzcheckin.Event;
+import com.example.collatzcheckin.event.Event;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -58,6 +56,7 @@ public class User implements Serializable {
         this.attendingEvents = new ArrayList<String>();
         this.geolocation = false;
         this.notifications = false;
+        this.pfp = "generated";
     }
 
     /**
@@ -78,30 +77,41 @@ public class User implements Serializable {
         this.username = username;
         this.geolocation = false;
         this.notifications = false;
+        this.pfp = "generated";
 
     }
 
     /**
      * This constructs a user class
      * @param name name of user
-     * @param username username for homepage
      * @param contactInformation user email
      * @param uid The unique identifier for this user to reference in firestore to find their
      *              item collection
      * @param geolocation Geolocation perferences ('true' for enabled, 'false' for disabled)
      * @param notifications Notifications perferences ('true' for enabled, 'false' for disabled)
      */
-    public User( String name, String username, String contactInformation, String uid, boolean geolocation, boolean notifications) {
+    public User(String name, String contactInformation, String uid, boolean geolocation, boolean notifications) {
         this.name = name;
         this.email = contactInformation;
         this.uid = uid;
         this.events = new ArrayList<Event>();
         this.organizingEvents = new ArrayList<String>();
         this.attendingEvents = new ArrayList<String>();
-        this.username = username;
         this.geolocation = geolocation;
         this.notifications = notifications;
+        this.pfp = "generated";
+    }
 
+    public User(String name, String contactInformation, String uid, boolean geolocation, boolean notifications, String pfp) {
+        this.name = name;
+        this.email = contactInformation;
+        this.uid = uid;
+        this.events = new ArrayList<Event>();
+        this.organizingEvents = new ArrayList<String>();
+        this.attendingEvents = new ArrayList<String>();
+        this.geolocation = geolocation;
+        this.notifications = notifications;
+        this.pfp = pfp;
     }
 
     /**

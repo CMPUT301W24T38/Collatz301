@@ -1,0 +1,410 @@
+03-08 12:22:48.624  7759  7783 I TestRunner: started: eventListView(com.example.collatzcheckin.EventListTest)
+03-08 12:22:48.683  7759  7783 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+03-08 12:22:48.831   417   417 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+03-08 12:22:49.032  7759  7788 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+03-08 12:22:49.037  7759  7788 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+03-08 12:22:49.059  3140  5522 D EGL_emulation: app_time_stats: avg=9134.18ms min=116.48ms max=35352.40ms count=4
+03-08 12:22:49.118   883   947 E OpenGLRenderer: Unable to match the desired swap behavior.
+03-08 12:22:49.118  7759  7788 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+03-08 12:22:49.207  7759  7759 W .collatzcheckin: Verification of void androidx.activity.ComponentActivity.<init>() took 123.204ms (1558.38 bytecodes/s) (7744B approximate peak alloc)
+03-08 12:22:49.650  1749  1749 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+03-08 12:22:49.650  1749  1749 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.measurement.START pkg=com.google.android.gms }
+03-08 12:22:50.346  6375  6388 I .gms.persistent: Background young concurrent copying GC freed 129535(7374KB) AllocSpace objects, 0(0B) LOS objects, 30% free, 16MB/24MB, paused 31.360ms,179us total 188.105ms
+03-08 12:22:50.623  7759  7759 D AppCompatDelegate: Checking for metadata for AppLocalesMetadataHolderService : Service not found
+03-08 12:22:50.650  7759  7799 W DynamiteModule: Local module descriptor class for com.google.android.gms.providerinstaller.dynamite not found.
+03-08 12:22:50.657  7759  7759 D LifecycleMonitor: Lifecycle status change: com.example.collatzcheckin.MainActivity@5351f1d in: PRE_ON_CREATE
+03-08 12:22:50.663  7759  7759 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
+03-08 12:22:50.729  6375  7388 W ProviderHelper: Unknown dynamite feature providerinstaller.dynamite
+03-08 12:22:50.745  7759  7799 I DynamiteModule: Considering local module com.google.android.gms.providerinstaller.dynamite:0 and remote module com.google.android.gms.providerinstaller.dynamite:0
+03-08 12:22:50.749  7759  7799 W ProviderInstaller: Failed to load providerinstaller module: No acceptable module com.google.android.gms.providerinstaller.dynamite found. Local version is 0 and remote version is 0.
+03-08 12:22:50.820  7759  7799 D nativeloader: Configuring clns-9 for other apk /system/framework/org.apache.http.legacy.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+03-08 12:22:50.895  7759  7799 D nativeloader: Configuring clns-10 for other apk /system/framework/com.android.media.remotedisplay.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+03-08 12:22:50.965  7759  7799 D nativeloader: Configuring clns-11 for other apk /system/framework/com.android.location.provider.jar. target_sdk_version=33, uses_libraries=ALL, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+03-08 12:22:50.979  7759  7759 W .collatzcheckin: Accessing hidden method Landroid/view/View;->computeFitSystemWindows(Landroid/graphics/Rect;Landroid/graphics/Rect;)Z (unsupported, reflection, allowed)
+03-08 12:22:50.983  7759  7759 W .collatzcheckin: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (unsupported, reflection, allowed)
+03-08 12:22:50.990  7759  7799 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+03-08 12:22:50.992  7759  7799 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+03-08 12:22:51.071   884  5434 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+03-08 12:22:51.078   884  5434 I Role    : com.google.android.gms not qualified for android.app.role.SYSTEM_CALL_STREAMING due to missing RequiredComponent{mIntentFilterData=IntentFilterData{mAction='android.telecom.CallStreamingService', mCategories='[]', mDataScheme='null', mDataType='null'}, mMinTargetSdkVersion=1, mFlags='0', mPermission='android.permission.BIND_CALL_STREAMING_SERVICE', mQueryFlags=0, mMetaData=[]}
+03-08 12:22:51.079   884  5434 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.SYSTEM_CALL_STREAMING
+03-08 12:22:51.082   884  5434 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+03-08 12:22:51.092  7759  7799 D nativeloader: InitLlndkLibrariesProduct: libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libbinder_ndk.so:libc.so:libcgrouprc.so:libclang_rt.asan-x86_64-android.so:libcom.android.tethering.connectivity_native.so:libdl.so:libft2.so:liblog.so:libm.so:libmediandk.so:libnativewindow.so:libneuralnetworks.so:libselinux.so:libsync.so:libvndksupport.so:libvulkan.so
+03-08 12:22:51.093  7759  7799 D nativeloader: Configuring product-clns-12 for unbundled product apk /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk. target_sdk_version=33, uses_libraries=, library_path=/product/priv-app/PrebuiltGmsCore/lib/x86_64:/product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk!/lib/x86_64:/product/lib64:/system/product/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms:/product/lib64:/system/product/lib64
+03-08 12:22:51.169  7759  7799 D nativeloader: InitVndkspLibrariesProduct: android.hardware.common-V2-ndk.so:android.hardware.common.fmq-V1-ndk.so:android.hardware.graphics.allocator-V2-ndk.so:android.hardware.graphics.common-V4-ndk.so:android.hardware.graphics.common@1.0.so:android.hardware.graphics.common@1.1.so:android.hardware.graphics.common@1.2.so:android.hardware.graphics.composer3-V1-ndk.so:android.hardware.graphics.mapper@2.0.so:android.hardware.graphics.mapper@2.1.so:android.hardware.graphics.mapper@3.0.so:android.hardware.graphics.mapper@4.0.so:android.hardware.renderscript@1.0.so:android.hidl.memory.token@1.0.so:android.hidl.memory@1.0-impl.so:android.hidl.memory@1.0.so:android.hidl.safe_union@1.0.so:libRSCpuRef.so:libRSDriver.so:libRS_internal.so:libbase.so:libbcinfo.so:libblas.so:libc++.so:libcompiler_rt.so:libcutils.so:libdmabufheap.so:libgralloctypes.so:libhardware.so:libhidlbase.so:libhidlmemory.so:libion.so:libjsoncpp.so:liblzma.so:libprocessgroup.so:libunwindstack.so:libutils.so:libutilscallstack.so:libz.so
+03-08 12:22:51.192   536   949 D ConnectivityService: requestNetwork for uid/pid:10192/7759 activeRequest: null callbackRequest: 150 [NetworkRequest [ REQUEST id=151, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.collatzcheckin UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647
+03-08 12:22:51.196   536   814 D ConnectivityService: NetReassign [151 : null → 101] [c 0] [a 1] [i 1]
+03-08 12:22:51.198   536   807 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=151, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.collatzcheckin UnderlyingNetworks: Null] ]
+03-08 12:22:51.199   536   807 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=151, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.collatzcheckin UnderlyingNetworks: Null] ]
+03-08 12:22:51.203   536   807 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=151, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.collatzcheckin UnderlyingNetworks: Null] ]
+03-08 12:22:51.204   536   807 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=151, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.collatzcheckin UnderlyingNetworks: Null] ]
+03-08 12:22:51.298  7759  7799 V NativeCrypto: Registering com/google/android/gms/org/conscrypt/NativeCrypto's 295 native methods...
+03-08 12:22:51.451  7759  7799 W .collatzcheckin: Accessing hidden method Ljava/security/spec/ECParameterSpec;->getCurveName()Ljava/lang/String; (unsupported, reflection, allowed)
+03-08 12:22:51.495  7759  7759 D CompatibilityChangeReporter: Compat change id reported: 210923482; UID 10192; state: ENABLED
+03-08 12:22:51.664  7759  7799 I ProviderInstaller: Installed default security provider GmsCore_OpenSSL
+03-08 12:22:51.736  7759  7802 W System  : Ignoring header X-Firebase-Locale because its value was null.
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: An unhandled exception was thrown by the app.
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: java.lang.NullPointerException: Provided document path must not be null.
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at com.google.firebase.firestore.util.Preconditions.checkNotNull(Preconditions.java:148)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at com.google.firebase.firestore.CollectionReference.document(CollectionReference.java:103)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at com.example.collatzcheckin.attendee.AttendeeDB.findUser(AttendeeDB.java:47)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at com.example.collatzcheckin.MainActivity.onCreate(MainActivity.java:61)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.app.Activity.performCreate(Activity.java:8595)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.app.Activity.performCreate(Activity.java:8573)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1456)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at androidx.test.runner.MonitoringInstrumentation.callActivityOnCreate(MonitoringInstrumentation.java:779)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3764)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3922)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:103)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:139)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:96)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.os.Looper.loopOnce(Looper.java:205)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.os.Looper.loop(Looper.java:294)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at java.lang.reflect.Method.invoke(Native Method)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+03-08 12:22:51.772  7759  7759 W AndroidJUnitRunner: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+03-08 12:22:51.801  7759  7759 D AndroidJUnitRunner: Reporting the crash to an event service.
+03-08 12:22:51.805  7759  7759 W TestEventClient: Process crashed before connection to orchestrator
+03-08 12:22:51.805  7759  7759 I AndroidJUnitRunner: Bringing down the entire Instrumentation process.
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: Exception encountered by: com.example.collatzcheckin.MainActivity@5351f1d. Dumping thread state to outputs and pining for the fjords.
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: java.lang.NullPointerException: Provided document path must not be null.
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at com.google.firebase.firestore.util.Preconditions.checkNotNull(Preconditions.java:148)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at com.google.firebase.firestore.CollectionReference.document(CollectionReference.java:103)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at com.example.collatzcheckin.attendee.AttendeeDB.findUser(AttendeeDB.java:47)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at com.example.collatzcheckin.MainActivity.onCreate(MainActivity.java:61)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.app.Activity.performCreate(Activity.java:8595)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.app.Activity.performCreate(Activity.java:8573)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1456)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at androidx.test.runner.MonitoringInstrumentation.callActivityOnCreate(MonitoringInstrumentation.java:779)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3764)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3922)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:103)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:139)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:96)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.os.Looper.loopOnce(Looper.java:205)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.os.Looper.loop(Looper.java:294)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at java.lang.reflect.Method.invoke(Native Method)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+03-08 12:22:51.810  7759  7759 E MonitoringInstr: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+03-08 12:22:51.815   417   417 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+03-08 12:22:51.858  7759  7802 W LocalRequestInterceptor: Error getting App Check token; using placeholder token instead. Error: com.google.firebase.FirebaseException: No AppCheckProvider installed.
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:   Thread[Firebase Background Thread #3,5,main]
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     jdk.internal.misc.Unsafe.park(Native Method)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.locks.LockSupport.park(LockSupport.java:341)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:506)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3466)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3437)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1623)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:435)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1071)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1131)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     com.google.firebase.concurrent.CustomThreadFactory.lambda$newThread$0$com-google-firebase-concurrent-CustomThreadFactory(CustomThreadFactory.java:47)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     com.google.firebase.concurrent.CustomThreadFactory$$ExternalSyntheticLambda0.run(Unknown Source:4)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.lang.Thread.run(Thread.java:1012)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:   Thread[FinalizerWatchdogDaemon,5,system]
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.lang.Object.wait(Native Method)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.lang.Object.wait(Object.java:386)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.lang.Object.wait(Object.java:524)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.lang.Daemons$FinalizerWatchdogDaemon.sleepUntilNeeded(Daemons.java:428)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.lang.Daemons$FinalizerWatchdogDaemon.runInternal(Daemons.java:408)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.lang.Daemons$Daemon.run(Daemons.java:145)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.lang.Thread.run(Thread.java:1012)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:   Thread[Firebase Background Thread #1,5,main]
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     jdk.internal.misc.Unsafe.park(Native Method)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.locks.LockSupport.park(LockSupport.java:341)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:506)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3466)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3437)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1623)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:435)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1071)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1131)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     com.google.firebase.concurrent.CustomThreadFactory.lambda$newThread$0$com-google-firebase-concurrent-CustomThreadFactory(CustomThreadFactory.java:47)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     com.google.firebase.concurrent.CustomThreadFactory$$ExternalSyntheticLambda0.run(Unknown Source:4)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.lang.Thread.run(Thread.java:1012)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:   Thread[Firebase Background Thread #0,5,main]
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     jdk.internal.misc.Unsafe.park(Native Method)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.locks.LockSupport.park(LockSupport.java:341)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:506)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3466)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3437)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1623)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:435)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1071)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1131)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     com.google.firebase.concurrent.CustomThreadFactory.lambda$newThread$0$com-google-firebase-concurrent-CustomThreadFactory(CustomThreadFactory.java:47)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     com.google.firebase.concurrent.CustomThreadFactory$$ExternalSyntheticLambda0.run(Unknown Source:4)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:     java.lang.Thread.run(Thread.java:1012)
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:
+03-08 12:22:51.870  7759  7759 E THREAD_STATE:   Thread[HeapTaskDaemon,5,system]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[main,5,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     dalvik.system.VMStack.getThreadStackTrace(Native Method)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Thread.getStackTrace(Thread.java:1841)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Thread.getAllStackTraces(Thread.java:1909)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.runner.MonitoringInstrumentation.getThreadState(MonitoringInstrumentation.java:748)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.runner.MonitoringInstrumentation.dumpThreadStateToOutputs(MonitoringInstrumentation.java:743)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.runner.MonitoringInstrumentation.onException(MonitoringInstrumentation.java:737)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.runner.AndroidJUnitRunner.onException(AndroidJUnitRunner.java:626)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3779)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3922)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:103)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:139)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:96)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.Handler.dispatchMessage(Handler.java:106)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.Looper.loopOnce(Looper.java:205)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.Looper.loop(Looper.java:294)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.app.ActivityThread.main(ActivityThread.java:8177)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.reflect.Method.invoke(Native Method)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[Firebase Blocking Thread #0,5,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.appcheck.internal.DefaultFirebaseAppCheck.getToken(DefaultFirebaseAppCheck.java:184)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.android.gms.internal.firebase-auth-api.zzacv.zza(com.google.firebase:firebase-auth@@22.3.1:7)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.android.gms.internal.firebase-auth-api.zzacv.zza(com.google.firebase:firebase-auth@@22.3.1:54)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.android.gms.internal.firebase-auth-api.zzadl.zza(com.google.firebase:firebase-auth@@22.3.1:58)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.android.gms.internal.firebase-auth-api.zzacs.zza(com.google.firebase:firebase-auth@@22.3.1:115)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.android.gms.internal.firebase-auth-api.zzyl.zze(com.google.firebase:firebase-auth@@22.3.1:185)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.android.gms.internal.firebase-auth-api.zzace.zzd(com.google.firebase:firebase-auth@@22.3.1:178)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.android.gms.internal.firebase-auth-api.zzabl.zza(com.google.firebase:firebase-auth@@22.3.1:11)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.android.gms.internal.firebase-auth-api.zzadi.run(com.google.firebase:firebase-auth@@22.3.1:2)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.concurrent.CustomThreadFactory.lambda$newThread$0$com-google-firebase-concurrent-CustomThreadFactory(CustomThreadFactory.java:47)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.concurrent.CustomThreadFactory$$ExternalSyntheticLambda0.run(Unknown Source:4)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Thread.run(Thread.java:1012)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[AsyncTask #1,5,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     io.grpc.internal.GrpcUtil.<clinit>(GrpcUtil.java:251)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     io.grpc.okhttp.OkHttpChannelBuilder.<init>(OkHttpChannelBuilder.java:178)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     io.grpc.okhttp.OkHttpChannelBuilder.forTarget(OkHttpChannelBuilder.java:162)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     io.grpc.okhttp.OkHttpChannelProvider.builderForTarget(OkHttpChannelProvider.java:51)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     io.grpc.okhttp.OkHttpChannelProvider.builderForTarget(OkHttpChannelProvider.java:31)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     io.grpc.ManagedChannelBuilder.forTarget(ManagedChannelBuilder.java:76)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.firestore.remote.GrpcCallProvider.initChannel(GrpcCallProvider.java:99)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.firestore.remote.GrpcCallProvider.lambda$initChannelTask$6$com-google-firebase-firestore-remote-GrpcCallProvider(GrpcCallProvider.java:242)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.firestore.remote.GrpcCallProvider$$ExternalSyntheticLambda1.call(Unknown Source:2)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.android.gms.tasks.zzz.run(com.google.android.gms:play-services-tasks@@18.1.0:1)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.firestore.util.ThrottledForwardingExecutor.lambda$execute$0$com-google-firebase-firestore-util-ThrottledForwardingExecutor(ThrottledForwardingExecutor.java:54)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.firestore.util.ThrottledForwardingExecutor$$ExternalSyntheticLambda0.run(Unknown Source:4)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Thread.run(Thread.java:1012)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[ConnectivityThread,5,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.MessageQueue.nativePollOnce(Native Method)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.MessageQueue.next(MessageQueue.java:335)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.Looper.loopOnce(Looper.java:162)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.Looper.loop(Looper.java:294)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.HandlerThread.run(HandlerThread.java:67)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[FirestoreWorker,5,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     jdk.internal.misc.Unsafe.park(Native Method)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1188)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:905)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1071)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1131)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.firestore.util.AsyncQueue$SynchronizedShutdownAwareExecutor$DelayedStartFactory.run(AsyncQueue.java:235)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Thread.run(Thread.java:1012)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[binder:7759_2,5,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[binder:7759_1,5,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[FinalizerDaemon,5,system]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Object.wait(Native Method)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Object.wait(Object.java:386)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:210)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:231)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:309)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Daemons$Daemon.run(Daemons.java:145)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Thread.run(Thread.java:1012)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[Profile Saver,5,system]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[Instr: androidx.test.runner.AndroidJUnitRunner,5,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Object.wait(Native Method)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Object.wait(Object.java:386)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Object.wait(Object.java:524)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.app.Instrumentation.startActivitySync(Instrumentation.java:561)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.core.app.InstrumentationActivityInvoker.startActivity(InstrumentationActivityInvoker.java:416)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.core.app.InstrumentationActivityInvoker.startActivity(InstrumentationActivityInvoker.java:422)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.core.app.ActivityScenario.launchInternal(ActivityScenario.java:362)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.core.app.ActivityScenario.launch(ActivityScenario.java:202)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.ext.junit.rules.ActivityScenarioRule.lambda$new$0(ActivityScenarioRule.java:77)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.ext.junit.rules.ActivityScenarioRule$$ExternalSyntheticLambda1.get(Unknown Source:2)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.ext.junit.rules.ActivityScenarioRule.before(ActivityScenarioRule.java:110)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:50)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.ext.junit.runners.AndroidJUnit4.run(AndroidJUnit4.java:162)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.Suite.runChild(Suite.java:128)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.Suite.runChild(Suite.java:27)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.internal.runner.TestExecutor.execute(TestExecutor.java:67)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.internal.runner.TestExecutor.execute(TestExecutor.java:58)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     androidx.test.runner.AndroidJUnitRunner.onStart(AndroidJUnitRunner.java:446)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:2402)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[ReferenceQueueDaemon,5,system]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Object.wait(Native Method)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Object.wait(Object.java:386)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Object.wait(Object.java:524)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Daemons$ReferenceQueueDaemon.runInternal(Daemons.java:239)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Daemons$Daemon.run(Daemons.java:145)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Thread.run(Thread.java:1012)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[Jit thread pool worker thread 0,5,system]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[RenderThread,7,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[Signal Catcher,10,system]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[InstrumentationConnectionThread,5,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.MessageQueue.nativePollOnce(Native Method)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.MessageQueue.next(MessageQueue.java:335)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.Looper.loopOnce(Looper.java:162)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.Looper.loop(Looper.java:294)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.HandlerThread.run(HandlerThread.java:67)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[Firebase Background Thread #2,5,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.heartbeatinfo.DefaultHeartBeatController.lambda$registerHeartBeat$0$com-google-firebase-heartbeatinfo-DefaultHeartBeatController(DefaultHeartBeatController.java:65)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.heartbeatinfo.DefaultHeartBeatController$$ExternalSyntheticLambda1.call(Unknown Source:2)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.android.gms.tasks.zzz.run(com.google.android.gms:play-services-tasks@@18.1.0:1)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.concurrent.CustomThreadFactory.lambda$newThread$0$com-google-firebase-concurrent-CustomThreadFactory(CustomThreadFactory.java:47)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     com.google.firebase.concurrent.CustomThreadFactory$$ExternalSyntheticLambda0.run(Unknown Source:4)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     java.lang.Thread.run(Thread.java:1012)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[TokenRefresher,5,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.MessageQueue.nativePollOnce(Native Method)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.MessageQueue.next(MessageQueue.java:335)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.Looper.loopOnce(Looper.java:162)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.Looper.loop(Looper.java:294)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:     android.os.HandlerThread.run(HandlerThread.java:67)
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:   Thread[binder:7759_3,5,main]
+03-08 12:22:51.871  7759  7759 E THREAD_STATE:
+03-08 12:22:51.871  7759  7759 E MonitoringInstr: Dying now...
+03-08 12:22:51.872  7759  7759 D AndroidRuntime: Shutting down VM
+--------- beginning of crash
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: FATAL EXCEPTION: main
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: Process: com.example.collatzcheckin, PID: 7759
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.example.collatzcheckin/com.example.collatzcheckin.MainActivity}: java.lang.NullPointerException: Provided document path must not be null.
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3782)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3922)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:103)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:139)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:96)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:205)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:294)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: Caused by: java.lang.NullPointerException: Provided document path must not be null.
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at com.google.firebase.firestore.util.Preconditions.checkNotNull(Preconditions.java:148)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at com.google.firebase.firestore.CollectionReference.document(CollectionReference.java:103)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at com.example.collatzcheckin.attendee.AttendeeDB.findUser(AttendeeDB.java:47)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at com.example.collatzcheckin.MainActivity.onCreate(MainActivity.java:61)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.app.Activity.performCreate(Activity.java:8595)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.app.Activity.performCreate(Activity.java:8573)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1456)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at androidx.test.runner.MonitoringInstrumentation.callActivityOnCreate(MonitoringInstrumentation.java:779)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3764)
+03-08 12:22:51.885  7759  7759 E AndroidRuntime: 	... 12 more
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: Handling an uncaught exception thrown on the thread main.
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.example.collatzcheckin/com.example.collatzcheckin.MainActivity}: java.lang.NullPointerException: Provided document path must not be null.
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3782)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3922)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:103)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:139)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:96)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2443)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.os.Looper.loopOnce(Looper.java:205)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.os.Looper.loop(Looper.java:294)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at java.lang.reflect.Method.invoke(Native Method)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: Caused by: java.lang.NullPointerException: Provided document path must not be null.
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at com.google.firebase.firestore.util.Preconditions.checkNotNull(Preconditions.java:148)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at com.google.firebase.firestore.CollectionReference.document(CollectionReference.java:103)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at com.example.collatzcheckin.attendee.AttendeeDB.findUser(AttendeeDB.java:47)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at com.example.collatzcheckin.MainActivity.onCreate(MainActivity.java:61)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.app.Activity.performCreate(Activity.java:8595)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.app.Activity.performCreate(Activity.java:8573)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1456)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at androidx.test.runner.MonitoringInstrumentation.callActivityOnCreate(MonitoringInstrumentation.java:779)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3764)
+03-08 12:22:51.898  7759  7759 D MonitoringInstr: 	... 12 more
+03-08 12:22:51.899  7759  7759 D AndroidJUnitRunner: We've already handled this exception java.lang.NullPointerException. Ignoring.
+03-08 12:22:51.901  7759  7759 W MonitoringInstr: Invoking default uncaught exception handler com.android.internal.os.RuntimeInit$KillApplicationHandler@1e7e3e9 (a class com.android.internal.os.RuntimeInit$KillApplicationHandler)
+03-08 12:22:51.986  7759  7802 D TrafficStats: tagSocket(102) with statsTag=0xffffffff, statsUid=-1
+03-08 12:22:52.043  7759  7759 I Process : Sending signal. PID: 7759 SIG: 9
+03-08 12:22:52.091   536   814 D ConnectivityService: releasing NetworkRequest [ REQUEST id=151, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: com.example.collatzcheckin UnderlyingNetworks: Null] ] (release request)
+03-08 12:22:52.094   358   358 I Zygote  : Process 7759 exited due to signal 9 (Killed)
+03-08 12:22:52.125   536   570 I libprocessgroup: Successfully killed process cgroup uid 10192 pid 7759 in 0ms
+03-08 12:22:52.174  7741  7741 I app_process: System.exit called, status: 0
+03-08 12:22:52.174  7741  7741 I AndroidRuntime: VM exiting with result code 0.
+03-08 12:22:52.213   536   549 I system_server: Background young concurrent copying GC freed 880236(25MB) AllocSpace objects, 18(360KB) LOS objects, 46% free, 27MB/51MB, paused 5.286ms,448us total 350.222ms
+03-08 12:22:52.241   536   551 W System  : A resource failed to call release.
+03-08 12:22:52.376   358   358 D Zygote  : Forked child process 7819
+03-08 12:22:52.473  3140  5522 E OpenGLRenderer: Unable to match the desired swap behavior.
+03-08 12:22:52.530   536   568 E IPCThreadState: Binder transaction failure: 865444/29189/-22
+03-08 12:22:52.608  7819  7819 I .collatzcheckin: Late-enabling -Xcheck:jni
+03-08 12:22:52.779  7819  7819 I .collatzcheckin: Using CollectorTypeCC GC.
+03-08 12:22:52.783  7819  7819 W .collatzcheckin: Unexpected CPU variant for x86: x86_64.
+03-08 12:22:52.783  7819  7819 W .collatzcheckin: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+03-08 12:22:52.819  2410  2431 I adbd    : jdwp connection from 7819
+03-08 12:22:53.149  7819  7819 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10192; state: ENABLED
+03-08 12:22:53.151  7819  7819 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10192; state: ENABLED
+03-08 12:22:53.246  7819  7819 W ziparchive: Unable to open '/data/app/~~pmYM9ZswBg5tFYscG99cjg==/com.example.collatzcheckin-lnvaXH1aJeHFZxieUEnkCQ==/base.dm': No such file or directory
+03-08 12:22:53.247  7819  7819 W ziparchive: Unable to open '/data/app/~~pmYM9ZswBg5tFYscG99cjg==/com.example.collatzcheckin-lnvaXH1aJeHFZxieUEnkCQ==/base.dm': No such file or directory
+03-08 12:22:53.268   883   931 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda17@f752d72
+03-08 12:22:53.275   536   942 W InputManager-JNI: Input channel object '42b161d Splash Screen com.example.collatzcheckin (client)' was disposed without first being removed with the input manager!
+03-08 12:22:53.293   536   605 I ImeTracker: com.android.vending:a5169026: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_SAME_WINDOW_FOCUSED_WITHOUT_EDITOR
+03-08 12:22:53.295   536   605 I ImeTracker: com.android.vending:a5169026: onCancelled at PHASE_SERVER_SHOULD_HIDE
+03-08 12:22:53.306  3165  3165 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3227
+03-08 12:22:53.319  3165  3165 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 0, unlocked = true
+03-08 12:22:53.319  3165  3165 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x0 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=com.android.vending fieldId=0 fieldName=null extras=null}, false)
+03-08 12:22:53.319  3165  3165 I GoogleInputMethodService: GoogleInputMethodService.shouldHideHeaderOnInitialState():4008 ShouldHideHeaderOnInitialState = false
+03-08 12:22:53.323  3165  3165 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2087 repeatCheckTimes = 2, unlocked = true
+03-08 12:22:53.419   883   947 D EGL_emulation: app_time_stats: avg=20388.50ms min=20388.50ms max=20388.50ms count=1

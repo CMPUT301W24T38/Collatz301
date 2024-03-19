@@ -1,0 +1,3 @@
+com.example.collatzcheckin.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme
