@@ -92,6 +92,8 @@ id pfp
 id poster_image
 id profile
 id remove
+id remove_event_poster
+id remove_image
 id scanner
 id select_poster_button
 id submit_event_edit_button
@@ -105,13 +107,11 @@ id textView7
 id up_button
 id updateText
 id upload_poster_button
-id user_email
 id user_list_view
-id user_name
 id user_name_display
-id user_uid
 id username
 id usernameText
+id view_as_user_button
 id view_attendee
 layout activity_attendee_list
 layout activity_create_event

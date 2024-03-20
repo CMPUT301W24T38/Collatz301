@@ -3563,6 +3563,8 @@ int id radio 0x7f0801aa
 int id ratio 0x7f0801ab
 int id rectangles 0x7f0801ac
 int id remove 0x7f0801ad
+int id remove_event_poster 0x7f08024e
+int id remove_image 0x7f08024f
 int id report_drawn 0x7f0801ae
 int id reverseSawtooth 0x7f0801af
 int id right 0x7f0801b0
@@ -3696,14 +3698,12 @@ int id up_button 0x7f08022f
 int id updateText 0x7f080230
 int id upload_poster_button 0x7f080231
 int id useLogo 0x7f080232
-int id user_email 0x7f080233
 int id user_list_view 0x7f080234
-int id user_name 0x7f080235
 int id user_name_display 0x7f080236
-int id user_uid 0x7f080237
 int id username 0x7f080238
 int id usernameText 0x7f080239
 int id vertical_only 0x7f08023a
+int id view_as_user_button 0x7f080250
 int id view_attendee 0x7f08023b
 int id view_offset_helper 0x7f08023c
 int id view_transition 0x7f08023d

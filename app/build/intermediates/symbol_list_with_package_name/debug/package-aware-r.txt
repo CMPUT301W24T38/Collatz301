@@ -3564,6 +3564,8 @@ id radio
 id ratio
 id rectangles
 id remove
+id remove_event_poster
+id remove_image
 id report_drawn
 id reverseSawtooth
 id right
@@ -3697,14 +3699,12 @@ id up_button
 id updateText
 id upload_poster_button
 id useLogo
-id user_email
 id user_list_view
-id user_name
 id user_name_display
-id user_uid
 id username
 id usernameText
 id vertical_only
+id view_as_user_button
 id view_attendee
 id view_offset_helper
 id view_transition

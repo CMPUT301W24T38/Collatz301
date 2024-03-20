@@ -1,5 +1,8 @@
 package com.example.collatzcheckin;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -10,6 +13,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
+
 import com.example.collatzcheckin.attendee.AttendeeDB;
 import java.net.Authenticator;
 import java.time.LocalDate;
@@ -27,7 +32,12 @@ import com.example.collatzcheckin.attendee.User;
 import com.example.collatzcheckin.attendee.profile.ProfileFragment;
 import com.example.collatzcheckin.attendee.profile.UpdateProfileActivity;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 /**
  * MainActivity of the application, handles setting up the bottom nav fragment and the user
@@ -42,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private static final int UPDATE_PROFILE_REQUEST_CODE = 1001;
+
 
     /**
      * Method to run on creation of the activity. Handles user authentication and creates the bottomnav fragment
@@ -63,14 +74,40 @@ public class MainActivity extends AppCompatActivity {
         String uuid = authentication.identifyUser();
         AttendeeDB db = new AttendeeDB();
         HashMap<String,String> userData = db.findUser(uuid);
-        user = new User(userData.get("Uid"), userData.get("Name"), userData.get("Email"));
+        user = new User(userData.get("Uid"), userData.get("Name"), userData.get("Email"), Boolean.parseBoolean(userData.get("Admin")));
+
+        // Issue here where everything is null but the log in AttendeeDB confirms the values are there and can be accessed
+        Log.d("MainActivityAdmin", "User Name: " + userData.get("Name"));
+        Log.d("MainActivityAdmin", "User Admin: " + userData.get("Admin"));
+        Log.d("MainActivityAdmin", "User details: Name: " + user.getName() + ", UID: " + user.getUid() + ", Email: " + user.getEmail() + ", Admin: " + (user.isAdmin() ? "Yes" : "No"));
 
         EventDB eventDB = new EventDB();
+        if (user.isAdmin()){
+            bottomNavigationView.setOnItemSelectedListener(item -> {
+
+                int iconPressed= item.getItemId();
+
+                // navigate to admin profile page
+                if (iconPressed == R.id.profile) {
+                    Log.d("MainActivityAdmin", "User details: Name: " + user.getName() + ", UID: " + user.getUid() + ", Email: " + user.getEmail() + ", Admin: " + (user.isAdmin() ? "Yes" : "No"));
+                    replaceFragment(new UserListFragment());
+                }
+                //navigate to admin event page
+                if (iconPressed == R.id.home) {
+                    Log.d("MainActivityAdmin", "User details: Name: " + user.getName() + ", UID: " + user.getUid() + ", Email: " + user.getEmail() + ", Admin: " + (user.isAdmin() ? "Yes" : "No"));
+                    replaceFragment(new AdminEventListFragment());
+                }
+                //TODO: navigate to camera so users can scan QR code
+
+                return true;
+            });
+        }
+        else {
         // creating the nav bar
         // adds functionality to allow attendee to navigate
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
-            int iconPressed= item.getItemId();
+            int iconPressed = item.getItemId();
 
             // navigate to profile page
             if (iconPressed == R.id.profile) {
@@ -78,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             }
             //TODO: navigate to home page (where users can browse events)
             if (iconPressed == R.id.home) {
-                Intent i = new Intent(this,EventList.class);
+                Intent i = new Intent(this, EventList.class);
                 i.putExtra("user", user);
                 startActivity(i);
             }
@@ -86,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         });
+        }
     }
 
     /**
@@ -116,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
                 AttendeeDB db = new AttendeeDB();
                 HashMap<String,String> userData = db.findUser(uuid);
                 user = new User(userData.get("Uid"), userData.get("Name"), userData.get("Email"));
+                user.setAdmin(true);
+                Log.d("MainActivityAdmin", "User details: Name: " + user.getName() + ", UID: " + user.getUid() + ", Email: " + user.getEmail() + ", Admin: " + (user.isAdmin() ? "Yes" : "No"));
 
                 EventDB eventDB = new EventDB();
                 // creating the nav bar
@@ -124,12 +164,14 @@ public class MainActivity extends AppCompatActivity {
 
                     int iconPressed= item.getItemId();
 
-                    // navigate to profile page
+                    // navigate to admin profile page
                     if (iconPressed == R.id.profile) {
+                        Log.d("MainActivityAdmin", "User details: Name: " + user.getName() + ", UID: " + user.getUid() + ", Email: " + user.getEmail() + ", Admin: " + (user.isAdmin() ? "Yes" : "No"));
                         replaceFragment(new UserListFragment());
                     }
-                    //TODO: navigate to home page (where users can browse events)
+                    //naviagte to admin event page
                     if (iconPressed == R.id.home) {
+                        Log.d("MainActivityAdmin", "User details: Name: " + user.getName() + ", UID: " + user.getUid() + ", Email: " + user.getEmail() + ", Admin: " + (user.isAdmin() ? "Yes" : "No"));
                         replaceFragment(new AdminEventListFragment());
                     }
                     //TODO: navigate to camera so users can scan QR code
@@ -173,4 +215,5 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
-}
+    }
+

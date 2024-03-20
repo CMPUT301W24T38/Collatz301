@@ -23,6 +23,7 @@ public class User implements Serializable {
     private boolean geolocation;
     private boolean isOrganizer = false;
     private String uid;
+    private boolean is_admin = false;
 
 
     /**
@@ -58,6 +59,26 @@ public class User implements Serializable {
         this.attendingEvents = new ArrayList<String>();
         this.geolocation = false;
         this.notifications = false;
+        this.is_admin = false;
+    }
+    /**
+     * This constructs a user class
+     * @param uid The unique identifier for this user to reference in firestore to find their
+     *             item collection
+     * @param name name of user
+     * @param contactInformation user email
+     * @param admin does user have administrator permissions
+     */
+    public User(String uid, String name, String contactInformation, boolean admin) {
+        this.name = name;
+        this.email = contactInformation;
+        this.uid = uid;
+        this.events = new ArrayList<Event>();
+        this.organizingEvents = new ArrayList<String>();
+        this.attendingEvents = new ArrayList<String>();
+        this.geolocation = false;
+        this.notifications = false;
+        this.is_admin = admin;
     }
 
     /**
@@ -278,4 +299,20 @@ public class User implements Serializable {
     public void setOrganizer(boolean organizer) {
         isOrganizer = organizer;
     }
+
+    /**
+     * Getter for if user is an administrator
+     * @return boolean value represents if user is an administrator or not
+     */
+    public boolean isAdmin() {
+        return is_admin;
+    }
+    /**
+     * Setter for admin permissions
+     * @param is_admin boolean to distinguish users from administrators
+     */
+    public void setAdmin(boolean is_admin) {
+        this.is_admin = is_admin;
+    }
+
 }

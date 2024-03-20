@@ -38,6 +38,7 @@ public class AttendeeDB {
         return userRef;
     }
 
+
     /**
      * Query to extract user data
      * @param uuid The unique idenitfier assigned to the user using Firebase Authenticator
@@ -55,7 +56,9 @@ public class AttendeeDB {
                             userData.put("Name", document.getString("Name"));
                             userData.put("Email", document.getString("Email"));
                             userData.put("Uid", document.getString("Uid"));
+                            userData.put("Admin", document.getString("Admin"));
 
+                            Log.d(TAG, "DocumentSnapshot data: " + userData.get("Name"));
                         } else {
                             Log.d(TAG, "No such document");
                         }
@@ -66,6 +69,9 @@ public class AttendeeDB {
             });
             return userData;
         }
+
+
+
 
     /**
      * Query to add/update user data
@@ -78,6 +84,7 @@ public class AttendeeDB {
             userData.put("Uid", user.getUid());
             userData.put("Geo", (user.getGeolocation()).toString());
             userData.put("Notif", (user.getNotifications()).toString());
+            userData.put("Admin", (String.valueOf(user.isAdmin())));
             Log.d("Firestore", "DocumentSnapshot successfully written!");
             userRef.document(user.getUid())
                     .set(userData)

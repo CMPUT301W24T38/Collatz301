@@ -1,9 +1,11 @@
 package com.example.collatzcheckin.attendee.profile;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -93,8 +95,36 @@ public class UpdateProfileActivity extends AppCompatActivity {
         adminButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setResultAndFinish(Activity.RESULT_OK, "admin");
-                }
+                // Create and show a popup window for verification
+                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateProfileActivity.this);
+                builder.setTitle("Verification");
+                builder.setMessage("Enter your verification code:");
+
+                final EditText input = new EditText(UpdateProfileActivity.this);
+                builder.setView(input);
+
+                builder.setPositiveButton("Verify", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String verificationCode = input.getText().toString();
+                        // Add verification logic here, currently a placeholder
+                        if (verificationCode.equals("1234")) {
+                            setResultAndFinish(Activity.RESULT_OK, "admin");
+                        } else {
+                            // Verification failed, show an error message or handle accordingly
+                            Toast.makeText(UpdateProfileActivity.this, "Verification failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+            }
         });
     }
 
@@ -117,6 +147,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
         if (isVaild) {
             user = new User(userUuid, nameEdit, emailEdit);
+            user.setAdmin(true);
             attendeeDB.addUser(user);
             Intent resultIntent = new Intent();
             resultIntent.putExtra("buttonClicked", buttonClicked);
