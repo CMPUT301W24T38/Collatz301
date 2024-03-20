@@ -1,7 +1,11 @@
 package com.example.collatzcheckin.event;
 
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This is a class that defines an event.
@@ -15,13 +19,15 @@ public class Event implements Serializable {
     private String eventPoster;
     private String eventLocation;
     private int memberLimit;
+    private Map<String, String> attendees;
+
     /**
      * This constructs a  user class where atrributes are not set
      *
-     *  @param eventTitle The unique identifier for this user to reference in firestore to find their
+     * @param eventTitle The unique identifier for this user to reference in firestore to find their
      */
 
-    public Event(String eventTitle, String eventOrganizer, String eventDate, String eventDescription, String eventPoster, String eventLocation) {
+    public Event(String eventTitle, String eventOrganizer, String eventDate, String eventDescription, String eventPoster, String eventLocation, String eventID) {
         this.eventTitle = eventTitle;
         this.eventOrganizer = eventOrganizer;
         this.eventDate = eventDate;
@@ -31,7 +37,7 @@ public class Event implements Serializable {
         this.eventID = eventID;
     }
 
-    public Event(String eventTitle, String eventOrganizer, String eventDate, String eventDescription, String eventPoster, String eventLocation, int memberLimit) {
+    public Event(String eventTitle, String eventOrganizer, String eventDate, String eventDescription, String eventPoster, String eventLocation, int memberLimit, String eventID) {
         this.eventTitle = eventTitle;
         this.eventOrganizer = eventOrganizer;
         this.eventDate = eventDate;
@@ -42,7 +48,7 @@ public class Event implements Serializable {
         this.eventID = eventID;
     }
 
-    public Event(String eventTitle, String eventOrganizer, String eventDate, String eventDescription, String eventPoster, int memberLimit) {
+    public Event(String eventTitle, String eventOrganizer, String eventDate, String eventDescription, String eventPoster, int memberLimit, String eventID) {
         this.eventTitle = eventTitle;
         this.eventOrganizer = eventOrganizer;
         this.eventDate = eventDate;
@@ -51,10 +57,23 @@ public class Event implements Serializable {
         this.eventLocation = eventLocation;
         this.memberLimit = memberLimit;
         this.eventID = eventID;
+    }
+
+    public Event(String eventTitle, String eventOrganizer, String eventDate, String eventDescription, String eventPoster, String eventLocation, int memberLimit, String eventID, HashMap<String, String> attendees) {
+        this.eventTitle = eventTitle;
+        this.eventOrganizer = eventOrganizer;
+        this.eventDate = eventDate;
+        this.eventDescription = eventDescription;
+        this.eventPoster = eventPoster;
+        this.eventLocation = eventLocation;
+        this.memberLimit = memberLimit;
+        this.eventID = eventID;
+        this.attendees = attendees;
     }
 
     /**
      * Getter for Event title
+     *
      * @return Event title
      */
     public String getEventTitle() {
@@ -63,7 +82,8 @@ public class Event implements Serializable {
 
     /**
      * Setter for Event title
-     * @param  eventTitle
+     *
+     * @param eventTitle
      */
     public void setEventTitle(String eventTitle) {
         this.eventTitle = eventTitle;
@@ -71,6 +91,7 @@ public class Event implements Serializable {
 
     /**
      * Getter for EventOrganizer
+     *
      * @return Event EventOrganizer
      */
     public String getEventOrganizer() {
@@ -79,7 +100,8 @@ public class Event implements Serializable {
 
     /**
      * Setter for Event Organizer
-     * @param  eventOrganizer
+     *
+     * @param eventOrganizer
      */
     public void setEventOrganizer(String eventOrganizer) {
         this.eventOrganizer = eventOrganizer;
@@ -87,6 +109,7 @@ public class Event implements Serializable {
 
     /**
      * Getter for EventDate
+     *
      * @return EventDate
      */
     public String getEventDate() {
@@ -95,7 +118,8 @@ public class Event implements Serializable {
 
     /**
      * Setter for Event Organizer
-     * @param  eventDate
+     *
+     * @param eventDate
      */
     public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
@@ -103,6 +127,7 @@ public class Event implements Serializable {
 
     /**
      * Getter for EventDescription
+     *
      * @return EventDescription
      */
     public String getEventDescription() {
@@ -111,7 +136,8 @@ public class Event implements Serializable {
 
     /**
      * Setter for Event eventDescription
-     * @param  eventDescription
+     *
+     * @param eventDescription
      */
     public void setEventDescription(String eventDescription) {
         this.eventDescription = eventDescription;
@@ -119,6 +145,7 @@ public class Event implements Serializable {
 
     /**
      * Getter for EventPoster
+     *
      * @return EventPoster
      */
     public String getEventPoster() {
@@ -127,7 +154,8 @@ public class Event implements Serializable {
 
     /**
      * Setter for Event eventDescription
-     * @param  eventPoster
+     *
+     * @param eventPoster
      */
     public void setEventPoster(String eventPoster) {
         this.eventPoster = eventPoster;
@@ -135,6 +163,7 @@ public class Event implements Serializable {
 
     /**
      * Getter for memberLimit
+     *
      * @return memberLimit
      */
 
@@ -144,7 +173,8 @@ public class Event implements Serializable {
 
     /**
      * Setter for Event memberLimit
-     * @param  memberLimit
+     *
+     * @param memberLimit
      */
     public void setMemberLimit(int memberLimit) {
         this.memberLimit = memberLimit;
@@ -152,6 +182,7 @@ public class Event implements Serializable {
 
     /**
      * Getter for eventLocation
+     *
      * @return eventLocation
      */
     public String getEventLocation() {
@@ -160,6 +191,7 @@ public class Event implements Serializable {
 
     /**
      * Setter for eventLocation
+     *
      * @param eventLocation
      */
     public void setEventLocation(String eventLocation) {
@@ -168,16 +200,24 @@ public class Event implements Serializable {
 
     /**
      * Getter for id
+     *
      * @return eventID
      */
-    public String getId() {
+    public String getEventID() {
         return eventID;
     }
+
     /**
      * Setter for eventLocation
+     *
      * @param eventID
      */
-    public void setId(String eventID) {
+    public void setEventID(String eventID) {
         this.eventID = eventID;
     }
+
+    public Map<String, String> getAttendees() {
+        return attendees;
+    }
 }
+

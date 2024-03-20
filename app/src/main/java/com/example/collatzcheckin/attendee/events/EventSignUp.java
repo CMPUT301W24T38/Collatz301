@@ -99,7 +99,7 @@ public class EventSignUp extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                SignUpConfirmationFragment.newInstance(event.getEventTitle()).show(getSupportFragmentManager(), "Confirm");
+                SignUpConfirmationFragment.newInstance(event.getEventID()).show(getSupportFragmentManager(), "Confirm");
             }
         });
     }

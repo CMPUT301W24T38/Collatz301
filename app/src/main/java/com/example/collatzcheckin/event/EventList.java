@@ -2,10 +2,12 @@ package com.example.collatzcheckin.event;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.collatzcheckin.R;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.example.collatzcheckin.attendee.User;
 import android.content.Intent;
+import com.example.collatzcheckin.R;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +21,13 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EventList extends AppCompatActivity {
     ListView eventList;
@@ -32,7 +40,7 @@ public class EventList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_view_organizer);
         Intent intent = getIntent();
-        User user = (User) intent.getSerializableExtra("user");
+        String uuid = intent.getStringExtra("uuid");
 
         db = new EventDB();
         eventList = findViewById(R.id.event_list_view);
@@ -51,22 +59,24 @@ public class EventList extends AppCompatActivity {
                     eventDataList.clear();
 
                     for (QueryDocumentSnapshot doc : querySnapshots) {
-                        String eventOrganizer = doc.getString("Event Organizer");
-                        if (user.getUid() != null && eventOrganizer != null && !user.getUid().equals(eventOrganizer)) {
-                            continue;
-                        }
-                        String eventTitle = doc.getId();
-                        String eventDate = doc.getString("Event Date");
-                        String eventDescription = doc.getString("Event Description");
-                        String eventPoster = doc.getString("Event Poster");
-                        String eventLocation = doc.getString("Event Location");
-                        String memberLimit = doc.getString("Member Limit");
-                        int parsedMemberLimit = 0; // Default value, you can change it based on your requirements
+                        String organizer = doc.getString("Event Organizer");
+                        if (organizer.matches(uuid)) {
+                            String eventId = doc.getId();
+                            String eventOrganizer = doc.getString("Event Organizer");
+                            String eventTitle = doc.getString("Event Title");
+                            String eventDate = doc.getString("Event Date");
+                            String eventDescription = doc.getString("Event Description");
+                            String eventPoster = doc.getString("Event Poster");
+                            String eventLocation = doc.getString("Event Location");
+                            String memberLimit = doc.getString("Member Limit");
+                            HashMap<String, String> attendees = (HashMap<String,String>) doc.get("Attendees");
+                            int parsedMemberLimit = 0; // Default value, you can change it based on your requirements
 
-                        if (memberLimit != null && !memberLimit.isEmpty()) {
-                            parsedMemberLimit = Integer.parseInt(memberLimit);
+                            if (memberLimit != null && !memberLimit.isEmpty()) {
+                                parsedMemberLimit = Integer.parseInt(memberLimit);
+                            }
+                            eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId, attendees));
                         }
-                        eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit));
                     }
 
                     eventArrayAdapter.notifyDataSetChanged();
@@ -89,7 +99,7 @@ public class EventList extends AppCompatActivity {
         createEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeCreateEvent(user);
+                changeCreateEvent(uuid);
             }
         });
         Button backButton = findViewById(R.id.back_button);
@@ -104,13 +114,13 @@ public class EventList extends AppCompatActivity {
 
     public void change(Event event) {
         Intent myIntent = new Intent(this, EventView.class);
-        myIntent.putExtra("com/example/collatzcheckin/event", event);
+        myIntent.putExtra("event", event);
         startActivity(myIntent);
     }
 
-    public void changeCreateEvent(User user) {
+    public void changeCreateEvent(String uuid) {
         Intent myIntent = new Intent(this, CreateEvent.class);
-        myIntent.putExtra("user", user);
+        myIntent.putExtra("uuid", uuid);
         startActivity(myIntent);
     }
 

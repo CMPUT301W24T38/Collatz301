@@ -98,6 +98,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ListView
+                android:id="@+id/attendee_list"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="20dp"

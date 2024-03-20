@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-36:/values-ja/values-ja.xml",
+            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-37:/values-ja/values-ja.xml",
             "map": [
                 {
                     "source": "C:\\Users\\nehal\\.gradle\\caches\\transforms-3\\9f9686aa69ef96e09752468c17c9646c\\transformed\\appcompat-1.6.1\\res\\values-ja\\values-ja.xml",
@@ -105,6 +105,23 @@
                         "startOffsets": "3517,3621,3755,3875,3981,4113,4233,4338,4559,4693,4794,4927,5046,5166,5286,5346,5405",
                         "endColumns": "103,133,119,105,131,119,104,98,133,100,132,118,119,119,59,58,70",
                         "endOffsets": "3616,3750,3870,3976,4108,4228,4333,4432,4688,4789,4922,5041,5161,5281,5341,5400,5471"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\nehal\\.gradle\\caches\\transforms-3\\6eb99246325d82c9d7a724fd41703d2d\\transformed\\zxing-android-embedded-4.3.0\\res\\values-ja\\values-ja.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,109,156,256",
+                        "endColumns": "53,46,99,81",
+                        "endOffsets": "104,151,251,333"
+                    },
+                    "to": {
+                        "startLines": "125,126,127,128",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "10270,10324,10371,10471",
+                        "endColumns": "53,46,99,81",
+                        "endOffsets": "10319,10366,10466,10548"
                     }
                 }
             ]

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-36:/values-is/values-is.xml",
+            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-37:/values-is/values-is.xml",
             "map": [
                 {
                     "source": "C:\\Users\\nehal\\.gradle\\caches\\transforms-3\\89732308c7ee283755b5d3d93fe4ea42\\transformed\\play-services-base-18.1.0\\res\\values-is\\values.xml",

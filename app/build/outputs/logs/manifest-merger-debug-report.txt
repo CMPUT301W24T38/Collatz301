@@ -13,6 +13,7 @@ MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\nehal\.gradle\ca
 MERGED from [com.google.android.gms:play-services-auth:21.0.0] C:\Users\nehal\.gradle\caches\transforms-3\d09530dd21d424fad487c596d6649253\transformed\play-services-auth-21.0.0\AndroidManifest.xml:17:1-40:12
 MERGED from [androidx.ads:ads-identifier:1.0.0-alpha05] C:\Users\nehal\.gradle\caches\transforms-3\6880dab78b845d85cd6c21807b517c61\transformed\ads-identifier-1.0.0-alpha05\AndroidManifest.xml:17:1-22:12
 MERGED from [io.grpc:grpc-android:1.57.2] C:\Users\nehal\.gradle\caches\transforms-3\3926bf1faf2098158d3f76e96fa6393e\transformed\grpc-android-1.57.2\AndroidManifest.xml:2:1-9:12
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:17:1-56:12
 MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\nehal\.gradle\caches\transforms-3\5beb47b8c3b3283710c6800c56bb05b2\transformed\firebase-storage-20.3.0\AndroidManifest.xml:15:1-39:12
 MERGED from [com.google.firebase:firebase-appcheck:17.1.2] C:\Users\nehal\.gradle\caches\transforms-3\9765a0b1a2445f2136bece28ae07f66a\transformed\firebase-appcheck-17.1.2\AndroidManifest.xml:15:1-34:12
 MERGED from [com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\nehal\.gradle\caches\transforms-3\e908db5e02c2e62b69dd79899ae736d9\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:2:1-18:12
@@ -95,6 +96,8 @@ MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\nehal\.gradle\ca
 MERGED from [com.google.firebase:firebase-auth:22.3.1] C:\Users\nehal\.gradle\caches\transforms-3\ddd597d8aef1059f3304079138768ec4\transformed\firebase-auth-22.3.1\AndroidManifest.xml:28:5-73:19
 MERGED from [com.google.android.gms:play-services-auth:21.0.0] C:\Users\nehal\.gradle\caches\transforms-3\d09530dd21d424fad487c596d6649253\transformed\play-services-auth-21.0.0\AndroidManifest.xml:22:5-38:19
 MERGED from [com.google.android.gms:play-services-auth:21.0.0] C:\Users\nehal\.gradle\caches\transforms-3\d09530dd21d424fad487c596d6649253\transformed\play-services-auth-21.0.0\AndroidManifest.xml:22:5-38:19
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:46:5-54:19
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:46:5-54:19
 MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\nehal\.gradle\caches\transforms-3\5beb47b8c3b3283710c6800c56bb05b2\transformed\firebase-storage-20.3.0\AndroidManifest.xml:26:5-37:19
 MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\nehal\.gradle\caches\transforms-3\5beb47b8c3b3283710c6800c56bb05b2\transformed\firebase-storage-20.3.0\AndroidManifest.xml:26:5-37:19
 MERGED from [com.google.firebase:firebase-appcheck:17.1.2] C:\Users\nehal\.gradle\caches\transforms-3\9765a0b1a2445f2136bece28ae07f66a\transformed\firebase-appcheck-17.1.2\AndroidManifest.xml:21:5-32:19
@@ -239,6 +242,8 @@ MERGED from [androidx.ads:ads-identifier:1.0.0-alpha05] C:\Users\nehal\.gradle\c
 MERGED from [androidx.ads:ads-identifier:1.0.0-alpha05] C:\Users\nehal\.gradle\caches\transforms-3\6880dab78b845d85cd6c21807b517c61\transformed\ads-identifier-1.0.0-alpha05\AndroidManifest.xml:20:5-44
 MERGED from [io.grpc:grpc-android:1.57.2] C:\Users\nehal\.gradle\caches\transforms-3\3926bf1faf2098158d3f76e96fa6393e\transformed\grpc-android-1.57.2\AndroidManifest.xml:5:5-44
 MERGED from [io.grpc:grpc-android:1.57.2] C:\Users\nehal\.gradle\caches\transforms-3\3926bf1faf2098158d3f76e96fa6393e\transformed\grpc-android-1.57.2\AndroidManifest.xml:5:5-44
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:20:5-44
+MERGED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\nehal\.gradle\caches\transforms-3\5beb47b8c3b3283710c6800c56bb05b2\transformed\firebase-storage-20.3.0\AndroidManifest.xml:19:5-44
 MERGED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\nehal\.gradle\caches\transforms-3\5beb47b8c3b3283710c6800c56bb05b2\transformed\firebase-storage-20.3.0\AndroidManifest.xml:19:5-44
 MERGED from [com.google.firebase:firebase-appcheck:17.1.2] C:\Users\nehal\.gradle\caches\transforms-3\9765a0b1a2445f2136bece28ae07f66a\transformed\firebase-appcheck-17.1.2\AndroidManifest.xml:18:5-44
@@ -483,6 +488,60 @@ ADDED from [com.google.android.gms:play-services-auth:21.0.0] C:\Users\nehal\.gr
 		ADDED from [com.google.android.gms:play-services-auth:21.0.0] C:\Users\nehal\.gradle\caches\transforms-3\d09530dd21d424fad487c596d6649253\transformed\play-services-auth-21.0.0\AndroidManifest.xml:36:13-107
 	android:name
 		ADDED from [com.google.android.gms:play-services-auth:21.0.0] C:\Users\nehal\.gradle\caches\transforms-3\d09530dd21d424fad487c596d6649253\transformed\play-services-auth-21.0.0\AndroidManifest.xml:34:13-89
+uses-permission#android.permission.CAMERA
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:22:5-65
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:22:22-62
+uses-feature#android.hardware.camera
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:25:5-27:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:27:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:26:9-47
+uses-feature#android.hardware.camera.front
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:28:5-30:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:30:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:29:9-53
+uses-feature#android.hardware.camera.autofocus
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:33:5-35:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:35:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:34:9-57
+uses-feature#android.hardware.camera.flash
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:36:5-38:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:38:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:37:9-53
+uses-feature#android.hardware.screen.landscape
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:39:5-41:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:41:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:40:9-57
+uses-feature#android.hardware.wifi
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:42:5-44:36
+	android:required
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:44:9-33
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:43:9-45
+activity#com.journeyapps.barcodescanner.CaptureActivity
+ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:47:9-53:63
+	android:screenOrientation
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:50:13-56
+	android:clearTaskOnLaunch
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:49:13-45
+	android:stateNotNeeded
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:51:13-42
+	android:windowSoftInputMode
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:53:13-60
+	android:theme
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:52:13-54
+	android:name
+		ADDED from [com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\nehal\.gradle\caches\transforms-3\6eb99246325d82c9d7a724fd41703d2d\transformed\zxing-android-embedded-4.3.0\AndroidManifest.xml:48:13-74
 meta-data#com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar
 ADDED from [com.google.firebase:firebase-storage:20.3.0] C:\Users\nehal\.gradle\caches\transforms-3\5beb47b8c3b3283710c6800c56bb05b2\transformed\firebase-storage-20.3.0\AndroidManifest.xml:30:13-32:85
 	android:value

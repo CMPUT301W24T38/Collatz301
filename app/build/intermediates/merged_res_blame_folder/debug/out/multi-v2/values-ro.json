@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-36:/values-ro/values-ro.xml",
+            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-37:/values-ro/values-ro.xml",
             "map": [
                 {
                     "source": "C:\\Users\\nehal\\.gradle\\caches\\transforms-3\\0570ee09c4b843e5f89ff9be7be8c4cd\\transformed\\core-1.9.0\\res\\values-ro\\values-ro.xml",
@@ -35,6 +35,23 @@
                         "startOffsets": "4896",
                         "endColumns": "143",
                         "endOffsets": "5035"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\nehal\\.gradle\\caches\\transforms-3\\6eb99246325d82c9d7a724fd41703d2d\\transformed\\zxing-android-embedded-4.3.0\\res\\values-ro\\values-ro.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,114,166,275",
+                        "endColumns": "58,51,108,116",
+                        "endOffsets": "109,161,270,387"
+                    },
+                    "to": {
+                        "startLines": "126,127,128,129",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "11588,11647,11699,11808",
+                        "endColumns": "58,51,108,116",
+                        "endOffsets": "11642,11694,11803,11920"
                     }
                 },
                 {

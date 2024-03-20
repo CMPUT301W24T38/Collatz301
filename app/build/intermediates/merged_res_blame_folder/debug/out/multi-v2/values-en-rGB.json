@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-36:/values-en-rGB/values-en-rGB.xml",
+            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-37:/values-en-rGB/values-en-rGB.xml",
             "map": [
                 {
                     "source": "C:\\Users\\nehal\\.gradle\\caches\\transforms-3\\b1029ccf0bc7f6f35122ecfaa52567bc\\transformed\\material-1.11.0\\res\\values-en-rGB\\values-en-rGB.xml",

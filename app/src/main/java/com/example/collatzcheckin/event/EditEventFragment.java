@@ -35,7 +35,9 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * EditEventFragment of the application, allows users to edit their existing event
+ */
 public class EditEventFragment extends Fragment {
     private View view;
     Uri imageUri;
@@ -49,6 +51,12 @@ public class EditEventFragment extends Fragment {
     public EditEventFragment(Event event) {
         this.event = event;
     }
+    /**
+     * Method to run on creation of the activity. Handles user profile editing abilities
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down then this Bundle contains the data it most
+     *                           recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment

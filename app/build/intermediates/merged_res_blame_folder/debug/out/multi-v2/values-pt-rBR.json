@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-36:/values-pt-rBR/values-pt-rBR.xml",
+            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-37:/values-pt-rBR/values-pt-rBR.xml",
             "map": [
                 {
                     "source": "C:\\Users\\nehal\\.gradle\\caches\\transforms-3\\89732308c7ee283755b5d3d93fe4ea42\\transformed\\play-services-base-18.1.0\\res\\values-pt-rBR\\values.xml",

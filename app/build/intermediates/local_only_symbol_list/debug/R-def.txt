@@ -29,7 +29,9 @@ drawable image_placeholder
 drawable profile_icon
 id add_event
 id admin_button
+id attendee_checkin_count
 id attendee_list
+id attendee_name
 id attending_button
 id back_button
 id back_button_create_event
@@ -46,6 +48,7 @@ id constraintLayout3
 id constraintLayout4
 id constraintLayout5
 id constraintLayout6
+id constraintLayout7
 id container_user
 id create_event
 id delete_event
@@ -96,6 +99,7 @@ id organizer_button
 id pfp
 id poster_image
 id profile
+id qr
 id remove
 id scanner
 id search
@@ -126,6 +130,7 @@ layout activity_event_sign_up
 layout activity_event_view
 layout activity_main
 layout activity_update_profile
+layout attendee_list_content
 layout content
 layout event_list_content
 layout event_view_organizer

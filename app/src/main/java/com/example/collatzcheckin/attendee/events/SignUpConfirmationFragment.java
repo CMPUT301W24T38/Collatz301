@@ -24,6 +24,7 @@ import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeDB;
 import com.example.collatzcheckin.attendee.User;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
+import com.example.collatzcheckin.event.EventDB;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -41,6 +42,7 @@ public class SignUpConfirmationFragment extends DialogFragment {
     TextView name, email;
     AnonAuthentication authentication = new AnonAuthentication();
     AttendeeDB attendeeDB = new AttendeeDB();
+    EventDB eventDB = new EventDB();
     User user;
     String euid;
     public SignUpConfirmationFragment() {
@@ -81,11 +83,11 @@ public class SignUpConfirmationFragment extends DialogFragment {
         AlertDialog alertDialog = builder
                 .setView(view)
                 .setTitle("Confirm your details")
-                .setNegativeButton("Delete", null)
                 .setNeutralButton("Cancel", null)
                 .setPositiveButton("OK", ((dialog, which) -> {
                     //add event in user table
                     attendeeDB.EventsSignUp(euid, uuid);
+                    eventDB.userSignUp(euid, uuid);
                     Log.d(TAG, "message");
                     Log.d(TAG, euid);
                     //add user in event table

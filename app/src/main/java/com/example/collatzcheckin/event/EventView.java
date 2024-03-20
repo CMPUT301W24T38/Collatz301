@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.collatzcheckin.event.AttendeeList;
 import com.example.collatzcheckin.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
@@ -19,6 +20,9 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * EventView of the application, allows users to view and select their list of events
+ */
 public class EventView extends AppCompatActivity {
     Uri imageUri;
     StorageReference storageReference;
@@ -31,7 +35,12 @@ public class EventView extends AppCompatActivity {
     ImageView posterImage;
 
 
-
+    /**
+     * Method to run on creation of the activity. Handles user profile editing abilities
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down then this Bundle contains the data it most
+     *                           recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +76,7 @@ public class EventView extends AppCompatActivity {
         eventLocation.setText(event.getEventLocation());
 
         posterImage = findViewById(R.id.poster_image);
+        //ImageView ivQR = findViewById(R.id.qr);
         String eventid = event.getEventTitle();
         storageReference = FirebaseStorage.getInstance().getReference("posters/"+eventid);
         try {
@@ -96,7 +106,7 @@ public class EventView extends AppCompatActivity {
         viewAttendees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewAttendeesList();
+                viewAttendeesList(event);
             }
         });
 
@@ -114,8 +124,9 @@ public class EventView extends AppCompatActivity {
         });
     }
 
-    public void viewAttendeesList() {
+    public void viewAttendeesList(Event event) {
         Intent intent = new Intent(this, AttendeeList.class);
+        intent.putExtra("Event", event);
         startActivity(intent);
     }
 }
