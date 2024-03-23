@@ -3243,10 +3243,10 @@ id anticipate
 id arc
 id asConfigured
 id async
+id attendee_button
 id attendee_checkin_count
 id attendee_list
 id attendee_name
-id attending_button
 id auto
 id autoComplete
 id autoCompleteToEnd
@@ -3590,6 +3590,7 @@ id progress_circular
 id progress_horizontal
 id qr
 id radio
+id radioGroup
 id ratio
 id rectangles
 id remove
@@ -3605,6 +3606,7 @@ id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
 id scale
+id scan_button
 id scanner
 id screen
 id scroll
@@ -3884,6 +3886,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_attendee_list
+layout activity_camera
 layout activity_create_event
 layout activity_event_sign_up
 layout activity_event_view

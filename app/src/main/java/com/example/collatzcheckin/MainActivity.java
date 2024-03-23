@@ -30,6 +30,7 @@ import com.example.collatzcheckin.attendee.profile.CreateProfileActivity;
 import com.example.collatzcheckin.attendee.profile.ProfileFragment;
 import com.example.collatzcheckin.attendee.profile.CreateProfileActivity;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
+import com.example.collatzcheckin.event.CameraActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import com.example.collatzcheckin.event.EditEventFragment;
@@ -92,6 +93,11 @@ public class MainActivity extends AppCompatActivity {
             // navigate to page to browse events
             if (iconPressed == R.id.search) {
                 replaceFragment(new BrowseEventsFragment());
+            }
+            if (iconPressed == R.id.scanner) {
+                Intent i = new Intent(this, CameraActivity.class);
+                i.putExtra("uuid", uuid);
+                startActivity(i);
             }
 
             if (iconPressed == R.id.home) {

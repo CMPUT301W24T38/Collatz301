@@ -3242,10 +3242,10 @@ int id anticipate 0x7f080053
 int id arc 0x7f080054
 int id asConfigured 0x7f080055
 int id async 0x7f080056
+int id attendee_button 0x7f080268
 int id attendee_checkin_count 0x7f080057
 int id attendee_list 0x7f080058
 int id attendee_name 0x7f080059
-int id attending_button 0x7f08005a
 int id auto 0x7f08005b
 int id autoComplete 0x7f08005c
 int id autoCompleteToEnd 0x7f08005d
@@ -3589,6 +3589,7 @@ int id progress_circular 0x7f0801ae
 int id progress_horizontal 0x7f0801af
 int id qr 0x7f0801b0
 int id radio 0x7f0801b1
+int id radioGroup 0x7f080267
 int id ratio 0x7f0801b2
 int id rectangles 0x7f0801b3
 int id remove 0x7f0801b4
@@ -3604,6 +3605,7 @@ int id save_non_transition_alpha 0x7f0801bd
 int id save_overlay_view 0x7f0801be
 int id sawtooth 0x7f0801bf
 int id scale 0x7f0801c0
+int id scan_button 0x7f080264
 int id scanner 0x7f0801c1
 int id screen 0x7f0801c2
 int id scroll 0x7f0801c3
@@ -3883,6 +3885,7 @@ int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_attendee_list 0x7f0b001c
+int layout activity_camera 0x7f0b0085
 int layout activity_create_event 0x7f0b001d
 int layout activity_event_sign_up 0x7f0b001e
 int layout activity_event_view 0x7f0b001f

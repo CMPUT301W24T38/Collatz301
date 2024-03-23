@@ -46,7 +46,7 @@ public class EventView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_view);
         Intent intent = getIntent();
-        Event event = (Event) intent.getSerializableExtra("com/example/collatzcheckin/event");
+        Event event = (Event) intent.getSerializableExtra("event");
         String[] parsedData = event.getEventDate().split(" ");
         eventTitle = findViewById(R.id.event_name);
         eventMonth = findViewById(R.id.event_month);

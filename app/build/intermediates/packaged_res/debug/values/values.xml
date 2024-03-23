@@ -35,6 +35,8 @@
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
+    <style name="zxing_CaptureTheme" parent="Theme.AppCompat.Light">
+    </style>
     <declare-styleable name="FullscreenAttrs">
         <attr format="color" name="fullscreenBackgroundColor"/>
         <attr format="color" name="fullscreenTextColor"/>
