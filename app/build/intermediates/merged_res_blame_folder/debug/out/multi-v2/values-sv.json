@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-37:/values-sv/values-sv.xml",
+            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-38:/values-sv/values-sv.xml",
             "map": [
                 {
                     "source": "C:\\Users\\nehal\\.gradle\\caches\\transforms-3\\aff902bd9441e7be9d0f7854914db262\\transformed\\browser-1.4.0\\res\\values-sv\\values-sv.xml",

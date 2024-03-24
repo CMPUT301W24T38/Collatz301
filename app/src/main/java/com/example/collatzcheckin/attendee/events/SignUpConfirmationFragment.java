@@ -117,7 +117,13 @@ public class SignUpConfirmationFragment extends DialogFragment {
                     if (document.exists()) {
                        name.setText(document.getString("Name"));
                        email.setText(document.getString("Email"));
-                       user = new User(document.getString("Name"), document.getString("Email"), uuid, Boolean.parseBoolean(document.getString("Geo")), Boolean.parseBoolean(document.getString("Notif")), document.getString("Pfp"));
+                       user = new User(document.getString("Name"),
+                               document.getString("Email"),
+                               uuid,
+                               Boolean.parseBoolean(document.getString("Geo")),
+                               Boolean.parseBoolean(document.getString("Notif")),
+                               document.getString("Pfp"),
+                               document.getString("GenPfp"));
                     } else {
                         Log.d(TAG, "No such document");
                     }

@@ -36,7 +36,7 @@
                 android:layout_width="196dp"
                 android:layout_height="49dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="232dp"
+                android:layout_marginTop="202dp"
                 android:hint="Email"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -45,19 +45,6 @@
 
             </EditText>
 
-            <EditText
-                android:id="@+id/editUsername"
-                android:layout_width="195dp"
-                android:layout_height="47dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="176dp"
-                android:hint="Username"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="HardcodedText"
-                android:inputType="text">
-
-            </EditText>
 
             <TextView
                 android:id="@+id/geo"

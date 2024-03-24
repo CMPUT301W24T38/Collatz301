@@ -3362,7 +3362,6 @@ id east
 id edge
 id editEmail
 id editName
-id editUsername
 id edit_event
 id edit_event_date
 id edit_event_description
@@ -3424,6 +3423,7 @@ id geo
 id geotext
 id ghost_view
 id ghost_view_holder
+id glide_custom_view_target_tag
 id gone
 id graph
 id graph_wrap
@@ -3734,7 +3734,6 @@ id user_name
 id user_name_display
 id user_uid
 id username
-id usernameText
 id vertical_only
 id view_attendee
 id view_offset_helper

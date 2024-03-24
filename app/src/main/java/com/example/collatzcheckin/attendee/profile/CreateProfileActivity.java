@@ -12,6 +12,7 @@ import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeDB;
 import com.example.collatzcheckin.attendee.User;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
+import com.example.collatzcheckin.utils.PhotoUploader;
 
 /**
  * UpdateProfileActivity of the application, handles creating a new user profile
@@ -26,6 +27,8 @@ public class CreateProfileActivity extends AppCompatActivity {
     private final AttendeeDB attendeeDB = new AttendeeDB();
     private User user;
     private boolean isVaild = true;
+    PhotoUploader photoUploader = new PhotoUploader();
+
     Uri imageUri;
 
     /**
@@ -69,6 +72,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                 if(isVaild) {
                     user = new User(userUuid, nameEdit, emailEdit);
                     attendeeDB.addUser(user);
+                    photoUploader.uploadGenProfile(user.getUid(), user.getName());
                     finish();
                 }
 

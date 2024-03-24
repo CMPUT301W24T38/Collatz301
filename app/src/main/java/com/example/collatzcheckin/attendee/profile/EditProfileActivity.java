@@ -16,9 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeDB;
 import com.example.collatzcheckin.attendee.User;
+import com.example.collatzcheckin.utils.PhotoUploader;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -39,10 +41,11 @@ public class EditProfileActivity extends AppCompatActivity {
     Button confirm;
     ShapeableImageView pfp;
     Uri imagePath;
-    TextView name, username, email;
+    TextView name, email;
     Switch geo, notif;
     AttendeeDB attendeeDB = new AttendeeDB();
     User user;
+    PhotoUploader photoUploader = new PhotoUploader();
 
 
     /**
@@ -56,29 +59,10 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_edit);
 
-        cancel = findViewById(R.id.cancel_button);
-        confirm = findViewById(R.id.confirm_button);
-        pfp = findViewById(R.id.editpfp);
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
-        name = findViewById(R.id.editName);
-        username = findViewById(R.id.editUsername);
-        email = findViewById(R.id.editEmail);
-        geo = (Switch) findViewById(R.id.enablegeo);
-        notif = (Switch) findViewById(R.id.enablenotif);
-
-        if (!user.getName().equals("")){
-            name.setText(user.getName());
-        }
-
-        if (!user.getEmail().equals("")){
-            email.setText(user.getEmail());
-        }
-        if (user.getPfp()!=null){
-            getPfp(user.getPfp(), user.getName(), user.getUid());
-        }
-        geo.setChecked(user.isGeolocation());
-        notif.setChecked(user.isNotifications());
+        initViews();
+        setData();
 
 
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +76,6 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 String newName = name.getText().toString();
                 user.setName(newName);
                 String newEmail = email.getText().toString();
@@ -100,25 +83,13 @@ public class EditProfileActivity extends AppCompatActivity {
                 user.setGeolocation(geo.isChecked());
                 user.setNotifications(notif.isChecked());
 
-
-
                 if (imagePath!=null) {
-                    user.setPfp("UserCreated");
-                    FirebaseStorage.getInstance().getReference("images/" + user.getUid()).putFile(imagePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(EditProfileActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-
-
+                    photoUploader.uploadProfile(user.getUid(), imagePath);
                 }
+                attendeeDB.addUser(user);
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("updatedUser", user);
                 setResult(RESULT_OK, resultIntent);
-                attendeeDB.addUser(user);
                 finish();
             }
         });
@@ -138,9 +109,9 @@ public class EditProfileActivity extends AppCompatActivity {
         if (request_Code == 1 && resultCode == RESULT_OK && data != null) {
             imagePath = data.getData();
             getImageInImageView();
-            user.setPfp("userCreated");
         }
     }
+
     private void getImageInImageView() {
         Bitmap bitmap = null;
             try {
@@ -149,46 +120,34 @@ public class EditProfileActivity extends AppCompatActivity {
                 e.printStackTrace();
         }
         pfp.setImageBitmap(bitmap);
-        user.setPfp("userCreated");
+    }
 
+    private void initViews() {
+        cancel = findViewById(R.id.cancel_button);
+        confirm = findViewById(R.id.confirm_button);
+        pfp = findViewById(R.id.editpfp);
+        name = findViewById(R.id.editName);
+        email = findViewById(R.id.editEmail);
+        geo = (Switch) findViewById(R.id.enablegeo);
+        notif = (Switch) findViewById(R.id.enablenotif);
+    }
+
+    private void setData() {
+        if (!user.getName().equals("")){
+            name.setText(user.getName());
         }
 
-    public void getPfp(String type, String name, String uuid){
-
-        String nameLetter = String.valueOf(name.charAt(0));
-        nameLetter = nameLetter.toUpperCase();
-
-        if(type.equals("generated")) {
-            StorageReference pfpRef = FirebaseStorage.getInstance().getReference().child("generatedpfp/" + nameLetter + ".png");
-            try {
-                final File localFile = File.createTempFile("temp", "png");
-                pfpRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                        // Set the downloaded image to the ImageView
-                        pfp.setImageURI(Uri.fromFile(localFile));
-                    }
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Handle exception
-            }
-        } else if(type.equals("userCreated")) {
-            StorageReference pfpRef = FirebaseStorage.getInstance().getReference().child("images/" + uuid);
-            try {
-                final File localFile = File.createTempFile("images", "jpg");
-                pfpRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                        // Set the downloaded image to the ImageView
-                        pfp.setImageURI(Uri.fromFile(localFile));
-                    }
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Handle exception
-            }
+        if (!user.getEmail().equals("")){
+            email.setText(user.getEmail());
         }
+
+        geo.setChecked(user.isGeolocation());
+        notif.setChecked(user.isNotifications());
+        setPfp(user);
+    }
+
+    public void setPfp(User user) {
+        Glide.with(this).load(user.getPfp()).into(pfp);
     }
 
     }

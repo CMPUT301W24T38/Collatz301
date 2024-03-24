@@ -3361,7 +3361,6 @@ int id east 0x7f0800ca
 int id edge 0x7f0800cb
 int id editEmail 0x7f0800cc
 int id editName 0x7f0800cd
-int id editUsername 0x7f0800ce
 int id edit_event 0x7f0800cf
 int id edit_event_date 0x7f0800d0
 int id edit_event_description 0x7f0800d1
@@ -3423,6 +3422,7 @@ int id geo 0x7f080108
 int id geotext 0x7f080109
 int id ghost_view 0x7f08010a
 int id ghost_view_holder 0x7f08010b
+int id glide_custom_view_target_tag 0x7f080264
 int id gone 0x7f08010c
 int id graph 0x7f08010d
 int id graph_wrap 0x7f08010e
@@ -3733,7 +3733,6 @@ int id user_name 0x7f08023e
 int id user_name_display 0x7f08023f
 int id user_uid 0x7f080240
 int id username 0x7f080241
-int id usernameText 0x7f080242
 int id vertical_only 0x7f080243
 int id view_attendee 0x7f080244
 int id view_offset_helper 0x7f080245

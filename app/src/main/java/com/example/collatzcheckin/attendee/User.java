@@ -11,8 +11,8 @@ import java.util.List;
  */
 public class User implements Serializable {
     private String name;
-    private String  pfp;
-    private String username;
+    private String pfp;
+    private String genpfp;
     private String email;
     private List<Event> events;
     private List<String> attendingEvents;
@@ -29,8 +29,6 @@ public class User implements Serializable {
      */
     public User() {
     }
-
-
 
     /**
      * This constructs a user class where unique identifier is set
@@ -49,6 +47,26 @@ public class User implements Serializable {
      * @param name name of user
      * @param contactInformation user email
      */
+    public User(String uid, String name, String contactInformation, String genpfp) {
+        this.name = name;
+        this.email = contactInformation;
+        this.uid = uid;
+        this.events = new ArrayList<Event>();
+        this.organizingEvents = new ArrayList<String>();
+        this.attendingEvents = new ArrayList<String>();
+        this.geolocation = false;
+        this.notifications = false;
+        this.pfp = "generated";
+        this.genpfp = genpfp;
+    }
+
+    /**
+     * This constructs a user class
+     * @param name name of user
+     * @param contactInformation user email
+     * @param uid The unique identifier for this user to reference in firestore to find their
+     *              item collection
+     */
     public User(String uid, String name, String contactInformation) {
         this.name = name;
         this.email = contactInformation;
@@ -59,28 +77,7 @@ public class User implements Serializable {
         this.geolocation = false;
         this.notifications = false;
         this.pfp = "generated";
-    }
-
-    /**
-     * This constructs a user class
-     * @param name name of user
-     * @param username username for homepage
-     * @param contactInformation user email
-     * @param uid The unique identifier for this user to reference in firestore to find their
-     *              item collection
-     */
-    public User( String name, String username, String contactInformation, String uid) {
-        this.name = name;
-        this.email = contactInformation;
-        this.uid = uid;
-        this.events = new ArrayList<Event>();
-        this.organizingEvents = new ArrayList<String>();
-        this.attendingEvents = new ArrayList<String>();
-        this.username = username;
-        this.geolocation = false;
-        this.notifications = false;
-        this.pfp = "generated";
-
+        this.genpfp = "generated";
     }
 
     /**
@@ -102,9 +99,10 @@ public class User implements Serializable {
         this.geolocation = geolocation;
         this.notifications = notifications;
         this.pfp = "generated";
+        this.genpfp = "generated";
     }
 
-    public User(String name, String contactInformation, String uid, boolean geolocation, boolean notifications, String pfp) {
+    public User(String name, String contactInformation, String uid, boolean geolocation, boolean notifications, String pfp, String genpfp) {
         this.name = name;
         this.email = contactInformation;
         this.uid = uid;
@@ -114,6 +112,7 @@ public class User implements Serializable {
         this.geolocation = geolocation;
         this.notifications = notifications;
         this.pfp = pfp;
+        this.genpfp = genpfp;
     }
 
     /**
@@ -146,22 +145,6 @@ public class User implements Serializable {
      */
     public void setPfp(String pfp) {
         this.pfp = pfp;
-    }
-
-    /**
-     * Getter for username for homepage
-     * @return username
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * Setter for username for homepage
-     * @param username
-     */
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     /**
@@ -289,5 +272,13 @@ public class User implements Serializable {
 
     public void setOrganizer(boolean organizer) {
         isOrganizer = organizer;
+    }
+
+    public String getGenpfp() {
+        return genpfp;
+    }
+
+    public void setGenpfp(String genpfp) {
+        this.genpfp = genpfp;
     }
 }

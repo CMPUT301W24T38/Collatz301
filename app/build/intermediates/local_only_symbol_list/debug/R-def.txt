@@ -56,7 +56,6 @@ id delete_user
 id done_button
 id editEmail
 id editName
-id editUsername
 id edit_event
 id edit_event_date
 id edit_event_description
@@ -122,7 +121,6 @@ id user_name
 id user_name_display
 id user_uid
 id username
-id usernameText
 id view_attendee
 layout activity_attendee_list
 layout activity_create_event

@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeDB;
+import com.example.collatzcheckin.attendee.User;
 import com.example.collatzcheckin.event.AttendeeArrayAdapter;
 import com.example.collatzcheckin.event.Event;
 import com.google.firebase.firestore.EventListener;
@@ -88,14 +89,14 @@ public class AttendeeList extends AppCompatActivity {
         });
     }
 
-    public HashMap<String, Integer> getAttendees(Map<String, Integer> attendees) {
-        HashMap<String, Integer> attendeeList = new HashMap<>();
-        AttendeeDB attendeeDB = new AttendeeDB();
-        for (String key: attendees.keySet()) {
-            HashMap<String, String> data = attendeeDB.findUser(key);
-            attendeeList.put(data.get("Name"), attendees.get(key));
-        }
-        return  attendeeList;
-    }
+//    public HashMap<String, Integer> getAttendees(Map<String, Integer> attendees) {
+//        HashMap<String, Integer> attendeeList = new HashMap<>();
+//        AttendeeDB attendeeDB = new AttendeeDB();
+//        for (String key: attendees.keySet()) {
+//            User data = attendeeDB.findUser(key);
+//            attendeeList.put(data.getName(), attendees.get(key));
+//        }
+//        return  attendeeList;
+//    }
 
 }
