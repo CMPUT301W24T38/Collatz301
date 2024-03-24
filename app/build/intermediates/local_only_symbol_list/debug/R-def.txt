@@ -14,6 +14,7 @@ color light_blue_A200
 color light_blue_A400
 color primary_button
 color purple
+color red
 color secondary_button
 color white
 drawable baseline_camera_alt_24
@@ -74,6 +75,7 @@ id event_description
 id event_description_input
 id event_edit_frame
 id event_frame_view
+id event_full
 id event_list
 id event_list_date
 id event_list_title

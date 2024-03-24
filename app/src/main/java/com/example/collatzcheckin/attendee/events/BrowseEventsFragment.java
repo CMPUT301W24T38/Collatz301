@@ -36,7 +36,7 @@ public class BrowseEventsFragment extends Fragment {
     private final AnonAuthentication authentication = new AnonAuthentication();
     ArrayList<Event> eventDataList;
     View view;
-    EventDB db;
+    EventDB db = new EventDB();
 
     public BrowseEventsFragment() {
         // Required empty public constructor
@@ -48,12 +48,7 @@ public class BrowseEventsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_browse_events, container, false);
-
-        db = new EventDB();
-        eventList = view.findViewById(R.id.event_list_view);
-        eventDataList = new ArrayList<>();
-        eventArrayAdapter = new EventArrayAdapter(getActivity(), eventDataList);
-        eventList.setAdapter(eventArrayAdapter);
+        initViews(view);
         String uuid = authentication.identifyUser();
 
         db.eventRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -75,13 +70,13 @@ public class BrowseEventsFragment extends Fragment {
                         String eventPoster = doc.getString("Event Poster");
                         String eventLocation = doc.getString("Event Location");
                         String memberLimit = doc.getString("Member Limit");
-                        //HashMap<String, String> attendees = (HashMap<String,String>) doc.get("Attendees");
+                        HashMap<String, String> attendees = (HashMap<String,String>) doc.get("Attendees");
                         int parsedMemberLimit = 0; // Default value, you can change it based on your requirements
 
                         if (memberLimit != null && !memberLimit.isEmpty()) {
                             parsedMemberLimit = Integer.parseInt(memberLimit);
                         }
-                        eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId));
+                        eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId, attendees));
                     }
 
                     eventArrayAdapter.notifyDataSetChanged();
@@ -105,7 +100,14 @@ public class BrowseEventsFragment extends Fragment {
 
     public void change(Event event) {
         Intent myIntent = new Intent(getActivity(), EventSignUp.class);
-        myIntent.putExtra("com/example/collatzcheckin/event", event);
+        myIntent.putExtra("event", event);
         startActivity(myIntent);
+    }
+
+    private void initViews(View view) {
+        eventList = view.findViewById(R.id.event_list_view);
+        eventDataList = new ArrayList<>();
+        eventArrayAdapter = new EventArrayAdapter(getActivity(), eventDataList);
+        eventList.setAdapter(eventArrayAdapter);
     }
 }

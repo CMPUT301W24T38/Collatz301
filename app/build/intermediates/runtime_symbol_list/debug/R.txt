@@ -2119,6 +2119,7 @@ int color primary_text_default_material_light 0x7f050309
 int color primary_text_disabled_material_dark 0x7f05030a
 int color primary_text_disabled_material_light 0x7f05030b
 int color purple 0x7f05030c
+int color red 0x7f050327
 int color ripple_material_dark 0x7f05030d
 int color ripple_material_light 0x7f05030e
 int color secondary_button 0x7f05030f
@@ -3386,6 +3387,7 @@ int id event_description 0x7f0800e4
 int id event_description_input 0x7f0800e5
 int id event_edit_frame 0x7f0800e6
 int id event_frame_view 0x7f0800e7
+int id event_full 0x7f080265
 int id event_list 0x7f0800e8
 int id event_list_date 0x7f0800e9
 int id event_list_title 0x7f0800ea

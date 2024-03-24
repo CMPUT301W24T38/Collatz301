@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.event.EditEventFragment;
 import com.example.collatzcheckin.event.Event;
+import com.example.collatzcheckin.event.EventArrayAdapter;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
@@ -20,53 +21,29 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class EventSignUp extends AppCompatActivity {
     Uri imageUri;
     StorageReference storageReference;
-    TextView eventTitle;
-    TextView eventMonth;
-    TextView eventDay;
-    TextView eventTime;
-    TextView eventDescription;
-    TextView eventLocation;
+    TextView eventTitle, eventMonth, eventDay, eventTime, eventDescription, eventLocation, eventFull;
     ImageView posterImage;
+    Button backButton, signupEvent;
+    Event event;
+    int signedupNum, signupLimit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_sign_up);
         Intent intent = getIntent();
-        Event event = (Event) intent.getSerializableExtra("com/example/collatzcheckin/event");
+        event = (Event) intent.getSerializableExtra("event");
         String[] parsedData = event.getEventDate().split(" ");
-        eventTitle = findViewById(R.id.event_name);
-        eventMonth = findViewById(R.id.event_month);
-        eventDay = findViewById(R.id.event_day);
-        eventTime = findViewById(R.id.event_time);
 
-        eventTitle.setText(event.getEventTitle());
-        if (parsedData.length >= 2) {
-            eventMonth.setText(parsedData[0]);
-            eventDay.setText(parsedData[1]);
-        }
+        initViews();
+        SetData(event);
+        limitCheck(event);
 
-        if (parsedData.length > 2) {
-            eventTime.setText(parsedData[parsedData.length - 1]);
-        } else {
-            // Handle the case where there is no time information
-            eventTime.setText("No time information");
-        }
-
-
-        eventDescription = findViewById(R.id.event_description);
-        eventDescription.setText(event.getEventDescription());
-
-
-
-        eventLocation = findViewById(R.id.event_location);
-        eventLocation.setText(event.getEventLocation());
-
-        posterImage = findViewById(R.id.poster_image);
         String eventid = event.getEventTitle();
         storageReference = FirebaseStorage.getInstance().getReference("posters/"+eventid);
         try {
@@ -83,7 +60,6 @@ public class EventSignUp extends AppCompatActivity {
             // Handle exception
         }
 
-        Button backButton =  findViewById(R.id.event_view_back_button);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,15 +68,53 @@ public class EventSignUp extends AppCompatActivity {
             }
         });
 
-
-        Button editEvent = findViewById(R.id.sign_up);
-        editEvent.setOnClickListener(new View.OnClickListener() {
+        signupEvent.setOnClickListener(new View.OnClickListener() {
             @Override
-
             public void onClick(View v) {
-
                 SignUpConfirmationFragment.newInstance(event.getEventID()).show(getSupportFragmentManager(), "Confirm");
             }
         });
     }
+
+    private void initViews() {
+        eventTitle = findViewById(R.id.event_name);
+        eventMonth = findViewById(R.id.event_month);
+        eventDay = findViewById(R.id.event_day);
+        eventTime = findViewById(R.id.event_time);
+        eventDescription = findViewById(R.id.event_description);
+        eventLocation = findViewById(R.id.event_location);
+        posterImage = findViewById(R.id.poster_image);
+        backButton =  findViewById(R.id.event_view_back_button);
+        signupEvent = findViewById(R.id.sign_up);
+        eventFull = findViewById(R.id.event_full);
     }
+
+    private void SetData(Event event) {
+        String[] parsedData = event.getEventDate().split(" ");
+
+        eventTitle.setText(event.getEventTitle());
+        if (parsedData.length >= 2) {
+            eventMonth.setText(parsedData[0]);
+            eventDay.setText(parsedData[1]);
+        }
+
+        if (parsedData.length > 2) {
+            eventTime.setText(parsedData[parsedData.length - 1]);
+        } else {
+            // Handle the case where there is no time information
+            eventTime.setText("No time information");
+        }
+        eventDescription.setText(event.getEventDescription());
+        eventLocation.setText(event.getEventLocation());
+    }
+
+    private void limitCheck(Event event) {
+        signedupNum = event.getAttendees().size();
+        signupLimit = event.getMemberLimit();
+        if(signedupNum == signupLimit) {
+            signupEvent.setVisibility(View.INVISIBLE);
+            eventFull.setVisibility(View.VISIBLE);
+        }
+    }
+
+}

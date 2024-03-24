@@ -2120,6 +2120,7 @@ color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
 color purple
+color red
 color ripple_material_dark
 color ripple_material_light
 color secondary_button
@@ -3387,6 +3388,7 @@ id event_description
 id event_description_input
 id event_edit_frame
 id event_frame_view
+id event_full
 id event_list
 id event_list_date
 id event_list_title

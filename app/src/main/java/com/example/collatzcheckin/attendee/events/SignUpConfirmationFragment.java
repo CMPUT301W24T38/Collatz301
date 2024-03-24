@@ -22,21 +22,26 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeDB;
+import com.example.collatzcheckin.attendee.AttendeeFirebaseManager;
 import com.example.collatzcheckin.attendee.User;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
+import com.example.collatzcheckin.event.EventArrayAdapter;
 import com.example.collatzcheckin.event.EventDB;
+import com.example.collatzcheckin.utils.FirebaseUserCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SignUpConfirmationFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SignUpConfirmationFragment extends DialogFragment {
+public class SignUpConfirmationFragment extends DialogFragment implements FirebaseUserCallback {
 
     private static final String ARG_PARAM1 = "euid_param";
     TextView name, email;
@@ -45,6 +50,7 @@ public class SignUpConfirmationFragment extends DialogFragment {
     EventDB eventDB = new EventDB();
     User user;
     String euid;
+    AttendeeFirebaseManager attendeeFirebaseManager = new AttendeeFirebaseManager();
     public SignUpConfirmationFragment() {
         // Required empty public constructor
     }
@@ -63,7 +69,6 @@ public class SignUpConfirmationFragment extends DialogFragment {
         return fragment;
     }
 
-
     /**
      * OnCreateDialog create the dialog and implements functionality
      **/
@@ -72,11 +77,10 @@ public class SignUpConfirmationFragment extends DialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = getLayoutInflater().inflate(R.layout.fragment_sign_up_confirmation, null);
-        name = view.findViewById(R.id.name_text);
-        email = view.findViewById(R.id.email_text);
+        initViews(view);
         euid = getArguments().getString(ARG_PARAM1);
         String uuid = authentication.identifyUser();
-        getUser(uuid);
+        attendeeFirebaseManager.readData(uuid, this);
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -87,50 +91,28 @@ public class SignUpConfirmationFragment extends DialogFragment {
                 .setPositiveButton("OK", ((dialog, which) -> {
                     //add event in user table
                     attendeeDB.EventsSignUp(euid, uuid);
-                    eventDB.userSignUp(euid, uuid);
-                    Log.d(TAG, "message");
-                    Log.d(TAG, euid);
                     //add user in event table
+                    eventDB.userSignUp(euid, uuid);
                 }))
                 .create();
         alertDialog.show();
-
-
-
         return alertDialog;
     }
 
-    private void getUser(String uuid) {
-        if (uuid == null) {
-            // Handle the case where uuid is null (e.g., log an error, throw an exception, or return)
-            Log.e(TAG, "UUID is null in getUser");
-            return;
-        }
-        CollectionReference ref = attendeeDB.getUserRef();
-        DocumentReference docRef = ref.document(uuid);
+    @Override
+    public void onCallback(User user) {
+        // Handle the retrieved user data
+        this.user = user;
+        setData(user);
+    }
 
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                       name.setText(document.getString("Name"));
-                       email.setText(document.getString("Email"));
-                       user = new User(document.getString("Name"),
-                               document.getString("Email"),
-                               uuid,
-                               Boolean.parseBoolean(document.getString("Geo")),
-                               Boolean.parseBoolean(document.getString("Notif")),
-                               document.getString("Pfp"),
-                               document.getString("GenPfp"));
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
+    private void initViews(View view) {
+        name = view.findViewById(R.id.name_text);
+        email = view.findViewById(R.id.email_text);
+    }
+
+    private void setData(User user) {
+        name.setText(user.getName());
+        email.setText(user.getEmail());
     }
 }
