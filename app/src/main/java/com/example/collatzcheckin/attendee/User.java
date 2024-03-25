@@ -21,6 +21,8 @@ public class User implements Serializable {
     private boolean geolocation;
     private boolean isOrganizer = false;
     private String uid;
+    private double latitude;
+    private double longitude;
 
 
     /**
@@ -234,6 +236,22 @@ public class User implements Serializable {
         } else {
             return false;
         }
+    }
+    public void setLatitude(double latitude){
+        this.latitude = latitude;
+
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 
     public void setGeolocation(boolean geolocation) {

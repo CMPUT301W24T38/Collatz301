@@ -43,6 +43,7 @@ public class AttendeeList extends AppCompatActivity {
         Intent intent = getIntent();
         Event event = (Event) intent.getSerializableExtra("Event");
         AttendeeDB attendeeDB = new AttendeeDB();
+        String id = event.getEventID();
         attendees = new ArrayList<>();
         attendeeAdapter = new AttendeeArrayAdapter(this, attendees);
 
@@ -75,6 +76,14 @@ public class AttendeeList extends AppCompatActivity {
             }
         });
 
+        Button map = findViewById(R.id.map);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewMap(event);
+            }
+        });
+
 
 
 
@@ -96,6 +105,11 @@ public class AttendeeList extends AppCompatActivity {
             attendeeList.put(data.get("Name"), attendees.get(key));
         }
         return  attendeeList;
+    }
+    public void viewMap(Event event) {
+        Intent intent = new Intent(this, MapActivity.class);
+        intent.putExtra("Event", event);
+        startActivity(intent);
     }
 
 }

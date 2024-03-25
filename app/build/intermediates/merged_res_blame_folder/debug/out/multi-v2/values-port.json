@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-37:/values-port/values-port.xml",
+            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-38:/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\micha\\.gradle\\caches\\transforms-3\\9f9686aa69ef96e09752468c17c9646c\\transformed\\appcompat-1.6.1\\res\\values-port\\values-port.xml",
+                    "source": "/Users/juanjoseph/.gradle/caches/transforms-3/9f9686aa69ef96e09752468c17c9646c/transformed/appcompat-1.6.1/res/values-port/values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
