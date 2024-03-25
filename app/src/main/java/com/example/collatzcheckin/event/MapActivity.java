@@ -69,7 +69,6 @@ public class MapActivity extends AppCompatActivity {
                                                                                         double longitude = (userDocument.getDouble("Longitude"));
                                                                                         GeoPoint location = new GeoPoint(latitude, longitude);
                                                                                         locations.add(location);
-                                                                                        // Create marker and add it here if you want
                                                                                         Marker marker = new Marker(mMapView);
                                                                                         marker.setPosition(location);
                                                                                         marker.setTitle(userDocument.getString(("Name")));
