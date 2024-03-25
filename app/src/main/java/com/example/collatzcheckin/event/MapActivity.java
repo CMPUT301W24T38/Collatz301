@@ -53,7 +53,6 @@ public class MapActivity extends AppCompatActivity {
                                                     if (document.exists()) {
                                                         Map<String, String> idCheckedIn = (Map<String, String>) document.get("Attendees");
                                                         if (idCheckedIn != null && !idCheckedIn.isEmpty()) {
-                                                            // Iterate through the map of user IDs and associated numbers
                                                             for (Map.Entry<String, String> entry : idCheckedIn.entrySet()) {
                                                                 String uuid = entry.getKey();
                                                                 int checked_in = Integer.parseInt(entry.getValue());
