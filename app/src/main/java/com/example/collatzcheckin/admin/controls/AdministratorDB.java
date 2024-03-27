@@ -5,7 +5,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.collatzcheckin.Event;
+import com.example.collatzcheckin.event.Event;
 import com.example.collatzcheckin.attendee.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

@@ -4,6 +4,8 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -31,15 +33,27 @@ import com.example.collatzcheckin.admin.controls.profile.UserListFragment;
 import com.example.collatzcheckin.admin.controls.profile.UserViewFragment;
 import com.example.collatzcheckin.attendee.AttendeeDBConnecter;
 import com.example.collatzcheckin.attendee.User;
+import com.example.collatzcheckin.attendee.events.BrowseEventsFragment;
+import com.example.collatzcheckin.attendee.profile.CreateProfileActivity;
 import com.example.collatzcheckin.attendee.profile.ProfileFragment;
-import com.example.collatzcheckin.attendee.profile.UpdateProfileActivity;
+import com.example.collatzcheckin.attendee.profile.CreateProfileActivity;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
+import com.example.collatzcheckin.event.CameraActivity;
+import com.example.collatzcheckin.event.CameraFragment;
+import com.example.collatzcheckin.event.EventListFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+
+import com.example.collatzcheckin.event.EditEventFragment;
+import com.example.collatzcheckin.event.Event;
+import com.example.collatzcheckin.event.EventDB;
+import com.example.collatzcheckin.event.EventList;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * MainActivity of the application, handles setting up the bottom nav fragment and the user
@@ -69,9 +83,22 @@ public class MainActivity extends AppCompatActivity implements AttendeeDB.UserCa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         String uuidVerify = authentication.identifyUser();
 
+
+        // Need to test with both authentication methods
+        /*// check if user is a new or returning user
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        // if new user prompt the user to create a profile
+        if(currentUser == null) {
+            //authentication.updateUI(this);
+            Log.d(TAG, "signInAnon");
+            Intent i = new Intent(MainActivity.this, CreateProfileActivity.class);
+            startActivity(i);
+        }*/
+        
+        
         if (authentication.updateUI(MainActivity.this) || (uuidVerify == null)) {
             Intent i = new Intent(MainActivity.this, UpdateProfileActivity.class);
             startActivityForResult(i, UPDATE_PROFILE_REQUEST_CODE);
@@ -143,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements AttendeeDB.UserCa
 
 
 
+
     public void showAdminEventList() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.event_frame_view, new AdminEventListFragment())
@@ -202,18 +230,28 @@ public class MainActivity extends AppCompatActivity implements AttendeeDB.UserCa
                 // creating the nav bar
                 // adds functionality to allow attendee to navigate
                 bottomNavigationView.setOnItemSelectedListener(item -> {
-
-                    int iconPressed = item.getItemId();
-
+                    // show home page
+                    replaceFragment(new EventListFragment());
                     // navigate to profile page
                     if (iconPressed == R.id.profile) {
                         replaceFragment(new ProfileFragment());
                     }
-                    //TODO: navigate to home page (where users can browse events)
+                    // navigate to page to browse events
+                    if (iconPressed == R.id.search) {
+                        replaceFragment(new BrowseEventsFragment());
+                    }
+                    if (iconPressed == R.id.scanner) {
+//                Intent i = new Intent(this, CameraActivity.class);
+//                i.putExtra("uuid", uuid);
+//                startActivity(i);
+                        replaceFragment(new CameraFragment());
+                    }
+
                     if (iconPressed == R.id.home) {
-                        Intent i = new Intent(this, EventList.class);
-                        i.putExtra("user", user);
-                        startActivity(i);
+//                Intent i = new Intent(this,EventList.class);
+//                i.putExtra("uuid", uuid);
+//                startActivity(i);
+                        replaceFragment(new EventListFragment());
                     }
                     //TODO: navigate to camera so users can scan QR code
 

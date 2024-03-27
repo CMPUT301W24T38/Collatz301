@@ -6,11 +6,13 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import androidx.annotation.NonNull;
 
 import com.example.collatzcheckin.attendee.User;
+import com.example.collatzcheckin.event.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 
 import java.util.HashMap;
 
@@ -41,7 +43,6 @@ public class AttendeeDB {
     public CollectionReference getUserRef() {
         return userRef;
     }
-
 
     /**
      * Query to extract user data
@@ -108,22 +109,27 @@ public class AttendeeDB {
      * Query to add/update user data
      * @param user Object of type user that holds user data
      */
-    public void addUser(com.example.collatzcheckin.attendee.User user) {
-        HashMap<String, String> userData = new HashMap<>();
-        userData.put("Name", user.getName());
-        userData.put("Email", user.getEmail());
-        userData.put("Uid", user.getUid());
-        userData.put("Geo", (user.getGeolocation()).toString());
-        userData.put("Notif", (user.getNotifications()).toString());
-        userData.put("Admin", (String.valueOf(user.isAdmin())));
-        Log.d("Firestore", "DocumentSnapshot successfully written!");
-        userRef.document(user.getUid())
-                .set(userData)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("Firestore", "DocumentSnapshot successfully written!");
-                    }
-                });
+        public void addUser(com.example.collatzcheckin.attendee.User user) {
+            HashMap<String, String> userData = new HashMap<>();
+            userData.put("Name", user.getName());
+            userData.put("Email", user.getEmail());
+            userData.put("Uid", user.getUid());
+            userData.put("Geo", (user.getGeolocation()).toString());
+            userData.put("Notif", (user.getNotifications()).toString());
+            userData.put("Pfp", user.getPfp());
+            userData.put("Admin", (String.valueOf(user.isAdmin())));
+            Log.d("Firestore", "DocumentSnapshot successfully written!");
+            userRef.document(user.getUid())
+                    .set(userData)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d("Firestore", "DocumentSnapshot successfully written!");
+                        }
+                    });
+    }
+
+    public void EventsSignUp(String euid, String uuid) {
+        userRef.document(uuid).update("Events", FieldValue.arrayUnion(euid));
     }
 }

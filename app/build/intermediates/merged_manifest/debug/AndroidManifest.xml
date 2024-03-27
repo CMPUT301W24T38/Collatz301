@@ -9,11 +9,32 @@
         android:targetSdkVersion="34" />
 
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
     <!-- <uses-sdk android:minSdkVersion="14" /> -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" /> <!-- TODO replace above two with next line after Android 4.2 -->
+    <!-- <uses-feature android:name="android.hardware.camera.any"/> -->
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.screen.landscape"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <permission
@@ -27,6 +48,7 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:debuggable="true"
+        android:enableOnBackInvokedCallback="true"
         android:extractNativeLibs="false"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -36,16 +58,22 @@
         android:testOnly="true"
         android:theme="@style/Theme.CollatzCheckIn" >
         <activity
-            android:name="com.example.collatzcheckin.EventView"
+            android:name="com.example.collatzcheckin.event.CameraActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.collatzcheckin.CreateEvent"
+            android:name="com.example.collatzcheckin.attendee.events.EventSignUp"
             android:exported="false" />
         <activity
-            android:name="com.example.collatzcheckin.AttendeeList"
+            android:name="com.example.collatzcheckin.event.EventView"
             android:exported="false" />
         <activity
-            android:name="com.example.collatzcheckin.EventList"
+            android:name="com.example.collatzcheckin.event.CreateEvent"
+            android:exported="false" />
+        <activity
+            android:name="com.example.collatzcheckin.event.AttendeeList"
+            android:exported="false" />
+        <activity
+            android:name="com.example.collatzcheckin.event.EventList"
             android:exported="false" />
         <activity
             android:name="com.example.collatzcheckin.MainActivity"
@@ -57,7 +85,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.collatzcheckin.attendee.profile.UpdateProfileActivity"
+            android:name="com.example.collatzcheckin.attendee.profile.CreateProfileActivity"
             android:exported="false" />
         <activity
             android:name="com.example.collatzcheckin.attendee.profile.ProfileFragment"
@@ -76,6 +104,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.collatzcheckin.event.Capture"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme" >
         </activity>
 
         <service
@@ -161,6 +195,14 @@
             android:exported="true"
             android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
             android:visibleToInstantApps="true" />
+
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:clearTaskOnLaunch="true"
+            android:screenOrientation="sensorLandscape"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"

@@ -11,8 +11,8 @@ package com.example.collatzcheckin.admin.controls.events;
         import android.widget.Button;
         import android.widget.TextView;
 
-        import com.example.collatzcheckin.Event;
-        import com.example.collatzcheckin.MainActivity;
+        import com.example.collatzcheckin.event.Event;
+
         import com.example.collatzcheckin.R;
         import com.example.collatzcheckin.admin.controls.AdministratorDB;
         import com.example.collatzcheckin.admin.controls.profile.UserListFragment;

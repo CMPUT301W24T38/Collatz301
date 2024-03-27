@@ -10,8 +10,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
-import com.example.collatzcheckin.attendee.profile.UpdateProfileActivity;
-
 import org.junit.Rule;
 import org.junit.Test;
 

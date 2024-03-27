@@ -25,15 +25,20 @@ import com.example.collatzcheckin.attendee.AttendeeDB;
 import com.example.collatzcheckin.attendee.User;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * ProfileFragment displays user their profile information
@@ -44,11 +49,13 @@ public class ProfileFragment extends Fragment {
     Button remove;
     User user;
     TextView name, username, email, geo, notification;
+    String pfpType;
     ImageView pfp;
     private String uuid;
     private final AnonAuthentication authentication = new AnonAuthentication();
     private final AttendeeDB attendeeDB = new AttendeeDB();
     HashMap<String, String> userData = new HashMap<>();
+
 
     /**
      * This constructs an instance of ProfileFragment
@@ -72,14 +79,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
-        update = view.findViewById(R.id.up_button);
-        remove = view.findViewById(R.id.remove);
-        name = view.findViewById(R.id.nameText);
-        username = view.findViewById(R.id.usernameText);
-        email = view.findViewById(R.id.emailText);
-        pfp = view.findViewById(R.id.pfp);
-        geo = view.findViewById(R.id.geotext);
-        notification = view.findViewById(R.id.notiftext);
+        initViews(view);
 
         uuid = authentication.identifyUser();
         getUser(uuid);
@@ -92,25 +92,8 @@ public class ProfileFragment extends Fragment {
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         Intent data = result.getData();
                         assert data != null;
-                        User updatedUser = (User) data.getSerializableExtra("updatedUser");
-                        assert updatedUser != null;
-                        name.setText(updatedUser.getName());
-                        username.setText(updatedUser.getUsername());
-                        email.setText(updatedUser.getEmail());
-                        if(updatedUser.isGeolocation()) {
-                            geo.setText("enabled");
-                        } else {
-                            geo.setText("disabled");
-                        }
-
-                        if(updatedUser.isNotifications()) {
-                            notification.setText("enabled");
-                        } else {
-                            notification.setText("disabled");
-                        }
-                        if (updatedUser.getPfp() != null) {
-                            pfp.setImageURI(Uri.parse(updatedUser.getPfp()));
-                        }
+                        User user = (User) data.getSerializableExtra("updatedUser");
+                        getUser(uuid);
                     }
                 }
         );
@@ -121,24 +104,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), EditProfileActivity.class);
-                boolean geo_value;
-                boolean notif_value;
-                String user_name = name.getText().toString();
-                String user_username = username.getText().toString();
-                String user_email = email.getText().toString();
-                String geo_settings = geo.getText().toString();
-                String notif_settings = notification.getText().toString();
-                if(geo_settings == "enabled") {
-                    geo_value = true;
-                } else {
-                    geo_value = false;
-                }
-                if(notif_settings == "enabled") {
-                    notif_value = true;
-                } else {
-                    notif_value = false;
-                }
-                user = new User(user_name,user_username,user_email, uuid, geo_value, notif_value);
                 intent.putExtra("user", (Serializable) user);
                 launchEditProfileActivity.launch(intent);
 
@@ -147,13 +112,86 @@ public class ProfileFragment extends Fragment {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pfp.setImageResource(R.drawable.baseline_person_24);
-                StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("images/" + user.getUsername());
-                imageRef.delete();
-
+                Log.w(TAG, user.getPfp());
+                if(user.getPfp().equals("userCreated")) {
+                    StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("images/" + uuid);
+                    imageRef.delete();
+                    pfpType = "generated";
+                    user.setPfp("generated");
+                    getPfp(pfpType, name.getText().toString(), uuid);
+                    attendeeDB.addUser(user);
+                }
             }
         });
         return view;
+    }
+
+    public void initViews(View view) {
+        update = view.findViewById(R.id.up_button);
+        remove = view.findViewById(R.id.remove);
+        name = view.findViewById(R.id.nameText);
+        username = view.findViewById(R.id.usernameText);
+        email = view.findViewById(R.id.emailText);
+        pfp = view.findViewById(R.id.pfp);
+        geo = view.findViewById(R.id.geotext);
+        notification = view.findViewById(R.id.notiftext);
+    }
+
+    public void setData(String nameText, String emailText, String notifText, String geoText) {
+        name.setText(nameText);
+        email.setText(emailText);
+
+        if(geoText.equals("true")) {
+            geo.setText("enabled");
+        } else {
+            geo.setText("disabled");
+        }
+
+        if(notifText.equals("true")) {
+            notification.setText("enabled");
+        } else {
+            notification.setText("disabled");
+        }
+
+    }
+
+
+
+    public void getPfp(String type, String name, String uuid){
+        String nameLetter = String.valueOf(name.charAt(0));
+        nameLetter = nameLetter.toUpperCase();
+
+        if(type.equals("generated")) {
+            StorageReference pfpRef = FirebaseStorage.getInstance().getReference().child("generatedpfp/" + nameLetter + ".png");
+            try {
+                final File localFile = File.createTempFile("temp", "png");
+                pfpRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        // Set the downloaded image to the ImageView
+                        pfp.setImageURI(Uri.fromFile(localFile));
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle exception
+            }
+        } else if(type.equals("userCreated")) {
+            StorageReference pfpRef = FirebaseStorage.getInstance().getReference().child("images/" + uuid);
+            try {
+                final File localFile = File.createTempFile("images", "jpg");
+                pfpRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                        // Set the downloaded image to the ImageView
+                        pfp.setImageURI(Uri.fromFile(localFile));
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle exception
+            }
+        }
     }
 
     /**
@@ -168,31 +206,17 @@ public class ProfileFragment extends Fragment {
         }
         CollectionReference ref = attendeeDB.getUserRef();
         DocumentReference docRef = ref.document(uuid);
+
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        name.setText(document.getString("Name"));
-                        email.setText(document.getString("Email"));
-                        notification.setText(document.getString("Notif"));
-                        geo.setText(document.getString("Geo"));
-
-                        if(document.getString("Geo") == "true") {
-                            geo.setText("enabled");
-                            Log.d(TAG, " such document" + document.getString("Geo"));
-                        } else {
-                            geo.setText("disabled");
-                            Log.d(TAG, " such document" + document.getString("Geo"));
-                        }
-
-                        if(document.getString("Notif") == "true") {
-                            notification.setText("enabled");
-                        } else {
-                            notification.setText("disabled");
-                        }
-
+                        pfpType = document.getString("Pfp");
+                        setData(document.getString("Name"), document.getString("Email"), document.getString("Notif"), document.getString("Geo"));
+                        getPfp(pfpType, document.getString("Name"), uuid);
+                        user = new User(document.getString("Name"), document.getString("Email"), uuid, Boolean.parseBoolean(document.getString("Geo")), Boolean.parseBoolean(document.getString("Notif")), pfpType);
                     } else {
                         Log.d(TAG, "No such document");
                     }
