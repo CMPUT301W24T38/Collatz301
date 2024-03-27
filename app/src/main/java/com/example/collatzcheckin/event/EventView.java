@@ -77,7 +77,7 @@ public class EventView extends AppCompatActivity {
 
         posterImage = findViewById(R.id.poster_image);
         //ImageView ivQR = findViewById(R.id.qr);
-        String eventid = event.getEventTitle();
+        String eventid = event.getEventID();
         storageReference = FirebaseStorage.getInstance().getReference("posters/"+eventid);
         try {
             final File localFile = File.createTempFile("images", "jpg");

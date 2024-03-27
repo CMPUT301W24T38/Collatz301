@@ -44,11 +44,7 @@ public class CameraActivity extends AppCompatActivity {
             @Override
 
             public void onClick(View v) {
-
                 scan();
-                if (userFound) {
-                    EventDB db = new EventDB();
-                }
             }
         });
     }

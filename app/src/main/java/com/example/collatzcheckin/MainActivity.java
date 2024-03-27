@@ -31,6 +31,8 @@ import com.example.collatzcheckin.attendee.profile.ProfileFragment;
 import com.example.collatzcheckin.attendee.profile.CreateProfileActivity;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
 import com.example.collatzcheckin.event.CameraActivity;
+import com.example.collatzcheckin.event.CameraFragment;
+import com.example.collatzcheckin.event.EventListFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import com.example.collatzcheckin.event.EditEventFragment;
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // show home page
-        replaceFragment(new BrowseEventsFragment());
+        replaceFragment(new EventListFragment());
 
         String uuid = authentication.identifyUser();
 
@@ -95,15 +97,17 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new BrowseEventsFragment());
             }
             if (iconPressed == R.id.scanner) {
-                Intent i = new Intent(this, CameraActivity.class);
-                i.putExtra("uuid", uuid);
-                startActivity(i);
+//                Intent i = new Intent(this, CameraActivity.class);
+//                i.putExtra("uuid", uuid);
+//                startActivity(i);
+                replaceFragment(new CameraFragment());
             }
 
             if (iconPressed == R.id.home) {
-                Intent i = new Intent(this,EventList.class);
-                i.putExtra("uuid", uuid);
-                startActivity(i);
+//                Intent i = new Intent(this,EventList.class);
+//                i.putExtra("uuid", uuid);
+//                startActivity(i);
+                replaceFragment(new EventListFragment());
             }
             //TODO: navigate to camera so users can scan QR code
 

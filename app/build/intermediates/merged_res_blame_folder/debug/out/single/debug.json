@@ -16,12 +16,12 @@
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\fragment_admin_user_view.xml"
     },
     {
-        "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\mipmap-hdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_user_view_organizer.xml.flat",
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\user_view_organizer.xml"
+    },
+    {
+        "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_fragment_browse_events.xml.flat",
@@ -36,12 +36,12 @@
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\activity_attendee_list.xml"
     },
     {
-        "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_activity_event_view.xml.flat",
-        "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\activity_event_view.xml"
-    },
-    {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_activity_event_view.xml.flat",
+        "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\activity_event_view.xml"
     },
     {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_fragment_sign_up_confirmation.xml.flat",
@@ -120,6 +120,10 @@
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\drawable\\image_placeholder.xml"
     },
     {
+        "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_fragment_event_list2.xml.flat",
+        "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\fragment_event_list2.xml"
+    },
+    {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_fragment_admin_attendee_list.xml.flat",
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\fragment_admin_attendee_list.xml"
     },
@@ -134,6 +138,10 @@
     {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_event_list_content.xml.flat",
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\event_list_content.xml"
+    },
+    {
+        "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\layout_fragment_camera.xml.flat",
+        "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-41:\\layout\\fragment_camera.xml"
     },
     {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-39:\\drawable_ic_launcher_background.xml.flat",

@@ -51,6 +51,7 @@ public class EventList extends AppCompatActivity {
         organizerButton = findViewById(R.id.organizer_button);
         attendeeButton  = findViewById(R.id.attendee_button);
 
+
         organizerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,48 +74,7 @@ public class EventList extends AppCompatActivity {
         eventDataList = new ArrayList<>();
         eventArrayAdapter = new EventArrayAdapter(this, eventDataList);
         eventList.setAdapter(eventArrayAdapter);
-        Log.d("UUID", uuid);
-//        if (organizerButton.isChecked()) {
-//            getOrganizedEvents(uuid);
-//        }
-//        else {
-//            getAttendeeEvent(uuid);
-//        }
-//        db.eventRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
-//            @Override
-//            public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
-//                if (error != null) {
-//                    Log.e("Firestore", error.toString());
-//                    return;
-//                }
-//                if (querySnapshots != null) {
-//                    eventDataList.clear();
-//
-//                    for (QueryDocumentSnapshot doc : querySnapshots) {
-//                        String organizer = doc.getString("Event Organizer");
-//                        if (organizer.matches(uuid)) {
-//                            String eventId = doc.getId();
-//                            String eventOrganizer = doc.getString("Event Organizer");
-//                            String eventTitle = doc.getString("Event Title");
-//                            String eventDate = doc.getString("Event Date");
-//                            String eventDescription = doc.getString("Event Description");
-//                            String eventPoster = doc.getString("Event Poster");
-//                            String eventLocation = doc.getString("Event Location");
-//                            String memberLimit = doc.getString("Member Limit");
-//                            HashMap<String, String> attendees = (HashMap<String,String>) doc.get("Attendees");
-//                            int parsedMemberLimit = 0; // Default value, you can change it based on your requirements
-//
-//                            if (memberLimit != null && !memberLimit.isEmpty()) {
-//                                parsedMemberLimit = Integer.parseInt(memberLimit);
-//                            }
-//                            eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId, attendees));
-//                        }
-//                    }
-//
-//                    eventArrayAdapter.notifyDataSetChanged();
-//                }
-//            }
-//        });
+
         eventList.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -142,6 +102,7 @@ public class EventList extends AppCompatActivity {
                finish();
             }
         });
+
     }
 
     private void getAttendeeEvent(String uuid) {
