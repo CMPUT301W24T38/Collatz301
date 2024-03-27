@@ -14,7 +14,8 @@ import android.os.Bundle;
         import android.widget.ArrayAdapter;
         import android.widget.ListView;
 
-        import com.example.collatzcheckin.event.Event;
+import com.example.collatzcheckin.MainActivity;
+import com.example.collatzcheckin.event.Event;
         import com.example.collatzcheckin.event.EventArrayAdapter;
         import com.example.collatzcheckin.event.EventDB;
 

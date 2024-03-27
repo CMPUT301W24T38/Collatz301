@@ -98,11 +98,11 @@ public class CreateProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create and show a popup window for verification
-                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateProfileActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(CreateProfileActivity.this);
                 builder.setTitle("Verification");
                 builder.setMessage("Enter your verification code:");
 
-                final EditText input = new EditText(UpdateProfileActivity.this);
+                final EditText input = new EditText(CreateProfileActivity.this);
                 builder.setView(input);
 
                 builder.setPositiveButton("Verify", new DialogInterface.OnClickListener() {
@@ -114,7 +114,7 @@ public class CreateProfileActivity extends AppCompatActivity {
                             setResultAndFinish(Activity.RESULT_OK, "admin");
                         } else {
                             // Verification failed, show an error message or handle accordingly
-                            Toast.makeText(UpdateProfileActivity.this, "Verification failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateProfileActivity.this, "Verification failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

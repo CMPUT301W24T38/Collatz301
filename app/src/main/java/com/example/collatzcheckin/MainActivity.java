@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements AttendeeDB.UserCa
         
         
         if (authentication.updateUI(MainActivity.this) || (uuidVerify == null)) {
-            Intent i = new Intent(MainActivity.this, UpdateProfileActivity.class);
+            Intent i = new Intent(MainActivity.this, CreateProfileActivity.class);
             startActivityForResult(i, UPDATE_PROFILE_REQUEST_CODE);
         }
         String uuid = authentication.identifyUser();
@@ -204,6 +204,7 @@ public class MainActivity extends AppCompatActivity implements AttendeeDB.UserCa
 
     @Override
     public void onUserLoaded(User user) {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         if (user != null){
             if (user.isAdmin()){
                 bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -232,6 +233,7 @@ public class MainActivity extends AppCompatActivity implements AttendeeDB.UserCa
                 bottomNavigationView.setOnItemSelectedListener(item -> {
                     // show home page
                     replaceFragment(new EventListFragment());
+                    int iconPressed= item.getItemId();
                     // navigate to profile page
                     if (iconPressed == R.id.profile) {
                         replaceFragment(new ProfileFragment());
