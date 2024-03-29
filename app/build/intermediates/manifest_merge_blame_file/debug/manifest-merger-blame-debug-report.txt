@@ -121,7 +121,7 @@
 68-->C:\Users\nehal\AndroidStudioProjects\Collatz301\app\src\main\AndroidManifest.xml:27:13-37
 69        <activity
 69-->C:\Users\nehal\AndroidStudioProjects\Collatz301\app\src\main\AndroidManifest.xml:28:9-30:40
-70            android:name="com.example.collatzcheckin.event.CreateEvent"
+70            android:name="com.example.collatzcheckin.AdminMainActivity"
 70-->C:\Users\nehal\AndroidStudioProjects\Collatz301\app\src\main\AndroidManifest.xml:29:13-46
 71            android:exported="false" />
 71-->C:\Users\nehal\AndroidStudioProjects\Collatz301\app\src\main\AndroidManifest.xml:30:13-37

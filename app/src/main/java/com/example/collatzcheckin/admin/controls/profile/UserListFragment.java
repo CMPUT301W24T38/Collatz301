@@ -12,6 +12,7 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.collatzcheckin.AdminMainActivity;
 import com.example.collatzcheckin.MainActivity;
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeDB;
@@ -85,7 +86,7 @@ public class UserListFragment extends Fragment {
                 UserViewFragment userViewFragment = new UserViewFragment(user);
 
                 // Replace the current fragment in MainActivity with UserViewFragment
-                ((MainActivity) requireActivity()).replaceFragment(userViewFragment);
+                ((AdminMainActivity) requireActivity()).replaceFragment(userViewFragment);
             }
         });
 

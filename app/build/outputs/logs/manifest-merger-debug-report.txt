@@ -183,7 +183,7 @@ ADDED from C:\Users\nehal\AndroidStudioProjects\Collatz301\app\src\main\AndroidM
 		ADDED from C:\Users\nehal\AndroidStudioProjects\Collatz301\app\src\main\AndroidManifest.xml:27:13-37
 	android:name
 		ADDED from C:\Users\nehal\AndroidStudioProjects\Collatz301\app\src\main\AndroidManifest.xml:26:13-44
-activity#com.example.collatzcheckin.event.CreateEvent
+activity#com.example.collatzcheckin.AdminMainActivity
 ADDED from C:\Users\nehal\AndroidStudioProjects\Collatz301\app\src\main\AndroidManifest.xml:28:9-30:40
 	android:exported
 		ADDED from C:\Users\nehal\AndroidStudioProjects\Collatz301\app\src\main\AndroidManifest.xml:30:13-37

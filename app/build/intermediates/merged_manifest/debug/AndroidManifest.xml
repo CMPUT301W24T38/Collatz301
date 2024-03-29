@@ -67,7 +67,7 @@
             android:name="com.example.collatzcheckin.event.EventView"
             android:exported="false" />
         <activity
-            android:name="com.example.collatzcheckin.event.CreateEvent"
+            android:name="com.example.collatzcheckin.AdminMainActivity"
             android:exported="false" />
         <activity
             android:name="com.example.collatzcheckin.event.AttendeeList"

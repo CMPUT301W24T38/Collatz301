@@ -11,6 +11,7 @@ package com.example.collatzcheckin.admin.controls.events;
         import android.widget.Button;
         import android.widget.TextView;
 
+        import com.example.collatzcheckin.AdminMainActivity;
         import com.example.collatzcheckin.MainActivity;
         import com.example.collatzcheckin.event.Event;
 
@@ -71,7 +72,7 @@ public class AdminEventViewFragment extends Fragment {
                 // Call the removeEvent method passing event as parameter
                 administratorDB.removeEvent(event);
                 AdminEventListFragment adminEventListFragment = new AdminEventListFragment();
-                ((MainActivity) requireActivity()).replaceFragment(adminEventListFragment);
+                ((AdminMainActivity) requireActivity()).replaceFragment(adminEventListFragment);
             }
         });
 
@@ -79,7 +80,7 @@ public class AdminEventViewFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 AdminEventListFragment adminEventListFragment = new AdminEventListFragment();
-                ((MainActivity) requireActivity()).replaceFragment(adminEventListFragment);
+                ((AdminMainActivity) requireActivity()).replaceFragment(adminEventListFragment);
             }
         });
         return view;

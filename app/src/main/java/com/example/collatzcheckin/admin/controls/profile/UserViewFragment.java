@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.collatzcheckin.AdminMainActivity;
 import com.example.collatzcheckin.MainActivity;
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.admin.controls.AdministratorDB;
@@ -79,7 +80,7 @@ public class UserViewFragment extends Fragment {
                 // Call the removeEvent method passing event as parameter
                 administratorDB.removeProfile(user);
                 UserListFragment userListFragment = new UserListFragment();
-                ((MainActivity) requireActivity()).replaceFragment(userListFragment);
+                ((AdminMainActivity) requireActivity()).replaceFragment(userListFragment);
             }
         });
         deleteImageButton = view.findViewById(R.id.remove_image);
@@ -97,7 +98,7 @@ public class UserViewFragment extends Fragment {
             public void onClick(View v) {
                 // Navigate back to the user list
                 UserListFragment userListFragment = new UserListFragment();
-                ((MainActivity) requireActivity()).replaceFragment(userListFragment);
+                ((AdminMainActivity) requireActivity()).replaceFragment(userListFragment);
             }
         });
 

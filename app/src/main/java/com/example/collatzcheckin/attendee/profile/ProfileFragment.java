@@ -4,6 +4,8 @@ package com.example.collatzcheckin.attendee.profile;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,19 +15,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.example.collatzcheckin.AdminMainActivity;
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeDB;
 import com.example.collatzcheckin.attendee.AttendeeFirebaseManager;
 import com.example.collatzcheckin.attendee.User;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
+import com.example.collatzcheckin.event.EventList;
 import com.example.collatzcheckin.utils.FirebaseUserCallback;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -43,8 +49,7 @@ import java.util.HashMap;
  */
 public class ProfileFragment extends Fragment implements FirebaseUserCallback {
 
-    Button update;
-    Button remove;
+    Button update, remove, admin;
     User user;
     TextView name, email, geo, notification;
     ImageView pfp;
@@ -105,6 +110,43 @@ public class ProfileFragment extends Fragment implements FirebaseUserCallback {
 
             }
         });
+
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create and show a popup window for verification
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Verification");
+                builder.setMessage("Enter your verification code:");
+
+                final EditText input = new EditText(getActivity());
+                builder.setView(input);
+
+                builder.setPositiveButton("Verify", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String verificationCode = input.getText().toString();
+                        // Add verification logic here, currently a placeholder
+                        if (verificationCode.equals("1234")) {
+                            Intent i = new Intent(getActivity(), AdminMainActivity.class);
+                            startActivity(i);
+                        } else {
+                            // Verification failed, show an error message or handle accordingly
+                            Toast.makeText(getActivity(), "Verification failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+            }
+        });
+
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,6 +169,7 @@ public class ProfileFragment extends Fragment implements FirebaseUserCallback {
 
     private void initViews(View view) {
         update = view.findViewById(R.id.up_button);
+        admin = view.findViewById(R.id.admin_button);
         remove = view.findViewById(R.id.remove);
         name = view.findViewById(R.id.nameText);
         email = view.findViewById(R.id.emailText);
