@@ -102,7 +102,7 @@ public class AttendeeList extends AppCompatActivity {
         HashMap<String, Integer> attendeeList = new HashMap<>();
         AttendeeDB attendeeDB = new AttendeeDB();
         for (String key: attendees.keySet()) {
-            HashMap<String, String> data = attendeeDB.findUser(key);
+            HashMap<String, String> data = attendeeDB.locateUser(key);
             attendeeList.put(data.get("Name"), attendees.get(key));
         }
         return  attendeeList;

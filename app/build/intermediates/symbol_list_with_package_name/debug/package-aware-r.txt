@@ -3394,6 +3394,7 @@ id east
 id edge
 id editEmail
 id editName
+id editUsername
 id edit_event
 id edit_event_date
 id edit_event_description

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-38:/values-he/values-he.xml",
+            "outputFile": "com.example.collatzcheckin.app-mergeDebugResources-39:/values-he/values-he.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nehal\\.gradle\\caches\\transforms-3\\6eb99246325d82c9d7a724fd41703d2d\\transformed\\zxing-android-embedded-4.3.0\\res\\values-he\\values-he.xml",
+                    "source": "/Users/juanjoseph/.gradle/caches/transforms-3/6eb99246325d82c9d7a724fd41703d2d/transformed/zxing-android-embedded-4.3.0/res/values-he/values-he.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
