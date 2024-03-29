@@ -1,6 +1,0 @@
-com.example.collatzcheckin.test.app-core-1.5.0-0 C:\Users\nehal\.gradle\caches\transforms-3\7d5c733e0e783ae1c35f34178a9fff7a\transformed\core-1.5.0\res
-com.example.collatzcheckin.test.app-annotation-experimental-1.3.0-1 C:\Users\nehal\.gradle\caches\transforms-3\b19cab1b114093b1a3581de502d5f012\transformed\annotation-experimental-1.3.0\res
-com.example.collatzcheckin.test.app-androidTest-2 C:\Users\nehal\AndroidStudioProjects\Collatz301\app\build\generated\res\resValues\androidTest\debug
-com.example.collatzcheckin.test.app-mergeDebugAndroidTestResources-3 C:\Users\nehal\AndroidStudioProjects\Collatz301\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
-com.example.collatzcheckin.test.app-mergeDebugAndroidTestResources-4 C:\Users\nehal\AndroidStudioProjects\Collatz301\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
-com.example.collatzcheckin.test.app-merged_res-5 C:\Users\nehal\AndroidStudioProjects\Collatz301\app\build\intermediates\merged_res\debugAndroidTest

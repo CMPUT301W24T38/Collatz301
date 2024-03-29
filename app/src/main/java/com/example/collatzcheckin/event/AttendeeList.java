@@ -44,6 +44,7 @@ public class AttendeeList extends AppCompatActivity {
         Intent intent = getIntent();
         Event event = (Event) intent.getSerializableExtra("Event");
         AttendeeDB attendeeDB = new AttendeeDB();
+        String id = event.getEventID();
         attendees = new ArrayList<>();
         attendeeAdapter = new AttendeeArrayAdapter(this, attendees);
 
@@ -76,6 +77,14 @@ public class AttendeeList extends AppCompatActivity {
             }
         });
 
+        Button map = findViewById(R.id.map);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewMap(event);
+            }
+        });
+
 
 
 
@@ -89,14 +98,19 @@ public class AttendeeList extends AppCompatActivity {
         });
     }
 
-//    public HashMap<String, Integer> getAttendees(Map<String, Integer> attendees) {
-//        HashMap<String, Integer> attendeeList = new HashMap<>();
-//        AttendeeDB attendeeDB = new AttendeeDB();
-//        for (String key: attendees.keySet()) {
-//            User data = attendeeDB.findUser(key);
-//            attendeeList.put(data.getName(), attendees.get(key));
-//        }
-//        return  attendeeList;
-//    }
+    public HashMap<String, Integer> getAttendees(Map<String, Integer> attendees) {
+        HashMap<String, Integer> attendeeList = new HashMap<>();
+        AttendeeDB attendeeDB = new AttendeeDB();
+        for (String key: attendees.keySet()) {
+            HashMap<String, String> data = attendeeDB.findUser(key);
+            attendeeList.put(data.get("Name"), attendees.get(key));
+        }
+        return  attendeeList;
+    }
+    public void viewMap(Event event) {
+        Intent intent = new Intent(this, MapActivity.class);
+        intent.putExtra("Event", event);
+        startActivity(intent);
+    }
 
 }
