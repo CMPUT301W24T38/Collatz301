@@ -81,8 +81,10 @@ public class AttendeeDB {
             userData.put("Geo", (user.getGeolocation()).toString());
             userData.put("Notif", (user.getNotifications()).toString());
             userData.put("Pfp", user.getPfp());
-            userData.put("Longitude",String.valueOf(user.getLongitude()));
-            userData.put("Latitude",String.valueOf(user.getLatitude()));
+            if (user.getGeolocation()) {
+                userData.put("Longitude", String.valueOf(user.getLongitude()));
+                userData.put("Latitude", String.valueOf(user.getLatitude()));
+            }
 
             Log.d("Firestore", "DocumentSnapshot successfully written!");
             userRef.document(user.getUid())
@@ -93,7 +95,9 @@ public class AttendeeDB {
                             Log.d("Firestore", "DocumentSnapshot successfully written!");
                         }
                     });
-    }
+        }
+
+
 
     public void EventsSignUp(String euid, String uuid) {
         userRef.document(uuid).update("Events", FieldValue.arrayUnion(euid));
