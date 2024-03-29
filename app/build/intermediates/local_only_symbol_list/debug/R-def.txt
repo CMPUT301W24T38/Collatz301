@@ -30,10 +30,10 @@ drawable image_placeholder
 drawable profile_icon
 id add_event
 id admin_button
+id attendee_button
 id attendee_checkin_count
 id attendee_list
 id attendee_name
-id attending_button
 id back_button
 id back_button_create_event
 id back_button_event_view
@@ -57,6 +57,7 @@ id delete_user
 id done_button
 id editEmail
 id editName
+id editUsername
 id edit_event
 id edit_event_date
 id edit_event_description
@@ -76,7 +77,6 @@ id event_description_input
 id event_edit_frame
 id event_frame_view
 id event_full
-id event_list
 id event_list_date
 id event_list_title
 id event_list_view
@@ -101,7 +101,11 @@ id pfp
 id poster_image
 id profile
 id qr
+id radioGroup
 id remove
+id remove_event_poster
+id remove_image
+id scan_button
 id scanner
 id search
 id select_poster_button
@@ -117,14 +121,13 @@ id textView7
 id up_button
 id updateText
 id upload_poster_button
-id user_email
 id user_list_view
-id user_name
 id user_name_display
-id user_uid
 id username
+id view_as_user_button
 id view_attendee
 layout activity_attendee_list
+layout activity_camera
 layout activity_create_event
 layout activity_event_sign_up
 layout activity_event_view
@@ -163,6 +166,7 @@ style Base.Theme.CollatzCheckIn
 style ThemeOverlay.CollatzCheckIn.FullscreenContainer
 style Theme.CollatzCheckIn
 style Widget.Theme.CollatzCheckIn.ButtonBar.Fullscreen
+style zxing_CaptureTheme
 styleable FullscreenAttrs fullscreenBackgroundColor fullscreenTextColor
 xml backup_rules
 xml data_extraction_rules

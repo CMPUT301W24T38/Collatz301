@@ -50,7 +50,6 @@ public class UserViewFragment extends Fragment {
         pfp = view.findViewById(R.id.editpfp);
         Intent intent = requireActivity().getIntent();
         name = view.findViewById(R.id.editName);
-        username = view.findViewById(R.id.editUsername);
         email = view.findViewById(R.id.editEmail);
         geo = (Switch) view.findViewById(R.id.enablegeo);
         notif = (Switch) view.findViewById(R.id.enablenotif);
@@ -58,9 +57,6 @@ public class UserViewFragment extends Fragment {
         if (user != null) {
             if (user.getName() != null && !user.getName().isEmpty()) {
                 name.setText(user.getName());
-            }
-            if (user.getUsername() != null && !user.getUsername().isEmpty()) {
-                username.setText(user.getUsername());
             }
             if (user.getEmail() != null && !user.getEmail().isEmpty()) {
                 email.setText(user.getEmail());
@@ -91,7 +87,7 @@ public class UserViewFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 pfp.setImageResource(R.drawable.baseline_person_24);
-                StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("images/" + user.getUsername());
+                StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("images/" + user.getUid());
                 imageRef.delete();
             }
         });

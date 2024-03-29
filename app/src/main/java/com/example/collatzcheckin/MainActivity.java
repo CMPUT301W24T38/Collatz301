@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements AttendeeDB.UserCa
 
                 String uuid = authentication.identifyUser();
                 AttendeeDB db = new AttendeeDB();
-                HashMap<String,String> userData = db.findUser(uuid);
+                HashMap<String,String> userData = db.locateUser(uuid);
                 user = new User(userData.get("Uid"), userData.get("Name"), userData.get("Email"));
                 user.setAdmin(true);
                 Log.d("MainActivityAdmin", "User details: Name: " + user.getName() + ", UID: " + user.getUid() + ", Email: " + user.getEmail() + ", Admin: " + (user.isAdmin() ? "Yes" : "No"));
@@ -228,6 +228,7 @@ public class MainActivity extends AppCompatActivity implements AttendeeDB.UserCa
             }
             else {
                 Log.d("Not Admin", "Admin is false");
+                replaceFragment(new EventListFragment());
                 // creating the nav bar
                 // adds functionality to allow attendee to navigate
                 bottomNavigationView.setOnItemSelectedListener(item -> {

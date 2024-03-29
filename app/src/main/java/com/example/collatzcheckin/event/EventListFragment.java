@@ -172,26 +172,28 @@ public class EventListFragment extends Fragment {
                                     }
                                     if (querySnapshots != null) {
                                         for (QueryDocumentSnapshot doc : querySnapshots) {
-                                            if (eventIds.contains(doc.getId())) {
-                                                String eventId = doc.getId();
-                                                String eventOrganizer = doc.getString("Event Organizer");
-                                                String eventTitle = doc.getString("Event Title");
-                                                String eventDate = doc.getString("Event Date");
-                                                String eventDescription = doc.getString("Event Description");
-                                                String eventPoster = doc.getString("Event Poster");
-                                                String eventLocation = doc.getString("Event Location");
-                                                String memberLimit = doc.getString("Member Limit");
-                                                HashMap<String, String> attendees = (HashMap<String,String>) doc.get("Attendees");
-                                                int parsedMemberLimit = 0; // Default value, you can change it based on your requirements
+                                            if(eventIds != null) {
+                                                if (eventIds.contains(doc.getId())) {
+                                                    String eventId = doc.getId();
+                                                    String eventOrganizer = doc.getString("Event Organizer");
+                                                    String eventTitle = doc.getString("Event Title");
+                                                    String eventDate = doc.getString("Event Date");
+                                                    String eventDescription = doc.getString("Event Description");
+                                                    String eventPoster = doc.getString("Event Poster");
+                                                    String eventLocation = doc.getString("Event Location");
+                                                    String memberLimit = doc.getString("Member Limit");
+                                                    HashMap<String, String> attendees = (HashMap<String,String>) doc.get("Attendees");
+                                                    int parsedMemberLimit = 0; // Default value, you can change it based on your requirements
 
-                                                if (memberLimit != null && !memberLimit.isEmpty()) {
-                                                    parsedMemberLimit = Integer.parseInt(memberLimit);
+                                                    if (memberLimit != null && !memberLimit.isEmpty()) {
+                                                        parsedMemberLimit = Integer.parseInt(memberLimit);
+                                                    }
+                                                    eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId, attendees));
                                                 }
-                                                eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId, attendees));
+                                                eventArrayAdapter.notifyDataSetChanged();
                                             }
-                                        }
-                                        eventArrayAdapter.notifyDataSetChanged();
 
+                                        }
                                     }
                                 }
                             });

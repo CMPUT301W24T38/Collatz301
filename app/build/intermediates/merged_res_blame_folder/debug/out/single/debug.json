@@ -8,10 +8,6 @@
         "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\layout\\attendee_list_content.xml"
     },
     {
-        "merged": "com.example.collatzcheckin.app-merged_res-40:/layout_activity_event_sign_up.xml.flat",
-        "source": "com.example.collatzcheckin.app-main-42:/layout/activity_event_sign_up.xml"
-    },
-    {
         "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\layout_activity_update_profile.xml.flat",
         "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\layout\\activity_update_profile.xml"
     },
@@ -48,24 +44,24 @@
         "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\drawable_baseline_search_24.xml.flat",
-        "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\drawable\\baseline_search_24.xml"
+        "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\mipmap-hdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\layout_fragment_blank.xml.flat",
-        "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\layout\\fragment_blank.xml"
+        "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\drawable_baseline_search_24.xml.flat",
+        "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\drawable\\baseline_search_24.xml"
     },
     {
         "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\layout_profile_edit.xml.flat",
         "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\layout\\profile_edit.xml"
+    },
+    {
+        "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\layout_fragment_blank.xml.flat",
+        "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\layout\\fragment_blank.xml"
     },
     {
         "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\mipmap-mdpi_ic_launcher.webp.flat",
@@ -188,8 +184,16 @@
         "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\drawable\\profile_icon.xml"
     },
     {
+        "merged": "com.example.collatzcheckin.app-merged_res-40:/layout_event_view_organizer.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-42:/layout/event_view_organizer.xml"
+    },
+    {
         "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\layout_fragment_admin_user_view.xml.flat",
         "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\layout\\fragment_admin_user_view.xml"
+    },
+    {
+        "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\layout_activity_camera.xml.flat",
+        "source": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-42:\\layout\\activity_camera.xml"
     },
     {
         "merged": "C:\\Users\\nehal\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-40:\\mipmap-xhdpi_ic_launcher.webp.flat",

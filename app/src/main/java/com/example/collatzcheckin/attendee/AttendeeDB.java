@@ -109,7 +109,7 @@ public class AttendeeDB {
      * Query to add/update user data
      * @param user Object of type user that holds user data
      */
-        public void addUser(com.example.collatzcheckin.attendee.User user) {
+        public void addUser(User user) {
             HashMap<String, String> userData = new HashMap<>();
             userData.put("Name", user.getName());
             userData.put("Email", user.getEmail());
@@ -128,6 +128,37 @@ public class AttendeeDB {
                             Log.d("Firestore", "DocumentSnapshot successfully written!");
                         }
                     });
+    }
+
+    /**
+     * Query to extract user data
+     * @param uuid The unique idenitfier assigned to the user using Firebase Authenticator
+     */
+    public HashMap<String, String> locateUser(String uuid) {
+        HashMap<String, String> userData = new HashMap<>();
+        userRef.document(uuid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getString("Name"));
+                        userData.put("Name", document.getString("Name"));
+                        userData.put("Email", document.getString("Email"));
+                        userData.put("Uid", document.getString("Uid"));
+                        userData.put("Admin", document.getString("Admin"));
+
+                        Log.d(TAG, "DocumentSnapshot data: " + userData.get("Name"));
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+        return userData;
     }
 
     public void EventsSignUp(String euid, String uuid) {
