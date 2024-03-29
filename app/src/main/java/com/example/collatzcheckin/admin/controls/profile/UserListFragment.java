@@ -69,15 +69,25 @@ public class UserListFragment extends Fragment {
             }
         });
 
-//        userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3) {
-//                User user = (User) adapter.getItemAtPosition(position);
-//                // Handle user click, for example:
-//                // Show user details or navigate to user profile
-//                ((MainActivity) getActivity()).showAdminUserView(user);
-//            }
-//        });
+        userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3) {
+                // Retrieve the user object associated with the clicked item
+                User user = (User) adapter.getItemAtPosition(position);
+                Log.d("UserListFragment", "Clicked user: " + user);
+
+                if (user != null) {
+                    Log.d("UserListFragment", "User details: Name: " + user.getName() + ", UID: " + user.getUid() + ", Email: " + user.getEmail());
+                } else {
+                    Log.e("UserListFragment", "Null user object");
+                }
+                // Create a new instance of UserViewFragment with the selected user
+                UserViewFragment userViewFragment = new UserViewFragment(user);
+
+                // Replace the current fragment in MainActivity with UserViewFragment
+                ((MainActivity) requireActivity()).replaceFragment(userViewFragment);
+            }
+        });
 
         return view;
     }

@@ -12,6 +12,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 
 import java.util.ArrayList;
@@ -133,8 +135,29 @@ public class AdministratorDB {
     }
 
 
-    public void removeImage(Image image) {
-        // Code to remove image from ImageDB
+    public void removeImage(User user) {
+        if (user.getPfp() != null) {
+            // Get a reference to the Firebase Storage location of the image
+            StorageReference storageRef = FirebaseStorage.getInstance().getReferenceFromUrl(user.getPfp());
 
+            // Delete the image from Firebase Storage
+            storageRef.delete()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            // Image deleted successfully
+                            Log.d("AdministratorDB", "Image deleted successfully");
+                            // You can add additional logic here if needed
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Failed to delete the image
+                            Log.e("AdministratorDB", "Failed to delete image: " + exception.getMessage());
+                            // You can handle the failure here
+                        }
+                    });
+        }
     }
 }

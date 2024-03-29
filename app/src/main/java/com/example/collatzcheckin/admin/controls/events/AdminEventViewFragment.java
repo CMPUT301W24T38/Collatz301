@@ -11,10 +11,12 @@ package com.example.collatzcheckin.admin.controls.events;
         import android.widget.Button;
         import android.widget.TextView;
 
+        import com.example.collatzcheckin.MainActivity;
         import com.example.collatzcheckin.event.Event;
 
         import com.example.collatzcheckin.R;
         import com.example.collatzcheckin.admin.controls.AdministratorDB;
+        import com.example.collatzcheckin.admin.controls.profile.UserListFragment;
 
 
 public class AdminEventViewFragment extends Fragment {
@@ -68,16 +70,18 @@ public class AdminEventViewFragment extends Fragment {
 
                 // Call the removeEvent method passing event as parameter
                 administratorDB.removeEvent(event);
-//                ((MainActivity) getActivity()).showEventList();
+                AdminEventListFragment adminEventListFragment = new AdminEventListFragment();
+                ((MainActivity) requireActivity()).replaceFragment(adminEventListFragment);
             }
         });
 
-//        backButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ((MainActivity) getActivity()).showEventList();
-//            }
-//        });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdminEventListFragment adminEventListFragment = new AdminEventListFragment();
+                ((MainActivity) requireActivity()).replaceFragment(adminEventListFragment);
+            }
+        });
         return view;
 
     }

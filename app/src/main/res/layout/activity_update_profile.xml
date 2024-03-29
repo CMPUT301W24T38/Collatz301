@@ -81,7 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:id="@+id/admin_button"
-        android:text="Admin Login"
+        android:text="Continue as Admin"
         android:textSize="18sp"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/primary_button"

@@ -46,7 +46,7 @@ public class EventView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_view);
         Intent intent = getIntent();
-        Event event = (Event) intent.getSerializableExtra("com/example/collatzcheckin/event");
+        Event event = (Event) intent.getSerializableExtra("event");
         String[] parsedData = event.getEventDate().split(" ");
         eventTitle = findViewById(R.id.event_name);
         eventMonth = findViewById(R.id.event_month);
@@ -77,7 +77,7 @@ public class EventView extends AppCompatActivity {
 
         posterImage = findViewById(R.id.poster_image);
         //ImageView ivQR = findViewById(R.id.qr);
-        String eventid = event.getEventTitle();
+        String eventid = event.getEventID();
         storageReference = FirebaseStorage.getInstance().getReference("posters/"+eventid);
         try {
             final File localFile = File.createTempFile("images", "jpg");
