@@ -35,6 +35,7 @@ id attendee_button
 id attendee_checkin_count
 id attendee_list
 id attendee_name
+id back
 id back_button
 id back_button_create_event
 id back_button_event_view
@@ -91,6 +92,7 @@ id frame_layout
 id geo
 id geotext
 id home
+id map
 id name
 id nameText
 id name_text
@@ -131,6 +133,7 @@ layout activity_create_event
 layout activity_event_sign_up
 layout activity_event_view
 layout activity_main
+layout activity_map
 layout activity_update_profile
 layout attendee_list_content
 layout content

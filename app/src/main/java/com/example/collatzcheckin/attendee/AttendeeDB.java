@@ -140,6 +140,11 @@ public class AttendeeDB {
             userData.put("Pfp", user.getPfp());
             userData.put("GenPfp", user.getGenpfp());
             userData.put("Admin", (String.valueOf(user.isAdmin())));
+            if (user.getGeolocation()) {
+                userData.put("Longitude", String.valueOf(user.getLongitude()));
+                userData.put("Latitude", String.valueOf(user.getLatitude()));
+            }
+
             Log.d("Firestore", "DocumentSnapshot successfully written!");
             userRef.document(user.getUid())
                     .set(userData)
@@ -149,7 +154,7 @@ public class AttendeeDB {
                             Log.d("Firestore", "DocumentSnapshot successfully written!");
                         }
                     });
-    }
+        }
 
     /**
      * Query to extract user data
@@ -181,6 +186,8 @@ public class AttendeeDB {
         });
         return userData;
     }
+
+
 
     public void EventsSignUp(String euid, String uuid) {
         userRef.document(uuid).update("Events", FieldValue.arrayUnion(euid));
