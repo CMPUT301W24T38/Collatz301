@@ -3240,6 +3240,7 @@ int id animateToEnd 0x7f080050
 int id animateToStart 0x7f080051
 int id antiClockwise 0x7f080052
 int id anticipate 0x7f080053
+int id appNameText 0x7f080266
 int id arc 0x7f080054
 int id asConfigured 0x7f080055
 int id async 0x7f080056
@@ -3345,7 +3346,6 @@ int id disableIntraAutoTransition 0x7f0800b9
 int id disablePostScroll 0x7f0800ba
 int id disableScroll 0x7f0800bb
 int id disjoint 0x7f0800bc
-int id done_button 0x7f0800bd
 int id dragAnticlockwise 0x7f0800be
 int id dragClockwise 0x7f0800bf
 int id dragDown 0x7f0800c0
@@ -3730,12 +3730,10 @@ int id uniform 0x7f08023a
 int id unlabeled 0x7f08023b
 int id up 0x7f08023c
 int id up_button 0x7f08023d
-int id updateText 0x7f08023e
 int id upload_poster_button 0x7f08023f
 int id useLogo 0x7f080240
 int id user_list_view 0x7f080241
 int id user_name_display 0x7f080242
-int id username 0x7f080243
 int id vertical_only 0x7f080244
 int id view_as_user_button 0x7f080245
 int id view_attendee 0x7f080246
@@ -3747,6 +3745,7 @@ int id view_tree_saved_state_registry_owner 0x7f08024b
 int id view_tree_view_model_store_owner 0x7f08024c
 int id visible 0x7f08024d
 int id visible_removing_fragment_view_tag 0x7f08024e
+int id welcomeText 0x7f080267
 int id west 0x7f08024f
 int id wide 0x7f080250
 int id withText 0x7f080251

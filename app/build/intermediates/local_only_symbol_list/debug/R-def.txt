@@ -30,6 +30,7 @@ drawable image_placeholder
 drawable profile_icon
 id add_event
 id admin_button
+id appNameText
 id attendee_button
 id attendee_checkin_count
 id attendee_list
@@ -54,7 +55,6 @@ id container_user
 id create_event
 id delete_event
 id delete_user
-id done_button
 id editEmail
 id editName
 id editUsername
@@ -119,13 +119,12 @@ id textView5
 id textView6
 id textView7
 id up_button
-id updateText
 id upload_poster_button
 id user_list_view
 id user_name_display
-id username
 id view_as_user_button
 id view_attendee
+id welcomeText
 layout activity_attendee_list
 layout activity_camera
 layout activity_create_event

@@ -5,7 +5,8 @@ import android.util.Log;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import androidx.annotation.NonNull;
 
-import com.example.collatzcheckin.utils.FirebaseUserCallback;
+import com.example.collatzcheckin.utils.FirebaseFindUserCallback;
+import com.example.collatzcheckin.utils.SignInUserCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -48,7 +49,7 @@ public class AttendeeDB {
      * Query to extract user data
      * @param uuid The unique idenitfier assigned to the user using Firebase Authenticator
      */
-    public void findUser(String uuid, FirebaseUserCallback callback) {
+    public void findUser(String uuid, FirebaseFindUserCallback callback) {
             userRef.document(uuid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -75,6 +76,26 @@ public class AttendeeDB {
             });
         }
 
+    public void isValidUser(String uuid, SignInUserCallback callback) {
+        userRef.document(uuid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "Success");
+                        callback.onCallback(true);
+                    } else {
+                        Log.d(TAG, "No such document");
+                        callback.onCallback(false);
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                    callback.onCallback(false);
+                }
+            }
+        });
+    }
     public void loadUser(String uuid, UserCallback callback){
         userRef.document(uuid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override

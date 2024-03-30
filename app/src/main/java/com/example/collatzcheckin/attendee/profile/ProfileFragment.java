@@ -1,16 +1,11 @@
 package com.example.collatzcheckin.attendee.profile;
 
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,26 +23,19 @@ import com.bumptech.glide.Glide;
 import com.example.collatzcheckin.AdminMainActivity;
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeDB;
-import com.example.collatzcheckin.attendee.AttendeeFirebaseManager;
+import com.example.collatzcheckin.attendee.AttendeeCallbackManager;
 import com.example.collatzcheckin.attendee.User;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
-import com.example.collatzcheckin.event.EventList;
-import com.example.collatzcheckin.utils.FirebaseUserCallback;
+import com.example.collatzcheckin.utils.FirebaseFindUserCallback;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.HashMap;
 
 /**
  * ProfileFragment displays user their profile information
  */
-public class ProfileFragment extends Fragment implements FirebaseUserCallback {
+public class ProfileFragment extends Fragment implements FirebaseFindUserCallback {
 
     Button update, remove, admin;
     User user;
@@ -56,7 +44,7 @@ public class ProfileFragment extends Fragment implements FirebaseUserCallback {
     private String uuid;
     private final AnonAuthentication authentication = new AnonAuthentication();
     private final AttendeeDB attendeeDB = new AttendeeDB();
-    AttendeeFirebaseManager attendeeFirebaseManager = new AttendeeFirebaseManager();
+    AttendeeCallbackManager attendeeFirebaseManager = new AttendeeCallbackManager();
 
 
     /**
@@ -96,7 +84,7 @@ public class ProfileFragment extends Fragment implements FirebaseUserCallback {
                         Intent data = result.getData();
                         assert data != null;
                         user = (User) data.getSerializableExtra("updatedUser");
-                        attendeeFirebaseManager.readData(uuid, this);
+                        setData(user);
                     }
                 }
         );

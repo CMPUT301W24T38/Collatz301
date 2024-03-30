@@ -1,10 +1,13 @@
 package com.example.collatzcheckin.attendee.profile;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,6 +49,7 @@ public class EditProfileActivity extends AppCompatActivity {
     AttendeeDB attendeeDB = new AttendeeDB();
     User user;
     PhotoUploader photoUploader = new PhotoUploader();
+    Bitmap bitmap = null;
 
 
     /**
@@ -82,15 +86,27 @@ public class EditProfileActivity extends AppCompatActivity {
                 user.setEmail(newEmail);
                 user.setGeolocation(geo.isChecked());
                 user.setNotifications(notif.isChecked());
-
+                //user.setBitmap(bitmap);
                 if (imagePath!=null) {
-                    photoUploader.uploadProfile(user.getUid(), imagePath);
+                    photoUploader.uploadProfile(user.getUid(), imagePath, new OnSuccessListener<String>() {
+                        @Override
+                        public void onSuccess(String uri) {
+                            user.setPfp(uri);
+                            attendeeDB.addUser(user);
+                            Intent resultIntent = new Intent();
+                            resultIntent.putExtra("updatedUser", user);
+                            setResult(RESULT_OK, resultIntent);
+                            finish();
+                        }
+                    });
+                } else {
+                    attendeeDB.addUser(user);
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("updatedUser", user);
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
                 }
-                attendeeDB.addUser(user);
-                Intent resultIntent = new Intent();
-                resultIntent.putExtra("updatedUser", user);
-                setResult(RESULT_OK, resultIntent);
-                finish();
+
             }
         });
 
@@ -113,7 +129,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void getImageInImageView() {
-        Bitmap bitmap = null;
+        bitmap = null;
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imagePath);
             } catch (IOException e) {

@@ -1,5 +1,7 @@
 package com.example.collatzcheckin.attendee;
 
+import android.graphics.Bitmap;
+
 import com.example.collatzcheckin.event.Event;
 
 import java.io.Serializable;

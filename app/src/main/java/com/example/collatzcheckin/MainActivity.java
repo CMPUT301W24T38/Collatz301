@@ -59,15 +59,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        // check if user is a new or returning user
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        // if new user prompt the user to create a profile
-        if(currentUser == null) {
-            //authentication.updateUI(this);
-            Log.d(TAG, "signInAnon");
-            Intent i = new Intent(MainActivity.this, CreateProfileActivity.class);
-            startActivity(i);
-        }
+        Intent i = new Intent(MainActivity.this, CreateProfileActivity.class);
+        startActivity(i);
 
         // show home page
         replaceFragment(new BrowseEventsFragment());
@@ -90,12 +83,9 @@ public class MainActivity extends AppCompatActivity {
             if (iconPressed == R.id.scanner) {
                 replaceFragment(new CameraFragment());
             }
-
             if (iconPressed == R.id.home) {
                 replaceFragment(new EventListFragment());
             }
-            //TODO: navigate to camera so users can scan QR code
-
             return true;
         });
 

@@ -1,19 +1,12 @@
 package com.example.collatzcheckin.attendee.events;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,26 +15,18 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeDB;
-import com.example.collatzcheckin.attendee.AttendeeFirebaseManager;
+import com.example.collatzcheckin.attendee.AttendeeCallbackManager;
 import com.example.collatzcheckin.attendee.User;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
-import com.example.collatzcheckin.event.EventArrayAdapter;
 import com.example.collatzcheckin.event.EventDB;
-import com.example.collatzcheckin.utils.FirebaseUserCallback;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-
-import java.util.ArrayList;
+import com.example.collatzcheckin.utils.FirebaseFindUserCallback;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SignUpConfirmationFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SignUpConfirmationFragment extends DialogFragment implements FirebaseUserCallback {
+public class SignUpConfirmationFragment extends DialogFragment implements FirebaseFindUserCallback {
 
     private static final String ARG_PARAM1 = "euid_param";
     TextView name, email;
@@ -50,7 +35,7 @@ public class SignUpConfirmationFragment extends DialogFragment implements Fireba
     EventDB eventDB = new EventDB();
     User user;
     String euid;
-    AttendeeFirebaseManager attendeeFirebaseManager = new AttendeeFirebaseManager();
+    AttendeeCallbackManager attendeeFirebaseManager = new AttendeeCallbackManager();
     public SignUpConfirmationFragment() {
         // Required empty public constructor
     }

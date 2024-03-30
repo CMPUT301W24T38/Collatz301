@@ -5,13 +5,10 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.net.Uri;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.collatzcheckin.attendee.AttendeeDB;
-import com.example.collatzcheckin.attendee.User;
-import com.example.collatzcheckin.attendee.profile.EditProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,7 +29,7 @@ public class PhotoUploader {
     private final AttendeeDB attendeeDB = new AttendeeDB();
     public PhotoUploader(){};
 
-    public void uploadProfile(String uuid, Uri imagePathProfile) {
+    public void uploadProfile(String uuid, Uri imagePathProfile, OnSuccessListener<String> onSuccessListener) {
         if (imagePathProfile != null) {
             StorageReference storageReference = FirebaseStorage.getInstance().getReference("images/" + uuid);
             storageReference.putFile(imagePathProfile)
@@ -45,6 +42,7 @@ public class PhotoUploader {
                                     public void onSuccess(Uri uri) {
                                         Log.d(TAG, uri.toString());
                                         attendeeDB.saveProfilePhoto(uri.toString(), uuid);
+                                        onSuccessListener.onSuccess(uri.toString());
                                     }
                                 });
 
@@ -75,6 +73,46 @@ public class PhotoUploader {
                         public void onSuccess(Uri uri) {
                             Log.d(TAG, uri.toString());
                             attendeeDB.saveProfilePhoto(uri.toString(), uuid);
+                            attendeeDB.saveGenProfilePhoto(uri.toString(), uuid);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // Handle any errors getting the download URL
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    // Handle any errors downloading the file
+                    e.printStackTrace();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle exception
+        }
+    }
+
+    public void updateGenProfile(String uuid, String name) {
+        String nameLetter = String.valueOf(name.charAt(0));
+        nameLetter = nameLetter.toUpperCase();
+
+        StorageReference pfpRef = FirebaseStorage.getInstance().getReference().child("generatedpfp/" + nameLetter + ".png");
+
+        try {
+            final File localFile = File.createTempFile("temp", "png");
+
+            pfpRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    // File successfully downloaded
+                    pfpRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Log.d(TAG, uri.toString());
                             attendeeDB.saveGenProfilePhoto(uri.toString(), uuid);
                         }
                     }).addOnFailureListener(new OnFailureListener() {

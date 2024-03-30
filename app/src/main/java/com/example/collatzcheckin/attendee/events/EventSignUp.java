@@ -44,7 +44,7 @@ public class EventSignUp extends AppCompatActivity {
         SetData(event);
         limitCheck(event);
 
-        String eventid = event.getEventTitle();
+        String eventid = event.getEventID();
         storageReference = FirebaseStorage.getInstance().getReference("posters/"+eventid);
         try {
             final File localFile = File.createTempFile("images", "jpg");
