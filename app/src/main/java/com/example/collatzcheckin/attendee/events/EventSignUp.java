@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.collatzcheckin.R;
+import com.example.collatzcheckin.authentication.AnonAuthentication;
 import com.example.collatzcheckin.event.EditEventFragment;
 import com.example.collatzcheckin.event.Event;
 import com.example.collatzcheckin.event.EventArrayAdapter;
@@ -23,14 +24,16 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class EventSignUp extends AppCompatActivity {
+public class EventSignUp extends AppCompatActivity implements SignedUp{
     Uri imageUri;
     StorageReference storageReference;
-    TextView eventTitle, eventMonth, eventDay, eventTime, eventDescription, eventLocation, eventFull;
+    TextView eventTitle, eventMonth, eventDay, eventTime, eventDescription, eventLocation, eventFull, signedUp;
     ImageView posterImage;
     Button backButton, signupEvent;
     Event event;
     int signedupNum, signupLimit;
+    AnonAuthentication authentication = new AnonAuthentication();
+    String uuid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +42,12 @@ public class EventSignUp extends AppCompatActivity {
         Intent intent = getIntent();
         event = (Event) intent.getSerializableExtra("event");
         String[] parsedData = event.getEventDate().split(" ");
+        uuid = authentication.identifyUser();
 
         initViews();
         SetData(event);
         limitCheck(event);
+        signUpCheck(event);
 
         String eventid = event.getEventID();
         storageReference = FirebaseStorage.getInstance().getReference("posters/"+eventid);
@@ -87,6 +92,7 @@ public class EventSignUp extends AppCompatActivity {
         backButton =  findViewById(R.id.event_view_back_button);
         signupEvent = findViewById(R.id.sign_up);
         eventFull = findViewById(R.id.event_full);
+        signedUp = findViewById(R.id.signed_up_success);
     }
 
     private void SetData(Event event) {
@@ -117,4 +123,16 @@ public class EventSignUp extends AppCompatActivity {
         }
     }
 
+    private void signUpCheck(Event event) {
+        if(event.getAttendees().containsKey(uuid)) {
+            signupEvent.setVisibility(View.INVISIBLE);
+            signedUp.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void updateText() {
+        signupEvent.setVisibility(View.INVISIBLE);
+        signedUp.setVisibility(View.VISIBLE);
+    }
 }

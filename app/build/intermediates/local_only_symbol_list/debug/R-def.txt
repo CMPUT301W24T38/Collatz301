@@ -112,6 +112,7 @@ id scanner
 id search
 id select_poster_button
 id sign_up
+id signed_up_success
 id submit_event_edit_button
 id textView
 id textView2

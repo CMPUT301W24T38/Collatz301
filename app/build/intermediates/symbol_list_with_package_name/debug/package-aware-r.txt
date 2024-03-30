@@ -3672,6 +3672,7 @@ id showCustom
 id showHome
 id showTitle
 id sign_up
+id signed_up_success
 id sin
 id skipCollapsed
 id skipped

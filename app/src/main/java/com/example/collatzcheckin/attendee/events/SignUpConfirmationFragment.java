@@ -2,6 +2,7 @@ package com.example.collatzcheckin.attendee.events;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -36,8 +37,19 @@ public class SignUpConfirmationFragment extends DialogFragment implements Fireba
     User user;
     String euid;
     AttendeeCallbackManager attendeeFirebaseManager = new AttendeeCallbackManager();
+    private SignedUp listener;
     public SignUpConfirmationFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof SignedUp) {
+            listener = (SignedUp) context;
+        } else {
+            throw new RuntimeException(context + " must implement AddBookDialogListener");
+        }
     }
 
     /**
@@ -78,6 +90,7 @@ public class SignUpConfirmationFragment extends DialogFragment implements Fireba
                     attendeeDB.EventsSignUp(euid, uuid);
                     //add user in event table
                     eventDB.userSignUp(euid, uuid);
+                    listener.updateText();
                 }))
                 .create();
         alertDialog.show();

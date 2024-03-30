@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
 
         // show home page
-        replaceFragment(new BrowseEventsFragment());
+        replaceFragment(new EventListFragment());
 
 
         // creating the nav bar
