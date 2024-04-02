@@ -1,7 +1,5 @@
 package com.example.collatzcheckin;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -9,21 +7,19 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
-import com.example.collatzcheckin.attendee.AttendeeDB;
+
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
+import com.example.collatzcheckin.admin.controls.AdminBrowseFragment;
+import com.example.collatzcheckin.admin.controls.AdminProfileFragment;
 import com.example.collatzcheckin.admin.controls.events.AdminEventListFragment;
 import com.example.collatzcheckin.admin.controls.events.AdminEventViewFragment;
 import com.example.collatzcheckin.admin.controls.profile.UserListFragment;
 import com.example.collatzcheckin.admin.controls.profile.UserViewFragment;
 import com.example.collatzcheckin.attendee.User;
-import com.example.collatzcheckin.attendee.events.BrowseEventsFragment;
 import com.example.collatzcheckin.attendee.profile.ProfileFragment;
-import com.example.collatzcheckin.attendee.profile.CreateProfileActivity;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
 import com.example.collatzcheckin.event.CameraFragment;
 import com.example.collatzcheckin.event.EventListFragment;
@@ -32,9 +28,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.collatzcheckin.event.EditEventFragment;
 import com.example.collatzcheckin.event.Event;
 import com.example.collatzcheckin.event.EventDB;
-import com.example.collatzcheckin.event.EventList;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class AdminMainActivity extends AppCompatActivity {
 
@@ -65,21 +58,18 @@ public class AdminMainActivity extends AppCompatActivity {
             int iconPressed= item.getItemId();
             // navigate to profile page
             if (iconPressed == R.id.profile) {
-                replaceFragment(new UserListFragment());
+                replaceFragment(new AdminProfileFragment());
             }
-//            // navigate to page to browse events
-//            if (iconPressed == R.id.search) {
-//                replaceFragment(new BrowseEventsFragment());
-//            }
-//            if (iconPressed == R.id.scanner) {
-//                replaceFragment(new CameraFragment());
-//            }
-
+            // navigate to page to browse events
+            if (iconPressed == R.id.search) {
+                replaceFragment(new AdminBrowseFragment());
+            }
+            if (iconPressed == R.id.scanner) {
+                replaceFragment(new CameraFragment());
+            }
             if (iconPressed == R.id.home) {
-                replaceFragment(new AdminEventListFragment());
+                replaceFragment(new EventListFragment());
             }
-            //TODO: navigate to camera so users can scan QR code
-
             return true;
         });
 

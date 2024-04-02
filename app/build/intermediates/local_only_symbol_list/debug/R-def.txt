@@ -88,6 +88,7 @@ id event_name
 id event_time
 id event_title
 id event_view_back_button
+id events_button
 id frame_layout
 id geo
 id geotext
@@ -102,6 +103,7 @@ id organizer_button
 id pfp
 id poster_image
 id profile
+id profiles_button
 id qr
 id radioGroup
 id remove
@@ -125,7 +127,6 @@ id up_button
 id upload_poster_button
 id user_list_view
 id user_name_display
-id view_as_user_button
 id view_attendee
 id welcomeText
 layout activity_attendee_list
@@ -136,6 +137,8 @@ layout activity_event_view
 layout activity_main
 layout activity_map
 layout activity_update_profile
+layout admin_browse
+layout admin_profile_fragment
 layout attendee_list_content
 layout content
 layout event_list_content

@@ -3431,6 +3431,7 @@ id event_name
 id event_time
 id event_title
 id event_view_back_button
+id events_button
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3620,6 +3621,7 @@ id postLayout
 id poster_image
 id pressed
 id profile
+id profiles_button
 id progress_circular
 id progress_horizontal
 id qr
@@ -3769,7 +3771,6 @@ id useLogo
 id user_list_view
 id user_name_display
 id vertical_only
-id view_as_user_button
 id view_attendee
 id view_offset_helper
 id view_transition
@@ -3926,6 +3927,8 @@ layout activity_event_view
 layout activity_main
 layout activity_map
 layout activity_update_profile
+layout admin_browse
+layout admin_profile_fragment
 layout attendee_list_content
 layout bonuspack_bubble
 layout browser_actions_context_menu_page
