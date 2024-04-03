@@ -219,5 +219,8 @@ public class Event implements Serializable {
     public Map<String, String> getAttendees() {
         return attendees;
     }
+    public void setAttendees(Map<String, String> attendees) {
+        this.attendees = attendees;
+    }
 }
 

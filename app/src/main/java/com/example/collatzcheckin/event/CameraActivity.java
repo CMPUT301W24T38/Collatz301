@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -100,57 +101,84 @@ public class CameraActivity extends AppCompatActivity {
             Intent intent = getIntent();
             String uuid = intent.getStringExtra("uuid");
 
-            db.eventRef.document(result.getContents())
-                    .get()
-                    .addOnSuccessListener(documentSnapshot -> {
-                        if (documentSnapshot.exists()) {
-                            // Document found
+            String res = result.getContents();
 
-                            HashMap<String,String> attendees = (HashMap<String,String>) documentSnapshot.get("Attendees");
-                            if (attendees.containsKey(uuid)) {
-                                Log.d("TAG", "FOUND");
-                                String count = attendees.get(uuid);
-                                int parsedCount = Integer.parseInt(count) + 1;
-                                attendees.put(uuid, Integer.toString(parsedCount));
-                                db.eventRef.document(documentSnapshot.getId()).update("Attendees", attendees);
-                                builder.setMessage("You have successfully checked in to the event!");// Example value, replace with actual longitude
+            if (res.contains("_share")) {
+                String eventId = res.substring(0, res.length() - 6);
+                DocumentSnapshot docSnap = db.eventRef.document(eventId).get().getResult();
+                String eventOrganizer = docSnap.getString("Event Organizer");
+                String eventTitle = docSnap.getString("Event Title");
+                String eventDate = docSnap.getString("Event Date");
+                String eventDescription = docSnap.getString("Event Description");
+                String eventPoster = docSnap.getString("Event Poster");
+                String eventLocation = docSnap.getString("Event Location");
+                String memberLimit = docSnap.getString("Member Limit");
+                HashMap<String, String> attendees = (HashMap<String,String>) docSnap.get("Attendees");
 
-                                fusedLocationProviderClient.getLastLocation()
-                                        .addOnSuccessListener(location -> {
-                                                    if (location != null) {
-                                                        // Get latitude and longitude
-                                                        double latitude = location.getLatitude();
-                                                        double longitude = location.getLongitude();
-                                                        // Update user location in Firestore
-                                                        updateUserLocation(uuid, latitude, longitude);
-                                                    }
-                                                });
-                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                    }
-                                }).show();
+                int parsedMemberLimit = 0; // Default value, you can change it based on your requirements
+
+                if (memberLimit != null && !memberLimit.isEmpty()) {
+                    parsedMemberLimit = Integer.parseInt(memberLimit);
+                }
+
+                Event event = new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId, attendees);
+                Intent eventViewIntent = new Intent(this, EventView.class);
+                eventViewIntent.putExtra("event", event);
+                startActivity(eventViewIntent);
+
+            }
+            else {
+
+                db.eventRef.document(result.getContents())
+                        .get()
+                        .addOnSuccessListener(documentSnapshot -> {
+                            if (documentSnapshot.exists()) {
+                                // Document found
+
+                                HashMap<String, String> attendees = (HashMap<String, String>) documentSnapshot.get("Attendees");
+                                if (attendees.containsKey(uuid)) {
+                                    Log.d("TAG", "FOUND");
+                                    String count = attendees.get(uuid);
+                                    int parsedCount = Integer.parseInt(count) + 1;
+                                    attendees.put(uuid, Integer.toString(parsedCount));
+                                    db.eventRef.document(documentSnapshot.getId()).update("Attendees", attendees);
+                                    builder.setMessage("You have successfully checked in to the event!");// Example value, replace with actual longitude
+
+                                    fusedLocationProviderClient.getLastLocation()
+                                            .addOnSuccessListener(location -> {
+                                                if (location != null) {
+                                                    // Get latitude and longitude
+                                                    double latitude = location.getLatitude();
+                                                    double longitude = location.getLongitude();
+                                                    // Update user location in Firestore
+                                                    updateUserLocation(uuid, latitude, longitude);
+                                                }
+                                            });
+                                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    }).show();
+                                } else {
+                                    builder.setMessage("You have not signed up for this event!");
+                                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    }).show();
+                                }
+                            } else {
+                                // Document does not exist
+                                Log.d("TAG", "No such document");
                             }
-                            else {
-                                builder.setMessage("You have not signed up for this event!");
-                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                    }
-                                }).show();
-                            }
-                        } else {
-                            // Document does not exist
-                            Log.d("TAG", "No such document");
-                        }
-                    })
-                    .addOnFailureListener(e -> {
-                        // Handle any errors
-                        Log.d("TAG", "Error getting document", e);
-                    });
-
+                        })
+                        .addOnFailureListener(e -> {
+                            // Handle any errors
+                            Log.d("TAG", "Error getting document", e);
+                        });
+            }
         }
     });
 }

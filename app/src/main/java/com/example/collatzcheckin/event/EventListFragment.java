@@ -86,7 +86,7 @@ public class EventListFragment extends Fragment {
             {
 
                 Event event = (Event)adapter.getItemAtPosition(position);
-                change(event);
+                change(uuid, event);
             }
         });
 
@@ -206,8 +206,14 @@ public class EventListFragment extends Fragment {
     }
 
 
-    public void change(Event event) {
-        Intent myIntent = new Intent(getContext(), EventView.class);
+    public void change(String uuid, Event event) {
+        Intent myIntent;
+        if (uuid.matches(event.getEventOrganizer())) {
+            myIntent = new Intent(getContext(), EventView.class);
+        }
+        else {
+            myIntent = new Intent(getContext(), EventViewAttendee.class);
+        }
         myIntent.putExtra("event", event);
         startActivity(myIntent);
     }
@@ -215,6 +221,7 @@ public class EventListFragment extends Fragment {
     public void changeCreateEvent(String uuid) {
         Intent myIntent = new Intent(getContext(), CreateEvent.class);
         myIntent.putExtra("uuid", uuid);
+        myIntent.putExtra("events", eventDataList);
         startActivity(myIntent);
     }
 }

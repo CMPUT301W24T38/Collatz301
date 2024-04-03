@@ -3428,6 +3428,8 @@ id event_location
 id event_location_input
 id event_month
 id event_name
+id event_qr
+id event_selection
 id event_time
 id event_title
 id event_view_back_button
@@ -3623,8 +3625,10 @@ id profile
 id progress_circular
 id progress_horizontal
 id qr
+id qr_image_view
 id radio
 id radioGroup
+id radioGroup2
 id ratio
 id rectangles
 id remove
@@ -3665,6 +3669,7 @@ id select_dialog_listview
 id select_poster_button
 id selected
 id selection_type
+id share_qr
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -3734,6 +3739,7 @@ id textView4
 id textView5
 id textView6
 id textView7
+id textView8
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3772,6 +3778,7 @@ id vertical_only
 id view_as_user_button
 id view_attendee
 id view_offset_helper
+id view_qr
 id view_transition
 id view_tree_lifecycle_owner
 id view_tree_on_back_pressed_dispatcher_owner
@@ -3923,8 +3930,10 @@ layout activity_camera
 layout activity_create_event
 layout activity_event_sign_up
 layout activity_event_view
+layout activity_event_view_attendee
 layout activity_main
 layout activity_map
+layout activity_qr
 layout activity_update_profile
 layout attendee_list_content
 layout bonuspack_bubble
@@ -4022,6 +4031,7 @@ layout profile_fragment
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout spinner_dropdown_item
 layout support_simple_spinner_dropdown_item
 layout user_view_organizer
 layout zxing_barcode_scanner

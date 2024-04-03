@@ -122,6 +122,21 @@ public class EventView extends AppCompatActivity {
                         .commit();
             }
         });
+
+        Button viewQR = findViewById(R.id.view_qr);
+        viewQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View v) {
+                changeQR(event.getEventID());
+            }
+        });
+    }
+
+    private void changeQR(String eventID) {
+        Intent intent = new Intent(this, QrActivity.class);
+        intent.putExtra("id", eventID);
+        startActivity(intent);
     }
 
     public void viewAttendeesList(Event event) {
