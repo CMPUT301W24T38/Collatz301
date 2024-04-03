@@ -66,8 +66,8 @@ public class MapActivity extends AppCompatActivity {
                                                                                 DocumentSnapshot userDocument = task.getResult();
                                                                                 if (userDocument.exists()) {
                                                                                     if (userDocument.getString("Geo").equals("true")) {
-                                                                                        double latitude = (userDocument.getDouble("Latitude"));
-                                                                                        double longitude = (userDocument.getDouble("Longitude"));
+                                                                                        double latitude = Double.valueOf((userDocument.getString("Latitude")));
+                                                                                        double longitude = Double.valueOf((userDocument.getString("Longitude")));
                                                                                         GeoPoint location = new GeoPoint(latitude, longitude);
                                                                                         locations.add(location);
                                                                                         // Create marker and add it here if you want
@@ -75,8 +75,8 @@ public class MapActivity extends AppCompatActivity {
                                                                                         marker.setPosition(location);
                                                                                         marker.setTitle(userDocument.getString(("Name")));
                                                                                         mMapView.getOverlays().add(marker);
-                                                                                        mMapView.getController().setCenter(location);
                                                                                         mMapView.getController().setZoom(15);
+                                                                                        mMapView.getController().setCenter(location);
                                                                                     }
                                                                                 }
                                                                             }
