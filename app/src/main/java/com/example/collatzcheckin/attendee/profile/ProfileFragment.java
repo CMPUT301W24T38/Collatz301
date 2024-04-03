@@ -74,8 +74,7 @@ public class ProfileFragment extends Fragment implements FirebaseFindUserCallbac
         // Call readData method from FirebaseManager class
         attendeeFirebaseManager.readData(uuid, this);
 
-
-        //lauches a new activity and sends user data and recives updated info
+        //launches a new activity and sends user data and receives user info from ProfileFragment
         ActivityResultLauncher<Intent> launchEditProfileActivity = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -89,6 +88,7 @@ public class ProfileFragment extends Fragment implements FirebaseFindUserCallbac
                 }
         );
 
+        // send updated info to ProfileFragment
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,6 +99,7 @@ public class ProfileFragment extends Fragment implements FirebaseFindUserCallbac
             }
         });
 
+        // admin login
         admin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,6 +136,7 @@ public class ProfileFragment extends Fragment implements FirebaseFindUserCallbac
             }
         });
 
+        // remove pfp and set is to the generated pfp
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,6 +150,11 @@ public class ProfileFragment extends Fragment implements FirebaseFindUserCallbac
         return view;
     }
 
+    /**
+     * Fill the page with user details when is have been retrieved from Firebase
+     *
+     * @param user       User data that has been retrieved from Firebase
+     **/
     @Override
     public void onCallback(User user) {
         // Handle the retrieved user data
@@ -155,6 +162,11 @@ public class ProfileFragment extends Fragment implements FirebaseFindUserCallbac
         setData(user);
     }
 
+    /**
+     * Initializes data and views
+     *
+     * @param view           Views in the fragment
+     */
     private void initViews(View view) {
         update = view.findViewById(R.id.up_button);
         admin = view.findViewById(R.id.admin_button);
@@ -166,6 +178,11 @@ public class ProfileFragment extends Fragment implements FirebaseFindUserCallbac
         notification = view.findViewById(R.id.notiftext);
     }
 
+    /**
+     * Set Text on Fragment with user details
+     *
+     * @param user       User details
+     **/
     public void setData(User user) {
         name.setText(user.getName());
         email.setText(user.getEmail());
@@ -182,6 +199,11 @@ public class ProfileFragment extends Fragment implements FirebaseFindUserCallbac
         setPfp(user);
     }
 
+    /**
+     * Set Profile picture
+     *
+     * @param user           Logged in User
+     */
     public void setPfp(User user) {
         Glide.with(this).load(user.getPfp()).into(pfp);
     }

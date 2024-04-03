@@ -43,6 +43,9 @@
             android:name=".event.EventList"
             android:exported="false" />
         <activity
+            android:name=".event.CreateEvent"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

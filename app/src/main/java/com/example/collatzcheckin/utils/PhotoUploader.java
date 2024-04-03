@@ -55,7 +55,7 @@ public class PhotoUploader {
     }
 
 
-    public void uploadGenProfile(String uuid, String name) {
+    public void uploadGenProfile(String uuid, String name, OnSuccessListener<String> onSuccessListener) {
         String nameLetter = String.valueOf(name.charAt(0));
         nameLetter = nameLetter.toUpperCase();
 
@@ -74,6 +74,7 @@ public class PhotoUploader {
                             Log.d(TAG, uri.toString());
                             attendeeDB.saveProfilePhoto(uri.toString(), uuid);
                             attendeeDB.saveGenProfilePhoto(uri.toString(), uuid);
+                            onSuccessListener.onSuccess(uri.toString());
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -96,7 +97,7 @@ public class PhotoUploader {
         }
     }
 
-    public void updateGenProfile(String uuid, String name) {
+    public void updateGenProfile(String uuid, String name, OnSuccessListener<String> onSuccessListener) {
         String nameLetter = String.valueOf(name.charAt(0));
         nameLetter = nameLetter.toUpperCase();
 
@@ -114,6 +115,7 @@ public class PhotoUploader {
                         public void onSuccess(Uri uri) {
                             Log.d(TAG, uri.toString());
                             attendeeDB.saveGenProfilePhoto(uri.toString(), uuid);
+                            onSuccessListener.onSuccess(uri.toString());
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

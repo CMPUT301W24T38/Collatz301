@@ -29,6 +29,9 @@ import com.example.collatzcheckin.event.EditEventFragment;
 import com.example.collatzcheckin.event.Event;
 import com.example.collatzcheckin.event.EventDB;
 
+/**
+ * AdminMainActivity of the application, handles setting up the bottom nav fragment for the admin
+ */
 public class AdminMainActivity extends AppCompatActivity {
 
     private final AnonAuthentication authentication = new AnonAuthentication();
@@ -85,37 +88,6 @@ public class AdminMainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
-    }
-
-    public void showAdminEventList() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.event_frame_view, new AdminEventListFragment())
-                .addToBackStack(null)
-                .commit();
-    }
-    public void showAdminEventView(Event e) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.event_frame_view, new AdminEventViewFragment(e))
-                .addToBackStack(null)
-                .commit();
-    }
-    public void showUserList() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container_user, new UserListFragment())
-                .addToBackStack(null)
-                .commit();
-    }
-    public void showAdminUserView(User user) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container_user, new UserViewFragment(user))
-                .addToBackStack(null)
-                .commit();
-    }
-    public void showEditEvent(Event e) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.event_frame_view, new EditEventFragment(e))
-                .addToBackStack(null)
-                .commit();
     }
 
 }

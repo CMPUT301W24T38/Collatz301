@@ -23,9 +23,7 @@ import com.example.collatzcheckin.event.EventDB;
 import com.example.collatzcheckin.utils.FirebaseFindUserCallback;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link SignUpConfirmationFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * SignUpConfirmationFragment confirms user details before the sign up
  */
 public class SignUpConfirmationFragment extends DialogFragment implements FirebaseFindUserCallback {
 
@@ -38,10 +36,19 @@ public class SignUpConfirmationFragment extends DialogFragment implements Fireba
     String euid;
     AttendeeCallbackManager attendeeFirebaseManager = new AttendeeCallbackManager();
     private SignedUp listener;
+
+    /**
+     * Required empty public constructor
+     */
     public SignUpConfirmationFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * Called when the fragment is attached to a context.
+     *
+     * @param context       The context to which the fragment is attached
+     */
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -53,11 +60,11 @@ public class SignUpConfirmationFragment extends DialogFragment implements Fireba
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     * @return A new instance of fragment SignUpConfirmationFragment.
+     * Create a new instance of SignUpConfirmationFragment using the provided parameters.
+     *
+     * @param euid_param       This is the event ID
+     * @return                 A new instance of fragment SignUpConfirmationFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static SignUpConfirmationFragment newInstance(String euid_param) {
         SignUpConfirmationFragment fragment = new SignUpConfirmationFragment();
         Bundle args = new Bundle();
@@ -68,6 +75,11 @@ public class SignUpConfirmationFragment extends DialogFragment implements Fireba
 
     /**
      * OnCreateDialog create the dialog and implements functionality
+     *
+     * @param savedInstanceState       If the fragment is being re-initialized after previously
+     *                                 being shut down, this Bundle contains the data it most
+     *                                 recently supplied
+     * @return                         The created AlertDialog that represents the sign-up confirmation dialog
      **/
     @NonNull
     @Override
@@ -97,6 +109,11 @@ public class SignUpConfirmationFragment extends DialogFragment implements Fireba
         return alertDialog;
     }
 
+    /**
+     * Fill the dialog with user details when is have been retrieved from Firebase
+     *
+     * @param user       User data that has been retrieved from Firebase
+     **/
     @Override
     public void onCallback(User user) {
         // Handle the retrieved user data
@@ -104,11 +121,21 @@ public class SignUpConfirmationFragment extends DialogFragment implements Fireba
         setData(user);
     }
 
+    /**
+     * Initializes data and views
+     *
+     * @param view           Views in the fragment
+     */
     private void initViews(View view) {
         name = view.findViewById(R.id.name_text);
         email = view.findViewById(R.id.email_text);
     }
 
+    /**
+     * Set Text in Dialog Box to user details
+     *
+     * @param user       User details
+     **/
     private void setData(User user) {
         name.setText(user.getName());
         email.setText(user.getEmail());

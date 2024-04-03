@@ -29,6 +29,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
+/**
+ * BrowseEventsFragment displays all the events that the user can sign up for
+ */
 public class BrowseEventsFragment extends Fragment {
 
     ListView eventList;
@@ -38,11 +41,27 @@ public class BrowseEventsFragment extends Fragment {
     View view;
     EventDB db = new EventDB();
 
+    /**
+     * Required empty public constructor
+     */
     public BrowseEventsFragment() {
         // Required empty public constructor
     }
 
 
+    /**
+     * Called to create the BrowseEventsFragment's Inflates the fragment layout from
+     * the specified XML resource, populates the item list from the bundle arguments, and sets up UI
+     *
+     * @param inflater           The LayoutInflater object that can be used to inflate any views in
+     *                           the fragment.
+     * @param container          If non-null, this is the parent view that the fragment's UI should be
+     *                           attached to. The fragment should not add the view itself, but this can
+     *                           be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous
+     *                           saved state as given here.
+     * @return The root view of the fragment's layout hierarchy.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,6 +70,7 @@ public class BrowseEventsFragment extends Fragment {
         initViews(view);
         String uuid = authentication.identifyUser();
 
+        // gettung data to display in Listview for user to browse
         db.eventRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
@@ -89,7 +109,6 @@ public class BrowseEventsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long arg3)
             {
-
                 Event event = (Event)adapter.getItemAtPosition(position);
                 change(event);
             }
@@ -98,12 +117,22 @@ public class BrowseEventsFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Starts an activity with the view of the event details
+     *
+     * @param event           Event the user wants to view
+     */
     public void change(Event event) {
         Intent myIntent = new Intent(getActivity(), EventSignUp.class);
         myIntent.putExtra("event", event);
         startActivity(myIntent);
     }
 
+    /**
+     * Initializes data and views
+     *
+     * @param view           Views in the fragment
+     */
     private void initViews(View view) {
         eventList = view.findViewById(R.id.event_list_view);
         eventDataList = new ArrayList<>();

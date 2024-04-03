@@ -96,6 +96,9 @@
             android:name="com.example.collatzcheckin.event.EventList"
             android:exported="false" />
         <activity
+            android:name="com.example.collatzcheckin.event.CreateEvent"
+            android:exported="false" />
+        <activity
             android:name="com.example.collatzcheckin.MainActivity"
             android:exported="true" >
             <intent-filter>

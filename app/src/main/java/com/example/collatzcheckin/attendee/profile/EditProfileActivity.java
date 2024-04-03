@@ -120,17 +120,49 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String newName = name.getText().toString();
+                String oldName = user.getName();
+
                 user.setName(newName);
                 String newEmail = email.getText().toString();
                 user.setEmail(newEmail);
                 user.setGeolocation(geo.isChecked());
                 user.setNotifications(notif.isChecked());
 
+                //handling case when user uploads picture
                 if (imagePath!=null) {
                     photoUploader.uploadProfile(user.getUid(), imagePath, new OnSuccessListener<String>() {
                         @Override
                         public void onSuccess(String uri) {
                             user.setPfp(uri);
+                            attendeeDB.addUser(user);
+                            Intent resultIntent = new Intent();
+                            resultIntent.putExtra("updatedUser", user);
+                            setResult(RESULT_OK, resultIntent);
+                            finish();
+                        }
+                    });
+                    // handing case when user changes name so generated pfp will have to change
+                } else if (user.getGenpfp().equals(user.getPfp()) && !newName.equals(oldName)) {
+                    photoUploader.uploadGenProfile(user.getUid(), newName, new OnSuccessListener<String>() {
+                        @Override
+                        public void onSuccess(String uri) {
+                            user.setPfp(uri);
+                            user.setGenpfp(uri);
+                            attendeeDB.addUser(user);
+                            Intent resultIntent = new Intent();
+                            resultIntent.putExtra("updatedUser", user);
+                            setResult(RESULT_OK, resultIntent);
+                            finish();
+                        }
+                    });
+                    //handling case when user has a custom pfp and name has changed so when they
+                    // remove pfp it will display the correct letter using new name
+                } else if (!user.getGenpfp().equals(user.getPfp()) && !newName.equals(oldName)){
+                    photoUploader.updateGenProfile(user.getUid(), newName, new OnSuccessListener<String>() {
+
+                        @Override
+                        public void onSuccess(String uri) {
+                            user.setGenpfp(uri);
                             attendeeDB.addUser(user);
                             Intent resultIntent = new Intent();
                             resultIntent.putExtra("updatedUser", user);
@@ -145,7 +177,6 @@ public class EditProfileActivity extends AppCompatActivity {
                     setResult(RESULT_OK, resultIntent);
                     finish();
                 }
-
             }
         });
 
@@ -185,9 +216,6 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     };
 
-
-
-
     private void askPermission(){
         ActivityCompat.requestPermissions(EditProfileActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
     }
@@ -225,6 +253,9 @@ public class EditProfileActivity extends AppCompatActivity {
         pfp.setImageBitmap(bitmap);
     }
 
+    /**
+     * Initializes xml views
+     */
     private void initViews() {
         cancel = findViewById(R.id.cancel_button);
         confirm = findViewById(R.id.confirm_button);
@@ -235,6 +266,9 @@ public class EditProfileActivity extends AppCompatActivity {
         notif = (Switch) findViewById(R.id.enablenotif);
     }
 
+    /**
+     * Set user profile data on fragment
+     */
     private void setData() {
         if (!user.getName().equals("")){
             name.setText(user.getName());
@@ -249,6 +283,11 @@ public class EditProfileActivity extends AppCompatActivity {
         setPfp(user);
     }
 
+    /**
+     * Set Profile picture
+     *
+     * @param user           Logged in User
+     */
     public void setPfp(User user) {
         Glide.with(this).load(user.getPfp()).into(pfp);
     }

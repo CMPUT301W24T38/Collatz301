@@ -24,8 +24,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class EventSignUp extends AppCompatActivity implements SignedUp{
-    Uri imageUri;
+/**
+ * EventSignUp shows the event details and allows the user to sign up for the event
+ */
+public class EventSignUp extends AppCompatActivity implements SignedUp {
     StorageReference storageReference;
     TextView eventTitle, eventMonth, eventDay, eventTime, eventDescription, eventLocation, eventFull, signedUp;
     ImageView posterImage;
@@ -35,6 +37,12 @@ public class EventSignUp extends AppCompatActivity implements SignedUp{
     AnonAuthentication authentication = new AnonAuthentication();
     String uuid;
 
+    /**
+     * Method to run on creation of the activity. Handles displaying status of sign up
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down then this Bundle contains the data it most
+     *                           recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +88,9 @@ public class EventSignUp extends AppCompatActivity implements SignedUp{
             }
         });
     }
-
+    /**
+     * Initializes xml views
+     */
     private void initViews() {
         eventTitle = findViewById(R.id.event_name);
         eventMonth = findViewById(R.id.event_month);
@@ -95,6 +105,11 @@ public class EventSignUp extends AppCompatActivity implements SignedUp{
         signedUp = findViewById(R.id.signed_up_success);
     }
 
+    /**
+     * Displays events specific information
+     *
+     * @param event           Event the user wants to view
+     */
     private void SetData(Event event) {
         String[] parsedData = event.getEventDate().split(" ");
 
@@ -114,6 +129,11 @@ public class EventSignUp extends AppCompatActivity implements SignedUp{
         eventLocation.setText(event.getEventLocation());
     }
 
+    /**
+     * Checks if there is room in the events for another sign up
+     *
+     * @param event           Event the user wants to view
+     */
     private void limitCheck(Event event) {
         signedupNum = event.getAttendees().size();
         signupLimit = event.getMemberLimit();
@@ -123,6 +143,11 @@ public class EventSignUp extends AppCompatActivity implements SignedUp{
         }
     }
 
+    /**
+     * Checks if user has previously signed up
+     *
+     * @param event           Event the user wants to view
+     */
     private void signUpCheck(Event event) {
         if(event.getAttendees().containsKey(uuid)) {
             signupEvent.setVisibility(View.INVISIBLE);
@@ -130,6 +155,9 @@ public class EventSignUp extends AppCompatActivity implements SignedUp{
         }
     }
 
+    /**
+     * Changes text to show user they have sign up when the confirm sign up
+     */
     @Override
     public void updateText() {
         signupEvent.setVisibility(View.INVISIBLE);

@@ -6,6 +6,7 @@ import com.example.collatzcheckin.event.Event;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class User implements Serializable {
     private String genpfp;
     private String email;
     private List<Event> events;
-    private List<String> attendingEvents;
+    private String[] attendingEvents;
     private List<String> organizingEvents;
     private boolean notifications;
     private boolean geolocation;
@@ -51,6 +52,7 @@ public class User implements Serializable {
      *             item collection
      * @param name name of user
      * @param contactInformation user email
+     * @param genpfp user's deterministically generated pfp link
      */
     public User(String uid, String name, String contactInformation, String genpfp) {
         this.name = name;
@@ -58,7 +60,7 @@ public class User implements Serializable {
         this.uid = uid;
         this.events = new ArrayList<Event>();
         this.organizingEvents = new ArrayList<String>();
-        this.attendingEvents = new ArrayList<String>();
+        this.attendingEvents = new String[0];
         this.geolocation = false;
         this.notifications = false;
         this.pfp = "generated";
@@ -79,7 +81,7 @@ public class User implements Serializable {
         this.uid = uid;
         this.events = new ArrayList<Event>();
         this.organizingEvents = new ArrayList<String>();
-        this.attendingEvents = new ArrayList<String>();
+        this.attendingEvents = new String[0];
         this.geolocation = false;
         this.notifications = false;
         this.is_admin = admin; /// Need to add pfp stuff
@@ -98,7 +100,7 @@ public class User implements Serializable {
         this.uid = uid;
         this.events = new ArrayList<Event>();
         this.organizingEvents = new ArrayList<String>();
-        this.attendingEvents = new ArrayList<String>();
+        this.attendingEvents = new String[0];
         this.geolocation = false;
         this.notifications = false;
         this.pfp = "generated";
@@ -120,20 +122,31 @@ public class User implements Serializable {
         this.uid = uid;
         this.events = new ArrayList<Event>();
         this.organizingEvents = new ArrayList<String>();
-        this.attendingEvents = new ArrayList<String>();
+        this.attendingEvents = new String[0];
         this.geolocation = geolocation;
         this.notifications = notifications;
         this.pfp = "generated";
         this.genpfp = "generated";
     }
 
+    /**
+     * This constructs a user class
+     * @param name name of user
+     * @param contactInformation user email
+     * @param uid The unique identifier for this user to reference in firestore to find their
+     *              item collection
+     * @param geolocation Geolocation perferences ('true' for enabled, 'false' for disabled)
+     * @param notifications Notifications perferences ('true' for enabled, 'false' for disabled)
+     * @param pfp user's pfp (can be uploaded or deterministically generated) link
+     * @param genpfp user's deterministically generated pfp link
+     */
     public User(String name, String contactInformation, String uid, boolean geolocation, boolean notifications, String pfp, String genpfp) {
         this.name = name;
         this.email = contactInformation;
         this.uid = uid;
         this.events = new ArrayList<Event>();
         this.organizingEvents = new ArrayList<String>();
-        this.attendingEvents = new ArrayList<String>();
+        this.attendingEvents = attendingEvents;
         this.geolocation = geolocation;
         this.notifications = notifications;
         this.pfp = pfp;
@@ -190,7 +203,7 @@ public class User implements Serializable {
 
     /**
      * Getter for a list of events that the user has signed up to attend
-     * @return email
+     * @return List<Events> of attending events
      */
     public List<Event> getEvents() {
         return events;
@@ -198,24 +211,38 @@ public class User implements Serializable {
 
     /**
      * Getter for a list of events that the user has signed up to attend
-     * @return email
+     * @return List<String> of attending events
      */
-    public List<String> getAttendingEvents() {
+    public String[] getAttendingEvents() {
         return this.attendingEvents;
     }
+
+    /**
+     * Getter for a list of events that the user has organized
+     * @return List<String> of organizing events
+     */
     public List<String> getOrganizingEvents() {
         return this.organizingEvents;
     }
+
     /**
      * Add an event to the list of events that the user is attending
      * @param event event the user will be attending
      */
     public void addOrganizingEvent(Event event) {
-
         organizingEvents.add(event.getEventTitle());
     }
+
+    /**
+     * Add an event to the list of events that the user is attending
+     * @param event event the user will be attending
+     */
     public void AddAttendingEvent(Event event) {
-        attendingEvents.add(event.getEventTitle());}
+        List<String> tempList = new ArrayList<>(Arrays.asList(this.attendingEvents));
+        tempList.add(event.getEventTitle());
+        this.attendingEvents = tempList.toArray(new String[0]);
+    }
+
     /**
      * Add an event to the list of events that the user is attending
      * @param event event the user will be attending
@@ -243,23 +270,43 @@ public class User implements Serializable {
             return false;
         }
     }
+
+    /**
+     * Set user's latitude
+     * @param latitude captured latitude of user
+     */
     public void setLatitude(double latitude){
         this.latitude = latitude;
-
     }
 
+    /**
+     * Get user's latitude
+     * @return captured latitude of user
+     */
     public double getLatitude() {
         return latitude;
     }
 
+    /**
+     * Set user's longitude
+     * @param longitude captured longitude of user
+     */
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
+    /**
+     * Get user's longitude
+     * @return captured longitude of user
+     */
     public double getLongitude() {
         return longitude;
     }
 
+    /**
+     * Setter for user to change geolocation preferences
+     * @param geolocation boolean value represents if geolocation is enabled or disabled
+     */
     public void setGeolocation(boolean geolocation) {
         this.geolocation = geolocation;
     }
@@ -274,7 +321,7 @@ public class User implements Serializable {
 
     /**
      * Convert boolean value to string equivalent
-     * @return string equivalent of notification perferences
+     * @return string equivalent of notification preferences
      */
     public Boolean getNotifications() {
         if(notifications) {
@@ -285,7 +332,7 @@ public class User implements Serializable {
     }
 
     /**
-     * Setter for user to change notifcation perferences
+     * Setter for user to change notification preferences
      * @param notifications boolean value represents if notifications is enabled or disabled
      */
     public void setNotifications(boolean notifications) {
@@ -293,32 +340,49 @@ public class User implements Serializable {
     }
 
     /**
-     * Getter for unique idenifier generated by Firebase Authenicator which is then used to query for data
-     * @return unique idenifier
+     * Getter for unique identifier generated by Firebase Authenticator which is then used to query for data
+     * @return unique identifier
      */
     public String getUid() {
         return uid;
     }
 
     /**
-     * Setter for unique idenifier generated by Firebase Authenicator which is then used to query for data
-     * @param uid unique idenifier
+     * Setter for unique identifier generated by Firebase Authenticator which is then used to query for data
+     * @param uid unique identifier
      */
     public void setUid(String uid) {
         this.uid = uid;
     }
+
+    /**
+     * Getter for if user is an organizer
+     * @return boolean value represents if user is an organizer or not
+     */
     public boolean isOrganizer() {
         return isOrganizer;
     }
 
+    /**
+     * Setter for organizer permissions
+     * @param organizer boolean to distinguish organizers
+     */
     public void setOrganizer(boolean organizer) {
         isOrganizer = organizer;
     }
 
+    /**
+     * Getter for deterministically generated profile picture url
+     * @return deterministically generated profile picture url
+     */
     public String getGenpfp() {
         return genpfp;
     }
 
+    /**
+     * Setter for deterministically generated profile picture url
+     * @param genpfp deterministically generated profile picture url
+     */
     public void setGenpfp(String genpfp) {
         this.genpfp = genpfp;
     }

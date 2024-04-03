@@ -15,6 +15,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * AttendeeDB interacts with the database collectction that holds user info
@@ -22,11 +23,6 @@ import java.util.HashMap;
 public class AttendeeDB {
     private AttendeeDBConnecter userDB;
     public CollectionReference userRef;
-    private User user;
-
-    public interface UserCallback {
-        void onUserLoaded(User user);
-    }
 
     /**
      * This constructs instance of database and sets the collection to 'user'
@@ -39,7 +35,7 @@ public class AttendeeDB {
     /**
      * This returns the object 'CollectionReference' which holds information about the
      * collection that is being interacted with
-     * @return CollectionReference
+     * @return                  CollectionReference object for the 'user' collection
      */
     public CollectionReference getUserRef() {
         return userRef;
@@ -47,7 +43,8 @@ public class AttendeeDB {
 
     /**
      * Query to extract user data
-     * @param uuid The unique idenitfier assigned to the user using Firebase Authenticator
+     * @param uuid              The unique idenitfier assigned to the user using Firebase Authenticator
+     * @param callback          The callback to be invoked with the retrieved User object
      */
     public void findUser(String uuid, FirebaseFindUserCallback callback) {
             userRef.document(uuid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -76,6 +73,12 @@ public class AttendeeDB {
             });
         }
 
+    /**
+     * Checks if a user exist based on the provided UUID.
+     *
+     * @param uuid     The unique identifier assigned to the user
+     * @param callback The callback to be invoked with the validation result (true if user exists, false otherwise).
+     */
     public void isValidUser(String uuid, SignInUserCallback callback) {
         userRef.document(uuid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -96,35 +99,6 @@ public class AttendeeDB {
             }
         });
     }
-    public void loadUser(String uuid, UserCallback callback){
-        userRef.document(uuid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getString("Name"));
-                        String name = document.getString("Name");
-                        String email = document.getString("Email");
-                        String uid = document.getString("Uid");
-                        String admin = document.getString("Admin");
-                        boolean is_admin = Boolean.parseBoolean(admin);
-
-                        Log.d("Admin Check", (is_admin? "Yes" : "No"));
-
-                        Log.d(TAG, "DocumentSnapshot data: " + name);
-                        User user = new User(uid, name, email, is_admin);
-                        callback.onUserLoaded(user);
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
-    }
 
     /**
      * Query to add/update user data
@@ -132,6 +106,8 @@ public class AttendeeDB {
      */
         public void addUser(User user) {
             HashMap<String, String> userData = new HashMap<>();
+            String[] str = {};
+
             userData.put("Name", user.getName());
             userData.put("Email", user.getEmail());
             userData.put("Uid", user.getUid());
@@ -158,7 +134,7 @@ public class AttendeeDB {
 
     /**
      * Query to extract user data
-     * @param uuid The unique idenitfier assigned to the user using Firebase Authenticator
+     * @param uuid The unique identifier assigned to the user using Firebase Authenticator
      */
     public HashMap<String, String> locateUser(String uuid) {
         HashMap<String, String> userData = new HashMap<>();
@@ -187,16 +163,32 @@ public class AttendeeDB {
         return userData;
     }
 
-
-
+    /**
+     * Updates the 'Events' array field for a user in the database.
+     *
+     * @param euid              The unique identifier of the event that user will sign up for
+     * @param uuid              The unique identifier of the user
+     */
     public void EventsSignUp(String euid, String uuid) {
         userRef.document(uuid).update("Events", FieldValue.arrayUnion(euid));
     }
 
+    /**
+     * Updates the 'Pfp' field for a user in the database.
+     *
+     * @param location      The location of the profile photo to be saved
+     * @param uuid          The unique identifier of the user
+     */
     public void saveProfilePhoto(String location, String uuid) {
         userRef.document(uuid).update("Pfp", location);
     }
 
+    /**
+     * Updates the deterministically generated pfp for a user in the database.
+     *
+     * @param location The location of the generic profile photo to be saved.
+     * @param uuid     The unique identifier of the user.
+     */
     public void saveGenProfilePhoto(String location, String uuid) {
         userRef.document(uuid).update("GenPfp", location);
     }
