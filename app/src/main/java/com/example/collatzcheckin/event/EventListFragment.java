@@ -115,6 +115,8 @@ public class EventListFragment extends Fragment {
                 }
                 if (querySnapshots != null) {
                     eventDataList.clear();
+                    eventArrayAdapter.notifyDataSetChanged();
+
 
                     for (QueryDocumentSnapshot doc : querySnapshots) {
                         String organizer = doc.getString("Event Organizer");
@@ -157,6 +159,8 @@ public class EventListFragment extends Fragment {
                 }
                 if (querySnapshots != null) {
                     eventDataList.clear();
+                    eventArrayAdapter.notifyDataSetChanged();
+
 
                     for (QueryDocumentSnapshot doc : querySnapshots) {
 

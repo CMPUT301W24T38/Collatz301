@@ -3306,6 +3306,7 @@ id bubble_moreinfo
 id bubble_subdescription
 id bubble_title
 id button
+id button2
 id buttonPanel
 id cache_measures
 id callMeasure

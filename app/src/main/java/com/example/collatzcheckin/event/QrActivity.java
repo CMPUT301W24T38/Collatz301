@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
@@ -26,6 +27,7 @@ public class QrActivity extends AppCompatActivity {
     ImageView qrImage;
     RadioButton eventQr;
     RadioButton shareQr;
+    Button backButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +38,7 @@ public class QrActivity extends AppCompatActivity {
 
         eventQr = findViewById(R.id.event_qr);
         shareQr = findViewById(R.id.share_qr);
-
+        backButton = findViewById(R.id.back_button);
         getEventQR(eventid);
 
         eventQr.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +57,13 @@ public class QrActivity extends AppCompatActivity {
             }
         });
 
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void getEventQR(String eventid) {
