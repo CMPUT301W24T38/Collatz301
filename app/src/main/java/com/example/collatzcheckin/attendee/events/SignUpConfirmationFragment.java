@@ -7,13 +7,16 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.collatzcheckin.MainActivity;
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeDB;
 import com.example.collatzcheckin.attendee.AttendeeCallbackManager;
@@ -21,12 +24,14 @@ import com.example.collatzcheckin.attendee.User;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
 import com.example.collatzcheckin.event.EventDB;
 import com.example.collatzcheckin.utils.FirebaseFindUserCallback;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 /**
  * SignUpConfirmationFragment confirms user details before the sign up
  */
 public class SignUpConfirmationFragment extends DialogFragment implements FirebaseFindUserCallback {
-
     private static final String ARG_PARAM1 = "euid_param";
     TextView name, email;
     AnonAuthentication authentication = new AnonAuthentication();
@@ -103,10 +108,25 @@ public class SignUpConfirmationFragment extends DialogFragment implements Fireba
                     //add user in event table
                     eventDB.userSignUp(euid, uuid);
                     listener.updateText();
+                    subscribeToEvent(getContext(),euid);
                 }))
                 .create();
         alertDialog.show();
         return alertDialog;
+    }
+    public void subscribeToEvent(Context context, String euid){
+        FirebaseMessaging.getInstance().subscribeToTopic(euid)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = context.getString(R.string.msg_subscribed);
+                        if (!task.isSuccessful()) {
+                            msg = context.getString(R.string.msg_subscribe_failed);
+                        }
+                        Log.d("Notifications",msg);
+                    }
+                });
+
     }
 
     /**
@@ -116,9 +136,11 @@ public class SignUpConfirmationFragment extends DialogFragment implements Fireba
      **/
     @Override
     public void onCallback(User user) {
-        // Handle the retrieved user data
-        this.user = user;
-        setData(user);
+        if (isAdded()) { // Check if fragment is attached
+            // Handle the retrieved user data
+            this.user = user;
+            setData(user);
+        }
     }
 
     /**

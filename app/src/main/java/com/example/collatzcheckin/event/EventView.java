@@ -109,6 +109,13 @@ public class EventView extends AppCompatActivity {
                 viewAttendeesList(event);
             }
         });
+        Button sendNotification = findViewById(R.id.send_notification);
+        sendNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewSendNotification(event);
+            }
+        });
 
         Button editEvent = findViewById(R.id.edit_event);
         editEvent.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +130,11 @@ public class EventView extends AppCompatActivity {
             }
         });
     }
-
+    public void viewSendNotification(Event event) {
+        Intent intent = new Intent(this, SendNotification.class);
+        intent.putExtra("Event", event);
+        startActivity(intent);
+    }
     public void viewAttendeesList(Event event) {
         Intent intent = new Intent(this, AttendeeList.class);
         intent.putExtra("Event", event);

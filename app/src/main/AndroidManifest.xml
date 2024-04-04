@@ -37,6 +37,9 @@
             android:name=".event.AttendeeList"
             android:exported="false" />
         <activity
+            android:name=".event.SendNotification"
+            android:exported="false" />
+        <activity
             android:name=".event.MapActivity"
             android:exported="false" />
         <activity
@@ -80,6 +83,16 @@
             android:stateNotNeeded="true"
             android:theme="@style/zxing_CaptureTheme">
         </activity>
+        <!-- [START firebase_service] -->
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END firebase_service] -->
+
     </application>
 
 </manifest>

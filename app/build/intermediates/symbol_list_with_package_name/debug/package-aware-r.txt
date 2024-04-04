@@ -1338,7 +1338,11 @@ attr zxing_viewfinder_laser_visibility
 attr zxing_viewfinder_mask
 bool abc_action_bar_embed_tabs
 bool abc_config_actionMenuItemAllCaps
+bool enable_system_alarm_service_default
+bool enable_system_foreground_service_default
+bool enable_system_job_service_default
 bool mtrl_btn_textappearance_all_caps
+bool workmanager_test_configuration
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
 color abc_btn_colored_borderless_text_material
@@ -1389,6 +1393,8 @@ color browser_actions_text_color
 color browser_actions_title_color
 color button_material_dark
 color button_material_light
+color call_notification_answer_color
+color call_notification_decline_color
 color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
@@ -3071,6 +3077,12 @@ drawable event_list_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_arrow_back_black_24
+drawable ic_call_answer
+drawable ic_call_answer_low
+drawable ic_call_answer_video
+drawable ic_call_answer_video_low
+drawable ic_call_decline
+drawable ic_call_decline_low
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
@@ -3162,6 +3174,7 @@ drawable notification_bg_low_pressed
 drawable notification_bg_normal
 drawable notification_bg_normal_pressed
 drawable notification_icon_background
+drawable notification_oversize_large_icon_bg
 drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
@@ -3282,6 +3295,7 @@ id back
 id back_button
 id back_button_create_event
 id back_button_event_view
+id back_button_notification
 id back_button_user_view
 id barrier
 id baseline
@@ -3402,6 +3416,7 @@ id edit_event_limit
 id edit_event_location
 id edit_event_name
 id edit_query
+id edit_text_id
 id editpfp
 id elastic
 id email
@@ -3465,6 +3480,7 @@ id group_divider
 id grouping
 id groups
 id header_title
+id hide_ime_id
 id hideable
 id home
 id homeAsUp
@@ -3581,6 +3597,8 @@ id notif
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id notification_text
+id notification_title
 id notiftext
 id off
 id on
@@ -3667,6 +3685,8 @@ id select_dialog_listview
 id select_poster_button
 id selected
 id selection_type
+id send_notification
+id send_notification_button
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -3962,6 +3982,8 @@ layout fragment_edit_event
 layout fragment_event_list
 layout fragment_event_view
 layout fragment_sign_up_confirmation
+layout ime_base_split_test_activity
+layout ime_secondary_split_test_activity
 layout list_item_user
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
@@ -4025,6 +4047,7 @@ layout profile_fragment
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout send_notification_activity
 layout support_simple_spinner_dropdown_item
 layout user_view_organizer
 layout zxing_barcode_scanner
@@ -4077,6 +4100,13 @@ string bottomsheet_action_expand
 string bottomsheet_action_expand_halfway
 string bottomsheet_drag_handle_clicked
 string bottomsheet_drag_handle_content_description
+string call_notification_answer_action
+string call_notification_answer_video_action
+string call_notification_decline_action
+string call_notification_hang_up_action
+string call_notification_incoming_text
+string call_notification_ongoing_text
+string call_notification_screening_text
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
@@ -4102,6 +4132,8 @@ string common_signin_button_text_long
 string compass
 string copy_toast_msg
 string cyclemap
+string default_notification_channel_id
+string default_notification_channel_name
 string define_zxingandroidembedded
 string error_a11y_label
 string error_icon_content_description
@@ -4111,6 +4143,8 @@ string fab_transformation_sheet_behavior
 string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
+string fcm_fallback_notification_channel_label
+string fcm_message
 string fiets_nl
 string first_fix_message
 string format_distance_feet
@@ -4143,6 +4177,7 @@ string library_zxingandroidembedded_libraryVersion
 string library_zxingandroidembedded_libraryWebsite
 string library_zxingandroidembedded_licenseId
 string library_zxingandroidembedded_repositoryLink
+string log_token
 string m3_exceed_max_badge_text_suffix
 string m3_ref_typeface_brand_medium
 string m3_ref_typeface_brand_regular
@@ -4186,6 +4221,9 @@ string material_timepicker_minute
 string material_timepicker_pm
 string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
+string msg_subscribe_failed
+string msg_subscribed
+string msg_token_fmt
 string mtrl_badge_numberless_content_description
 string mtrl_checkbox_button_icon_path_checked
 string mtrl_checkbox_button_icon_path_group_name
@@ -4272,6 +4310,7 @@ string side_sheet_behavior
 string snapshot
 string states
 string status_bar_notification_info_overflow
+string subscribe_to_weather
 string topo
 string unknown
 string zxing_app_name

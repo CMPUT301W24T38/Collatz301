@@ -16,6 +16,9 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+    packaging {
+        resources.excludes.add("META-INF/DEPENDENCIES")
+    }
 
     buildTypes {
         release {
@@ -31,6 +34,14 @@ android {
 }
 
 dependencies {
+    implementation("androidx.annotation:annotation:1.7.1")
+    implementation("androidx.vectordrawable:vectordrawable-animated:1.1.0")
+    implementation("androidx.core:core-ktx:1.12.0")
+
+    // notification permissions
+    implementation("androidx.activity:activity-ktx:1.8.2")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
@@ -43,6 +54,12 @@ dependencies {
     implementation("org.osmdroid:osmdroid-android:6.1.10")
     implementation("androidx.ads:ads-identifier:1.0.0-alpha05")
     implementation("com.google.guava:guava:28.0-android")
+    //notifications
+    implementation("com.google.auth:google-auth-library-oauth2-http:1.19.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("androidx.work:work-runtime:2.9.0")
+
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation("com.google.firebase:firebase-storage:20.3.0")

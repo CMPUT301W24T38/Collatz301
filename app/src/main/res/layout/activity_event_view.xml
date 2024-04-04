@@ -128,6 +128,20 @@
 
         </TextView>
 
+        <Button
+            android:id="@+id/send_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/primary_button"
+            android:text="Send Notification"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/view_attendee"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/view_attendee"
@@ -135,11 +149,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/primary_button"
             android:text="View Attendees"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:backgroundTint="@color/primary_button"
             app:layout_constraintBottom_toTopOf="@+id/edit_event"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -150,11 +164,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/secondary_button"
             android:text="Edit Event"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:backgroundTint="@color/secondary_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

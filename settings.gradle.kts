@@ -1,3 +1,4 @@
+
 pluginManagement {
     repositories {
         google()
@@ -16,4 +17,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "CollatzCheckIn"
 include(":app")
- 
+
