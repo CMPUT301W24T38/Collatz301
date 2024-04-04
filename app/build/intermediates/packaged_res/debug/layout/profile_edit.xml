@@ -111,15 +111,36 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/editpfp"
-                android:layout_width="111dp"
-                android:layout_height="87dp"
-                android:layout_marginTop="16dp"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="122dp"
+                android:layout_height="103dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/baseline_person_24" />
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvStories"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:cardCornerRadius="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/pfp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/baseline_person_24" />
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Switch
                 android:id="@+id/enablegeo"

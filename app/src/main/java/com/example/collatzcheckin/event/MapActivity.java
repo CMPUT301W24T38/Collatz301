@@ -2,6 +2,9 @@ package com.example.collatzcheckin.event;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,6 +47,14 @@ public class MapActivity extends AppCompatActivity {
         mMapView.setBuiltInZoomControls(true);
 
         locations = new ArrayList<>();
+
+        Button exit = findViewById(R.id.back);
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                             @Override

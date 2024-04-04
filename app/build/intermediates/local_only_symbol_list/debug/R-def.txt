@@ -54,6 +54,7 @@ id constraintLayout6
 id constraintLayout7
 id container_user
 id create_event
+id cvStories
 id delete_event
 id delete_user
 id editEmail

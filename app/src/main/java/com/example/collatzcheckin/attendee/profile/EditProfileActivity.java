@@ -24,6 +24,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,7 +67,7 @@ import java.util.Locale;
 public class EditProfileActivity extends AppCompatActivity {
     Button cancel;
     Button confirm;
-    ShapeableImageView pfp;
+    ImageView pfp;
     Uri imagePath;
     TextView name, email;
     Switch geo, notif;
@@ -228,7 +229,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private void initViews() {
         cancel = findViewById(R.id.cancel_button);
         confirm = findViewById(R.id.confirm_button);
-        pfp = findViewById(R.id.editpfp);
+        pfp = findViewById(R.id.pfp);
         name = findViewById(R.id.editName);
         email = findViewById(R.id.editEmail);
         geo = (Switch) findViewById(R.id.enablegeo);
