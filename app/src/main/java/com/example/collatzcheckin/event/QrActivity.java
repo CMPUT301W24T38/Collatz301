@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +22,7 @@ import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -28,6 +32,7 @@ public class QrActivity extends AppCompatActivity {
     RadioButton eventQr;
     RadioButton shareQr;
     Button backButton;
+    Button shareButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +44,17 @@ public class QrActivity extends AppCompatActivity {
         eventQr = findViewById(R.id.event_qr);
         shareQr = findViewById(R.id.share_qr);
         backButton = findViewById(R.id.back_button);
+        shareButton = findViewById(R.id.share_button);
         getEventQR(eventid);
+
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View v) {
+                share();
+            }
+        });
+
 
         eventQr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +79,23 @@ public class QrActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void share() {
+        Uri imageUri = getImageUriFromImageView(qrImage);
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("image/*");
+        shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Body");
+        startActivity(Intent.createChooser(shareIntent, "Share"));
+    }
+    private Uri getImageUriFromImageView(ImageView imageView) {
+        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Image Description", null);
+        return Uri.parse(path);
     }
 
     public void getEventQR(String eventid) {
