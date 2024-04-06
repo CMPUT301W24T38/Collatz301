@@ -187,14 +187,14 @@ public class ProfileFragment extends Fragment implements FirebaseFindUserCallbac
         name.setText(user.getName());
         email.setText(user.getEmail());
         if(user.getGeolocation()) {
-            geo.setText("enabled");
+            geo.setText("Enabled");
         } else {
-            geo.setText("disabled");
+            geo.setText("Disabled");
         }
         if(user.getNotifications()) {
-            notification.setText("enabled");
+            notification.setText("Enabled");
         } else {
-            notification.setText("disabled");
+            notification.setText("Disabled");
         }
         setPfp(user);
     }

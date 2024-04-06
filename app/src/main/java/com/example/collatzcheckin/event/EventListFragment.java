@@ -160,7 +160,7 @@ public class EventListFragment extends Fragment {
 
                     for (QueryDocumentSnapshot doc : querySnapshots) {
 
-                        if (doc.getId().matches(uuid)) {
+                        if (doc.getId().equals(uuid)) {
                             List<String> eventIds = (List<String>) doc.get("Events");
 
                             db.eventRef.addSnapshotListener(new EventListener<QuerySnapshot>() {

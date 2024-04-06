@@ -16,8 +16,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 import android.Manifest;
@@ -69,6 +71,13 @@ import okhttp3.ResponseBody;
  * MainActivity of the application, handles setting up the bottom nav fragment and the user
  */
 public class MainActivity extends AppCompatActivity {
+
+    private final AnonAuthentication authentication = new AnonAuthentication();
+    private User user;
+    private Button viewAttendeeButton;
+    private ArrayList<String> data;
+    EventDB db = new EventDB();
+
     /**
      * Method to run on creation of the activity. Handles user authentication and creates the bottomnav fragment
      * @param savedInstanceState If the activity is being re-initialized after

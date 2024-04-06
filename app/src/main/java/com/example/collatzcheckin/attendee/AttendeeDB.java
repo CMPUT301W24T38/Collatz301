@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 
@@ -35,7 +36,7 @@ public class AttendeeDB {
     /**
      * This returns the object 'CollectionReference' which holds information about the
      * collection that is being interacted with
-     * @return                  CollectionReference object for the 'user' collection
+     * @return  CollectionReference object for the 'user' collection
      */
     public CollectionReference getUserRef() {
         return userRef;
@@ -99,6 +100,35 @@ public class AttendeeDB {
             }
         });
     }
+    public void loadUser(String uuid, UserCallback callback){
+        userRef.document(uuid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getString("Name"));
+                        String name = document.getString("Name");
+                        String email = document.getString("Email");
+                        String uid = document.getString("Uid");
+                        String admin = document.getString("Admin");
+                        boolean is_admin = Boolean.parseBoolean(admin);
+
+                        Log.d("Admin Check", (is_admin? "Yes" : "No"));
+
+                        Log.d(TAG, "DocumentSnapshot data: " + name);
+                        User user = new User(uid, name, email, is_admin);
+                        callback.onUserLoaded(user);
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+    }
 
     /**
      * Query to add/update user data
@@ -131,6 +161,23 @@ public class AttendeeDB {
                         }
                     });
         }
+        public void updateUser(User user){
+            DocumentReference ref = userDB.db.collection("user").document(user.getUid());
+            ref.update("Name",user.getName());
+            ref.update("Email",user.getEmail());
+            ref.update("Geo",user.getGeolocation().toString());
+            ref.update("Notif",user.getNotifications().toString());
+            if (user.getGeolocation()){
+                ref.update("Latitude",String.valueOf(user.getLatitude()));
+                ref.update("Longitude",String.valueOf(user.getLongitude()));
+            } else {
+                ref.update("Latitude",String.valueOf(0.00));
+                ref.update("Longitude",String.valueOf(0.00));
+
+            }
+
+        }
+
 
     /**
      * Query to extract user data

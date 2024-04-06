@@ -27,6 +27,10 @@
         <activity
             android:name=".attendee.events.EventSignUp"
             android:exported="false" />
+        <activity android:name=".event.CreateEvent"
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".event.EventView"
             android:exported="false" />

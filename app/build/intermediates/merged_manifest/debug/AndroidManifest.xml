@@ -82,6 +82,10 @@
             android:name="com.example.collatzcheckin.attendee.events.EventSignUp"
             android:exported="false" />
         <activity
+            android:name="com.example.collatzcheckin.event.CreateEvent"
+            android:exported="false" >
+        </activity>
+        <activity
             android:name="com.example.collatzcheckin.event.EventView"
             android:exported="false" />
         <activity
