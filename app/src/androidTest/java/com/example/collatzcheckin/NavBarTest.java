@@ -17,8 +17,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class NavBarTest 
-{
+public class NavBarTest {
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Rule
     public ActivityScenarioRule<MainActivity> scenario = new ActivityScenarioRule<MainActivity>(MainActivity.class);

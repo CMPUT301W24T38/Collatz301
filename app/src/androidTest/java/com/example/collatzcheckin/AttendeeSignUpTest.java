@@ -43,7 +43,6 @@ public class AttendeeSignUpTest {
         Thread.sleep(7000);
         Log.e("ESPRESSOLOGIN", String.valueOf(mAuth.getUid()));
     }
-
     @Test
     public void signUp() throws InterruptedException {
         Thread.sleep(5000);

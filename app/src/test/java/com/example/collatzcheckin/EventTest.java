@@ -13,7 +13,6 @@ import static org.junit.Assert.assertNull;
 import com.example.collatzcheckin.event.Event;
 
 public class EventTest {
-
     private Event event;
 
     @Before
