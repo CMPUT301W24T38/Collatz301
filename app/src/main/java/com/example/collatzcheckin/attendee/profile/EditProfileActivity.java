@@ -74,6 +74,7 @@ public class EditProfileActivity extends AppCompatActivity {
     AttendeeDB attendeeDB = new AttendeeDB();
     User user;
     PhotoUploader photoUploader = new PhotoUploader();
+    private boolean geoenabled;
     private FusedLocationProviderClient fusedLocationClient;
     private final static int REQUEST_CODE = 100;
 
@@ -93,6 +94,17 @@ public class EditProfileActivity extends AppCompatActivity {
         user = (User) intent.getSerializableExtra("user");
         initViews();
         setData();
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (user.getGeolocation()) {
+                geoenabled = true;
+            }else{
+                geoenabled = false;
+            }
+        } else {
+            geoenabled = false;
+        }
+
+        geo.setChecked(geoenabled);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -102,7 +114,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 if (isChecked) {
                     requestLocationUpdates();
                 } else {
+                    geo.setChecked(false);
                     stopLocationUpdates();
+
                 }
             }
         });
@@ -132,7 +146,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(String uri) {
                             user.setPfp(uri);
-                            attendeeDB.addUser(user);
+                            attendeeDB.updateUser(user);
                             Intent resultIntent = new Intent();
                             resultIntent.putExtra("updatedUser", user);
                             setResult(RESULT_OK, resultIntent);
@@ -140,7 +154,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    attendeeDB.addUser(user);
+                    attendeeDB.updateUser(user);
                     Intent resultIntent = new Intent();
                     resultIntent.putExtra("updatedUser", user);
                     setResult(RESULT_OK, resultIntent);
@@ -170,6 +184,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void stopLocationUpdates() {
         fusedLocationClient.removeLocationUpdates(locationCallback);
+
     }
 
     private final LocationCallback locationCallback = new LocationCallback() {
@@ -180,11 +195,16 @@ public class EditProfileActivity extends AppCompatActivity {
             if (location != null) {
                 double latitude = location.getLatitude();
                 double longitude = location.getLongitude();
+                // Update user's latitude and longitude
                 user.setLatitude(latitude);
                 user.setLongitude(longitude);
+            } else {
+                Log.e(TAG, "Location is null");
+                // Handle null location
             }
         }
     };
+
 
 
 
@@ -198,10 +218,12 @@ public class EditProfileActivity extends AppCompatActivity {
 
         if (requestCode==REQUEST_CODE){
             if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                geo.setChecked(true);
                 requestLocationUpdates();
             }
             else{
                 Toast.makeText(this,"Required Permission",Toast.LENGTH_SHORT).show();
+
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -244,8 +266,6 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!user.getEmail().equals("")){
             email.setText(user.getEmail());
         }
-
-        geo.setChecked(user.isGeolocation());
         notif.setChecked(user.isNotifications());
         setPfp(user);
     }

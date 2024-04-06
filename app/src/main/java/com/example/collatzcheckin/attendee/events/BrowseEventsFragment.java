@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,6 +39,7 @@ public class BrowseEventsFragment extends Fragment {
     ArrayList<Event> eventDataList;
     View view;
     EventDB db = new EventDB();
+    SearchView searchView;
 
     public BrowseEventsFragment() {
         // Required empty public constructor
@@ -50,6 +53,7 @@ public class BrowseEventsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_browse_events, container, false);
         initViews(view);
         String uuid = authentication.identifyUser();
+        searchView = view.findViewById(R.id.search_view);
 
         db.eventRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -94,6 +98,30 @@ public class BrowseEventsFragment extends Fragment {
                 change(event);
             }
         });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                String userInput = newText.toLowerCase();
+                ArrayList<Event> filteredEvents = new ArrayList<>();
+
+                for (Event event : eventDataList) {
+                    if (event.getEventTitle().toLowerCase().contains(userInput)) {
+                        filteredEvents.add(event);
+                    }
+                }
+
+                // Update the adapter with filtered data
+                eventArrayAdapter = new EventArrayAdapter(getActivity(), filteredEvents);
+                eventList.setAdapter(eventArrayAdapter);
+
+                return true;
+            }
+        });
 
         return view;
     }
@@ -106,6 +134,7 @@ public class BrowseEventsFragment extends Fragment {
 
     private void initViews(View view) {
         eventList = view.findViewById(R.id.event_list_view);
+        searchView = view.findViewById(R.id.search_view);
         eventDataList = new ArrayList<>();
         eventArrayAdapter = new EventArrayAdapter(getActivity(), eventDataList);
         eventList.setAdapter(eventArrayAdapter);

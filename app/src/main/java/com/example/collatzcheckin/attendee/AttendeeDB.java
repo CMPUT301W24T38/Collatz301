@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 
@@ -22,6 +23,7 @@ import java.util.HashMap;
 public class AttendeeDB {
     private AttendeeDBConnecter userDB;
     public CollectionReference userRef;
+    public static boolean location;
     private User user;
 
     public interface UserCallback {
@@ -155,6 +157,23 @@ public class AttendeeDB {
                         }
                     });
         }
+        public void updateUser(User user){
+            DocumentReference ref = userDB.db.collection("user").document(user.getUid());
+            ref.update("Name",user.getName());
+            ref.update("Email",user.getEmail());
+            ref.update("Geo",user.getGeolocation().toString());
+            ref.update("Notif",user.getNotifications().toString());
+            if (user.getGeolocation()){
+                ref.update("Latitude",String.valueOf(user.getLatitude()));
+                ref.update("Longitude",String.valueOf(user.getLongitude()));
+            } else {
+                ref.update("Latitude",String.valueOf(0.00));
+                ref.update("Longitude",String.valueOf(0.00));
+
+            }
+
+        }
+
 
     /**
      * Query to extract user data

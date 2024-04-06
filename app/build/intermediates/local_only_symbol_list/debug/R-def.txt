@@ -111,6 +111,7 @@ id remove_image
 id scan_button
 id scanner
 id search
+id search_view
 id select_poster_button
 id sign_up
 id signed_up_success
@@ -166,6 +167,7 @@ string google_crash_reporting_api_key
 string google_storage_bucket
 string hello_blank_fragment
 string project_id
+style AppTheme
 style Base.Theme.CollatzCheckIn
 style ThemeOverlay.CollatzCheckIn.FullscreenContainer
 style Theme.CollatzCheckIn
