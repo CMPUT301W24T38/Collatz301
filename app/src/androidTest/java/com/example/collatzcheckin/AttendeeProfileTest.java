@@ -1,7 +1,9 @@
 package com.example.collatzcheckin;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -9,6 +11,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import android.util.Log;
 
+import androidx.test.espresso.Espresso;
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,8 +21,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class NavBarTest 
-{
+public class AttendeeProfileTest {
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Rule
     public ActivityScenarioRule<MainActivity> scenario = new ActivityScenarioRule<MainActivity>(MainActivity.class);
@@ -38,15 +41,21 @@ public class NavBarTest
     }
 
     @Test
-    public void multipleTransition() throws InterruptedException {
-        Thread.sleep(5000);
-        //click nav bar
+    public void profileActivity() throws InterruptedException {
+        Thread.sleep(1000);
+        //click profile page
         onView(withId(R.id.profile)).perform(click());
         Thread.sleep(5000);
-        //click events page
-        onView(withId(R.id.home)).perform(click());
+        //click on update
+        onView(withId(R.id.up_button)).perform(click());
         Thread.sleep(5000);
-        //check if on events page
-        onView(withText("Your Events")).check(matches(isDisplayed()));
+        //Update user info
+        onView(withId(R.id.editName)).perform(clearText(), typeText("FirstName LastName"));
+        onView(withId(R.id.editEmail)).perform(typeText("Email"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.confirm_button)).perform(click());
+        Thread.sleep(2000);
+        onView(withText("FirstName LastName")).check(matches(isDisplayed()));
     }
+
 }
