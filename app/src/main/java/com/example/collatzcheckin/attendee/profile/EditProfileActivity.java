@@ -74,6 +74,7 @@ public class EditProfileActivity extends AppCompatActivity {
     AttendeeDB attendeeDB = new AttendeeDB();
     User user;
     PhotoUploader photoUploader = new PhotoUploader();
+    private boolean geoenabled;
     private FusedLocationProviderClient fusedLocationClient;
     private final static int REQUEST_CODE = 100;
 
@@ -162,7 +163,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         public void onSuccess(String uri) {
                             user.setPfp(uri);
                             user.setGenpfp(uri);
-                            attendeeDB.addUser(user);
+                            attendeeDB.updateUser(user);
                             Intent resultIntent = new Intent();
                             resultIntent.putExtra("updatedUser", user);
                             setResult(RESULT_OK, resultIntent);
@@ -177,7 +178,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(String uri) {
                             user.setGenpfp(uri);
-                            attendeeDB.addUser(user);
+                            attendeeDB.updateUser(user);
                             Intent resultIntent = new Intent();
                             resultIntent.putExtra("updatedUser", user);
                             setResult(RESULT_OK, resultIntent);
@@ -252,7 +253,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 requestLocationUpdates();
             }
             else{
-                Toast.makeText(this,"Required Permission",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Please enable location services from settings",Toast.LENGTH_SHORT).show();
 
             }
         }

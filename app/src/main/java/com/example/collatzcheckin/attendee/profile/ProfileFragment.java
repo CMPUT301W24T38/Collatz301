@@ -1,10 +1,12 @@
 package com.example.collatzcheckin.attendee.profile;
 
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
@@ -31,6 +34,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * ProfileFragment displays user their profile information
@@ -186,7 +190,7 @@ public class ProfileFragment extends Fragment implements FirebaseFindUserCallbac
     public void setData(User user) {
         name.setText(user.getName());
         email.setText(user.getEmail());
-        if(user.getGeolocation()) {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             geo.setText("Enabled");
         } else {
             geo.setText("Disabled");

@@ -245,8 +245,15 @@ public class CreateEvent extends AppCompatActivity {
         String description = eventDescription.getText().toString();
         String limit = eventLimit.getText().toString();
 
-        if(title.matches("") || date.matches("") || location.matches("") || description.matches("")  || limit.matches("") || isNumeric(limit) == false) {
-            Toast.makeText(this, "Invalid fields", Toast.LENGTH_LONG).show();
+        if(title.matches("") || date.matches("") || location.matches("") || description.matches("") ) {
+            Toast.makeText(this, "Please Complete All Fields", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (limit.matches("")){
+            limit = "999";
+        }
+        if (!isNumeric(limit)){
+            Toast.makeText(this, "Please enter a number for your event limit", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -291,6 +298,7 @@ public class CreateEvent extends AppCompatActivity {
         byte[] shareQrData = convertToByteArray(shareQr);
         UploadTask shareUploadTask = shareQrRef.putBytes(shareQrData);
         UploadTask uploadTask = imgRef.putBytes(qrData);
+        String finalLimit = limit;
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
@@ -303,7 +311,7 @@ public class CreateEvent extends AppCompatActivity {
 
                 //Upload event with entered fields
                 String uri = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-                Event event = new Event(title, uuid, date, description, uri, location, Integer.parseInt(limit), id, new HashMap<String,String>());
+                Event event = new Event(title, uuid, date, description, uri, location, Integer.parseInt(finalLimit), id, new HashMap<String,String>());
                 db.addEvent(event);
                 finish();
             }
