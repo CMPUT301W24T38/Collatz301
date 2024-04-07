@@ -10,7 +10,7 @@
         android:id="@+id/cardView"
         android:layout_width="354dp"
         android:layout_height="485dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         app:cardCornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,10 +38,10 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="232dp"
                 android:hint="Email"
+                android:inputType="textEmailAddress"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="HardcodedText"
-                android:inputType="textEmailAddress">
+                tools:ignore="HardcodedText">
 
             </EditText>
 
@@ -52,10 +52,10 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="176dp"
                 android:hint="Username"
+                android:inputType="text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="HardcodedText"
-                android:inputType="text">
+                tools:ignore="HardcodedText">
 
             </EditText>
 
@@ -103,10 +103,10 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="124dp"
                 android:hint="Name"
+                android:inputType="text"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="HardcodedText"
-                android:inputType="text">
+                tools:ignore="HardcodedText">
 
             </EditText>
 
@@ -178,11 +178,14 @@
 
 
     <Button
-    android:id="@+id/back_button_user_view"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="BACK"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/back_button_user_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/secondary_button"
+        android:text="BACK"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

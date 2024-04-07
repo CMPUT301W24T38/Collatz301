@@ -21,6 +21,7 @@ import com.example.collatzcheckin.event.Event;
 import com.example.collatzcheckin.event.EventArrayAdapter;
 import com.example.collatzcheckin.event.EventDB;
 import com.example.collatzcheckin.event.EventView;
+import com.example.collatzcheckin.event.EventViewAttendee;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -43,6 +44,7 @@ public class BrowseEventsFragment extends Fragment {
     View view;
     EventDB db = new EventDB();
     SearchView searchView;
+
 
     /**
      * Required empty public constructor
@@ -151,7 +153,13 @@ public class BrowseEventsFragment extends Fragment {
      * @param event           Event the user wants to view
      */
     public void change(Event event) {
-        Intent myIntent = new Intent(getActivity(), EventSignUp.class);
+        Intent myIntent;
+        if (event.getEventOrganizer().equals(authentication.identifyUser())){
+                myIntent = new Intent(getContext(), EventView.class);
+            }
+            else {
+                myIntent = new Intent(getContext(), EventViewAttendee.class);
+            }
         myIntent.putExtra("event", event);
         startActivity(myIntent);
     }

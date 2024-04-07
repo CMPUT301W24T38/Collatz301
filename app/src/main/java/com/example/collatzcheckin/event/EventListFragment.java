@@ -217,10 +217,10 @@ public class EventListFragment extends Fragment {
                                                     }
                                                     eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId, attendees));
                                                 }
-                                                eventArrayAdapter.notifyDataSetChanged();
                                             }
 
                                         }
+                                        eventArrayAdapter.notifyDataSetChanged();
                                     }
                                 }
                             });

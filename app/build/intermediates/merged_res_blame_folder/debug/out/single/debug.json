@@ -92,6 +92,10 @@
         "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_event_sign_up.xml"
     },
     {
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_fragment_browse_events.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/fragment_browse_events.xml"
+    },
+    {
         "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_profile_icon.xml.flat",
         "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/profile_icon.xml"
     },
@@ -162,10 +166,6 @@
     {
         "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-xxhdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_activity_qr.xml.flat",
-        "source": "com.example.collatzcheckin.app-main-57:/layout/activity_qr.xml"
     },
     {
         "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_ic_launcher_foreground.xml.flat",
