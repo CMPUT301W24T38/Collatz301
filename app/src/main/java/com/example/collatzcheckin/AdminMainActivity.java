@@ -32,7 +32,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.collatzcheckin.event.EditEventFragment;
 import com.example.collatzcheckin.event.Event;
 import com.example.collatzcheckin.event.EventDB;
-import com.example.collatzcheckin.event.EventList;
+//import com.example.collatzcheckin.event.EventList;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

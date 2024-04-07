@@ -33,6 +33,12 @@ public class QrActivity extends AppCompatActivity {
     RadioButton shareQr;
     Button backButton;
     Button shareButton;
+    /**
+     * displays the event qr info and allows for them to be shared
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down then this Bundle contains the data it most
+     *                           recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +46,13 @@ public class QrActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String eventid = intent.getStringExtra("id");
         qrImage = findViewById(R.id.qr_image_view);
-
         eventQr = findViewById(R.id.event_qr);
         shareQr = findViewById(R.id.share_qr);
         backButton = findViewById(R.id.back_button);
         shareButton = findViewById(R.id.share_button);
         getEventQR(eventid);
 
+        //opens share intent
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -55,7 +61,7 @@ public class QrActivity extends AppCompatActivity {
             }
         });
 
-
+        //Get event qr image
         eventQr.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -64,6 +70,7 @@ public class QrActivity extends AppCompatActivity {
             }
         });
 
+        //Get share qr image
         shareQr.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -71,7 +78,7 @@ public class QrActivity extends AppCompatActivity {
                 getEventQR(eventid + "_share");
             }
         });
-
+        //Go back to event view
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -81,6 +88,9 @@ public class QrActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Opens the share qr intent
+     */
     private void share() {
         Uri imageUri = getImageUriFromImageView(qrImage);
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
@@ -90,6 +100,11 @@ public class QrActivity extends AppCompatActivity {
         shareIntent.putExtra(Intent.EXTRA_TEXT, "Body");
         startActivity(Intent.createChooser(shareIntent, "Share"));
     }
+    /**
+     * Converts image to URI for sharing
+     * @param imageView
+     * @return uri
+     */
     private Uri getImageUriFromImageView(ImageView imageView) {
         Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
@@ -98,6 +113,10 @@ public class QrActivity extends AppCompatActivity {
         return Uri.parse(path);
     }
 
+    /**
+     * Pulls event qr  or share qr image from firestore
+     * @param eventid
+     */
     public void getEventQR(String eventid) {
         storageReference = FirebaseStorage.getInstance().getReference("qr/"+eventid+".jpg");
         try {

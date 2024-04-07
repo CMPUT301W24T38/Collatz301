@@ -36,7 +36,7 @@ public class EventView extends AppCompatActivity {
 
 
     /**
-     * Method to run on creation of the activity. Handles user profile editing abilities
+     * displays all event info for the organizer
      * @param savedInstanceState If the activity is being re-initialized after
      *                           previously being shut down then this Bundle contains the data it most
      *                           recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
@@ -70,14 +70,13 @@ public class EventView extends AppCompatActivity {
         eventDescription = findViewById(R.id.event_description);
         eventDescription.setText(event.getEventDescription());
 
-
-
         eventLocation = findViewById(R.id.event_location);
         eventLocation.setText(event.getEventLocation());
 
         posterImage = findViewById(R.id.poster_image);
-        //ImageView ivQR = findViewById(R.id.qr);
         String eventid = event.getEventID();
+
+        //Populate image view (if any image was selected)
         storageReference = FirebaseStorage.getInstance().getReference("posters/"+eventid);
         try {
             final File localFile = File.createTempFile("images", "jpg");
@@ -90,11 +89,11 @@ public class EventView extends AppCompatActivity {
             });
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle exception
         }
 
         Button backButton =  findViewById(R.id.event_view_back_button);
 
+        //Go back to event list
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,6 +101,7 @@ public class EventView extends AppCompatActivity {
             }
         });
 
+        //Go to attendee list
         Button viewAttendees = findViewById(R.id.view_attendee);
         viewAttendees.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +110,7 @@ public class EventView extends AppCompatActivity {
             }
         });
 
+        //Goto edit event
         Button editEvent = findViewById(R.id.edit_event);
         editEvent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,12 +134,21 @@ public class EventView extends AppCompatActivity {
         });
     }
 
+    /**
+     * Change to qr activity
+     * @param eventID
+     */
+
     private void changeQR(String eventID) {
         Intent intent = new Intent(this, QrActivity.class);
         intent.putExtra("id", eventID);
         startActivity(intent);
     }
 
+    /**
+     * Change to AttendeesList activity
+     * @param event
+     */
     public void viewAttendeesList(Event event) {
         Intent intent = new Intent(this, AttendeeList.class);
         intent.putExtra("Event", event);

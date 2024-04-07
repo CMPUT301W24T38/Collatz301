@@ -80,15 +80,16 @@
                 android:id="@+id/attendee_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Attendee"
                 android:checked="true"
-                />
+                android:text="Attendee"
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/organizer_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Organizer" />
+                android:text="Organizer"
+                android:textSize="20sp" />
 
 
         </RadioGroup>

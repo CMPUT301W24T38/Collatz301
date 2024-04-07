@@ -42,7 +42,6 @@ id back_button_event_view
 id back_button_user_view
 id bottomNavigationView
 id button
-id button2
 id cancel_button
 id cardView
 id confirm_button
@@ -116,6 +115,7 @@ id scan_button
 id scanner
 id search
 id select_poster_button
+id share_button
 id share_qr
 id sign_up
 id signed_up_success

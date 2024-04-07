@@ -36,11 +36,19 @@ import java.util.HashMap;
 public class CameraFragment extends Fragment {
     View view;
 
+
+    /**
+     * Method to run on creation of the fragment. Responsible for displaying the camera fragment
+     * @param inflater container
+     * @param container
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view =  inflater.inflate(R.layout.activity_camera, container, false);
+
+        //Open camera
         Button scanButton = view.findViewById(R.id.scan_button);
         scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +59,10 @@ public class CameraFragment extends Fragment {
         });
         return view;
     }
-
+    /**
+     * Method to open up camera
+     */
+    //Open camera with settings
     private void scan() {
         ScanOptions options = new ScanOptions();
         options.setPrompt("Press volume up to turn on flash");
@@ -74,6 +85,7 @@ public class CameraFragment extends Fragment {
 
             String res = result.getContents();
 
+            //If scanning a share qr
             if (res.contains("_share")) {
                 String eventId = res.substring(0, res.length() - 6);
                 db.eventRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -86,6 +98,8 @@ public class CameraFragment extends Fragment {
                         if (querySnapshots != null) {
 
                             for (QueryDocumentSnapshot doc : querySnapshots) {
+
+                                // Get event from share qr
                                 if (doc.getId().matches(eventId)) {
                                     String eventId = doc.getId();
                                     String eventOrganizer = doc.getString("Event Organizer");
@@ -101,6 +115,8 @@ public class CameraFragment extends Fragment {
                                     if (memberLimit != null && !memberLimit.isEmpty()) {
                                         parsedMemberLimit = Integer.parseInt(memberLimit);
                                     }
+
+                                    //Open event view activity
                                     Event event = new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId, attendees);
                                     Intent eventViewIntent = new Intent(getContext(), EventSignUp.class);
                                     eventViewIntent.putExtra("event", event);
@@ -111,6 +127,7 @@ public class CameraFragment extends Fragment {
                     }
                 });
             }
+            //Otherwise scanning a check in qr
             else {
 
                 db.eventRef.document(result.getContents())
@@ -118,8 +135,8 @@ public class CameraFragment extends Fragment {
                         .addOnSuccessListener(documentSnapshot -> {
                             if (documentSnapshot.exists()) {
                                 // Document found
-
                                 HashMap<String, String> attendees = (HashMap<String, String>) documentSnapshot.get("Attendees");
+                                //User is signed up for event
                                 if (attendees.containsKey(uuid)) {
                                     Log.d("TAG", "FOUND");
                                     String count = attendees.get(uuid);
@@ -133,6 +150,7 @@ public class CameraFragment extends Fragment {
                                             dialog.dismiss();
                                         }
                                     }).show();
+                                    //User is not signed up for event
                                 } else {
                                     builder.setMessage("You have not signed up for this event.");
                                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {

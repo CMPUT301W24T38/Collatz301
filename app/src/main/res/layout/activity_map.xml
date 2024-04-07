@@ -27,6 +27,7 @@
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/secondary_button"
         android:text="Exit"
         app:layout_constraintVertical_bias="0.023" />
 

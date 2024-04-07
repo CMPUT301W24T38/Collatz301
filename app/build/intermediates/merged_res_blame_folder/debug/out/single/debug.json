@@ -1,5 +1,9 @@
 [
     {
+        "merged": "com.example.collatzcheckin.app-merged_res-41:/layout_activity_create_event.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-43:/layout/activity_create_event.xml"
+    },
+    {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-41:\\layout_activity_create_event.xml.flat",
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-43:\\layout\\activity_create_event.xml"
     },
@@ -156,8 +160,8 @@
         "source": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-main-43:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.collatzcheckin.app-merged_res-41:/layout_activity_qr.xml.flat",
-        "source": "com.example.collatzcheckin.app-main-43:/layout/activity_qr.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-41:/layout_activity_event_sign_up.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-43:/layout/activity_event_sign_up.xml"
     },
     {
         "merged": "C:\\Users\\micha\\.gradle\\daemon\\8.2\\com.example.collatzcheckin.app-merged_res-41:\\drawable_profile_icon.xml.flat",

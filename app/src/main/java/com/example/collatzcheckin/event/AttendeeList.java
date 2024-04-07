@@ -37,23 +37,32 @@ public class AttendeeList extends AppCompatActivity {
     AttendeeArrayAdapter attendeeAdapter;
     ListView attendeeList;
 
+    /**
+     * Method to run on creation of the activity. responsible for displaying all sign ups and check ins to the event
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down then this Bundle contains the data it most
+     *                           recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendee_list);
+
+        //Retrieve event info
         Intent intent = getIntent();
         Event event = (Event) intent.getSerializableExtra("Event");
         AttendeeDB attendeeDB = new AttendeeDB();
         String id = event.getEventID();
+
+        //Initialize attendee array adapter
         attendees = new ArrayList<>();
         attendeeAdapter = new AttendeeArrayAdapter(this, attendees);
-
         attendeeList = findViewById(R.id.attendee_list);
         attendeeList.setAdapter(attendeeAdapter);
 
         List<String> keyList = new ArrayList<>(event.getAttendees().keySet());
 
-
+        //Pull all attendees of the event and update array adapter/ list view
         attendeeDB.userRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
@@ -77,6 +86,8 @@ public class AttendeeList extends AppCompatActivity {
             }
         });
 
+
+        //Change to map activity
         Button map = findViewById(R.id.map);
         map.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,8 +99,8 @@ public class AttendeeList extends AppCompatActivity {
 
 
 
-        Button backButton = findViewById(R.id.back_button);
         //Switch back to event detail page
+        Button backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,15 +109,11 @@ public class AttendeeList extends AppCompatActivity {
         });
     }
 
-    public HashMap<String, Integer> getAttendees(Map<String, Integer> attendees) {
-        HashMap<String, Integer> attendeeList = new HashMap<>();
-        AttendeeDB attendeeDB = new AttendeeDB();
-        for (String key: attendees.keySet()) {
-            HashMap<String, String> data = attendeeDB.locateUser(key);
-            attendeeList.put(data.get("Name"), attendees.get(key));
-        }
-        return  attendeeList;
-    }
+
+    /**
+     * Method to switch to map activity
+     * @param event
+     */
     public void viewMap(Event event) {
         Intent intent = new Intent(this, MapActivity.class);
         intent.putExtra("Event", event);
