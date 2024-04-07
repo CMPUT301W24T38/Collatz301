@@ -38,13 +38,19 @@ public class EventListFragment extends Fragment {
     RadioButton organizerButton;
     RadioButton attendeeButton;
     EventDB db;
+    boolean firstRun = true;
     private final AnonAuthentication authentication = new AnonAuthentication();
 
 
     public EventListFragment() {
         // Required empty public constructor
     }
-
+    /**
+     * Method to run on creation of the fragment. Responsible for displaying the event list
+     * @param inflater container
+     * @param container
+     * @return view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,33 +58,45 @@ public class EventListFragment extends Fragment {
         view = inflater.inflate(R.layout.event_view_organizer, container, false);
         organizerButton = view.findViewById(R.id.organizer_button);
         attendeeButton  = view.findViewById(R.id.attendee_button);
+        Button createEventButton = view.findViewById(R.id.create_event);
+        createEventButton.setVisibility(View.INVISIBLE);
         String uuid = authentication.identifyUser();
 
 
+
+
+        //Grab users organized events
         organizerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                createEventButton.setVisibility(View.VISIBLE);
                 getOrganizedEvents(uuid);
             }
         });
-
+        //Grab users attending events
         attendeeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                createEventButton.setVisibility(View.INVISIBLE);
                getAttendeeEvent(uuid);
             }
         });
 
 
+        //Initially grab all attending events
         db = new EventDB();
         eventList = view.findViewById(R.id.event_list_view);
         eventDataList = new ArrayList<>();
         eventArrayAdapter = new EventArrayAdapter(getContext(), eventDataList);
         eventList.setAdapter(eventArrayAdapter);
-        getAttendeeEvent(uuid);
+        if (firstRun) {
+            getAttendeeEvent(uuid);
+            firstRun = false;
+        }
 
+
+
+        //Switch to event view activity for given event
         eventList.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -86,12 +104,11 @@ public class EventListFragment extends Fragment {
             {
 
                 Event event = (Event)adapter.getItemAtPosition(position);
-                change(event);
+                change(uuid, event);
             }
         });
 
-
-        Button createEventButton = view.findViewById(R.id.create_event);
+        //Switch to create event activity
         createEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +120,10 @@ public class EventListFragment extends Fragment {
         return view;
     }
 
-
+    /**
+     * Method to grab all user organized events and populate event adapter
+     * @param uuid
+     */
     private void getOrganizedEvents(String uuid) {
         db = new EventDB();
         db.eventRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -115,7 +135,9 @@ public class EventListFragment extends Fragment {
                 }
                 if (querySnapshots != null) {
                     eventDataList.clear();
+//                    eventArrayAdapter.notifyDataSetChanged();
 
+                    //Grab all events from firestore and populate eventList
                     for (QueryDocumentSnapshot doc : querySnapshots) {
                         String organizer = doc.getString("Event Organizer");
                         if (organizer.matches(uuid)) {
@@ -144,7 +166,10 @@ public class EventListFragment extends Fragment {
     }
 
 
-
+    /**
+     * Method to grab all events a user is signed up for
+     * @param uuid
+     */
     private void getAttendeeEvent(String uuid) {
         EventDB eventDb = new EventDB();
         AttendeeDB attendeeDB = new AttendeeDB();
@@ -157,6 +182,8 @@ public class EventListFragment extends Fragment {
                 }
                 if (querySnapshots != null) {
                     eventDataList.clear();
+//                    eventArrayAdapter.notifyDataSetChanged();
+
 
                     for (QueryDocumentSnapshot doc : querySnapshots) {
 
@@ -206,8 +233,14 @@ public class EventListFragment extends Fragment {
     }
 
 
-    public void change(Event event) {
-        Intent myIntent = new Intent(getContext(), EventView.class);
+    public void change(String uuid, Event event) {
+        Intent myIntent;
+        if (uuid.matches(event.getEventOrganizer())) {
+            myIntent = new Intent(getContext(), EventView.class);
+        }
+        else {
+            myIntent = new Intent(getContext(), EventViewAttendee.class);
+        }
         myIntent.putExtra("event", event);
         startActivity(myIntent);
     }
@@ -215,6 +248,7 @@ public class EventListFragment extends Fragment {
     public void changeCreateEvent(String uuid) {
         Intent myIntent = new Intent(getContext(), CreateEvent.class);
         myIntent.putExtra("uuid", uuid);
+        myIntent.putExtra("events", eventDataList);
         startActivity(myIntent);
     }
 }

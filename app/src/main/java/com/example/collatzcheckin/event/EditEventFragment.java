@@ -70,7 +70,7 @@ public class EditEventFragment extends Fragment {
         eventLocationInput = view.findViewById(R.id.event_location_input);
         eventDateInput = view.findViewById(R.id.event_date_input);
         posterImage = view.findViewById(R.id.poster_image);
-        String eventid = event.getEventTitle();
+        String eventid = event.getEventID();
         storageReference = FirebaseStorage.getInstance().getReference("posters/"+eventid);
         try {
             final File localFile = File.createTempFile("images", "jpg");
@@ -175,7 +175,7 @@ public class EditEventFragment extends Fragment {
         String event_Description = eventDescriptionInput.getText().toString();
         String event_Date = eventDateInput.getText().toString();
         String event_Location = eventLocationInput.getText().toString();
-        db.eventRef.document(event.getEventTitle()) // Assuming "Concert" is the document ID
+        db.eventRef.document(event.getEventID()) // Assuming "Concert" is the document ID
                 .update("Event Description", event_Description,
                         "Event Date", event_Date,
                         "Event Location", event_Location)

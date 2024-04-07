@@ -216,8 +216,21 @@ public class Event implements Serializable {
         this.eventID = eventID;
     }
 
+    /**
+     * Getter for attendee list
+     *
+     * @return attendees
+     */
     public Map<String, String> getAttendees() {
         return attendees;
+    }
+    /**
+     * Setter for attendee list
+     *
+     * @param attendees
+     */
+    public void setAttendees(Map<String, String> attendees) {
+        this.attendees = attendees;
     }
 }
 

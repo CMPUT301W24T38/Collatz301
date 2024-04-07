@@ -193,8 +193,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BACK"
+        android:backgroundTint="@color/secondary_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <FrameLayout
         android:id="@+id/event_edit_frame"
         android:layout_width="match_parent"
