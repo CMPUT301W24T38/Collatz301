@@ -114,6 +114,8 @@ public class AttendeeDB {
             userData.put("Email", user.getEmail());
             userData.put("Uid", user.getUid());
             userData.put("Geo", (user.getGeolocation()).toString());
+            userData.put("Longitude", String.valueOf(user.getLongitude()));
+            userData.put("Latitude", String.valueOf(user.getLatitude()));
             userData.put("Notif", (user.getNotifications()).toString());
             userData.put("Pfp", user.getPfp());
             userData.put("GenPfp", user.getGenpfp());
