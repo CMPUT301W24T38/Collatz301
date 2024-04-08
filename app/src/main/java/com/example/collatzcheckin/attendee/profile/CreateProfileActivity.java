@@ -38,7 +38,13 @@ public class CreateProfileActivity extends AppCompatActivity implements SignInUs
 
         uuid = authentication.identifyUser();
         if(!authentication.validateUser()) {
-            authentication.updateUI(this);
+            authentication.updateUI(this, new OnSuccessListener<String>() {
+                @Override
+                public void onSuccess(String s) {
+                    uuid = authentication.identifyUser();
+                    onCallback(false);
+                }
+            });
         } else {
             attendeeFirebaseManager.userCheck(uuid, this);
         }
