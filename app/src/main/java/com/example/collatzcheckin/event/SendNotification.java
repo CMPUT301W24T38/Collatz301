@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -83,6 +84,7 @@ public class SendNotification extends AppCompatActivity {
                 String message = messageInput.getText().toString();
                 String title = titleInput.getText().toString();
                 sendNotification(euid, message,title);
+                Toast.makeText(SendNotification.this, "Notification sent", Toast.LENGTH_SHORT).show();
             }
         });
 

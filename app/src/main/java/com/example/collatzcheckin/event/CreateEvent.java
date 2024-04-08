@@ -8,11 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.User;
 import com.example.collatzcheckin.attendee.AttendeeDB;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -130,6 +133,7 @@ public class CreateEvent extends AppCompatActivity {
                     }
 
                 }
+                selfSubscribe(uuid, context);
             }
         });
 
@@ -399,5 +403,19 @@ public class CreateEvent extends AppCompatActivity {
             e.printStackTrace();
             return null;
         }
+    }
+    public void selfSubscribe(String uuid,Context context){
+        FirebaseMessaging.getInstance().subscribeToTopic(uuid)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Self signed up for event";
+                        if (!task.isSuccessful()) {
+                            msg = context.getString(R.string.msg_subscribe_failed);
+                        }
+                        Log.d("Failed self sign up",msg);
+                    }
+                });
+
     }
 }
