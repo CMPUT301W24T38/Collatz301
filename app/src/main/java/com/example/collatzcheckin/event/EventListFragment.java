@@ -38,6 +38,7 @@ public class EventListFragment extends Fragment {
     RadioButton organizerButton;
     RadioButton attendeeButton;
     EventDB db;
+    List<String> eventIds;
     boolean firstRun = true;
     private final AnonAuthentication authentication = new AnonAuthentication();
 
@@ -78,7 +79,7 @@ public class EventListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 createEventButton.setVisibility(View.INVISIBLE);
-               getAttendeeEvent(uuid);
+                getAttendeeList(uuid);
             }
         });
 
@@ -89,10 +90,8 @@ public class EventListFragment extends Fragment {
         eventDataList = new ArrayList<>();
         eventArrayAdapter = new EventArrayAdapter(getContext(), eventDataList);
         eventList.setAdapter(eventArrayAdapter);
-        if (firstRun) {
-            getAttendeeEvent(uuid);
-            firstRun = false;
-        }
+        getAttendeeList(uuid);
+
 
 
 
@@ -135,7 +134,7 @@ public class EventListFragment extends Fragment {
                 }
                 if (querySnapshots != null) {
                     eventDataList.clear();
-//                    eventArrayAdapter.notifyDataSetChanged();
+                    eventArrayAdapter.notifyDataSetChanged();
 
                     //Grab all events from firestore and populate eventList
                     for (QueryDocumentSnapshot doc : querySnapshots) {
@@ -167,10 +166,10 @@ public class EventListFragment extends Fragment {
 
 
     /**
-     * Method to grab all events a user is signed up for
+     * Method to grab the list of all events a user is signed up for
      * @param uuid
      */
-    private void getAttendeeEvent(String uuid) {
+    private void getAttendeeList(String uuid) {
         EventDB eventDb = new EventDB();
         AttendeeDB attendeeDB = new AttendeeDB();
         attendeeDB.userRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -182,56 +181,64 @@ public class EventListFragment extends Fragment {
                 }
                 if (querySnapshots != null) {
                     eventDataList.clear();
-//                    eventArrayAdapter.notifyDataSetChanged();
+                    eventArrayAdapter.notifyDataSetChanged();
 
 
                     for (QueryDocumentSnapshot doc : querySnapshots) {
 
                         if (doc.getId().matches(uuid)) {
-                            List<String> eventIds = (List<String>) doc.get("Events");
-
-                            db.eventRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                                @Override
-                                public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
-                                    if (error != null) {
-                                        Log.e("Firestore", error.toString());
-                                        return;
-                                    }
-                                    if (querySnapshots != null) {
-                                        for (QueryDocumentSnapshot doc : querySnapshots) {
-                                            if(eventIds != null) {
-                                                if (eventIds.contains(doc.getId())) {
-                                                    String eventId = doc.getId();
-                                                    String eventOrganizer = doc.getString("Event Organizer");
-                                                    String eventTitle = doc.getString("Event Title");
-                                                    String eventDate = doc.getString("Event Date");
-                                                    String eventDescription = doc.getString("Event Description");
-                                                    String eventPoster = doc.getString("Event Poster");
-                                                    String eventLocation = doc.getString("Event Location");
-                                                    String memberLimit = doc.getString("Member Limit");
-                                                    HashMap<String, String> attendees = (HashMap<String,String>) doc.get("Attendees");
-                                                    int parsedMemberLimit = 0; // Default value, you can change it based on your requirements
-
-                                                    if (memberLimit != null && !memberLimit.isEmpty()) {
-                                                        parsedMemberLimit = Integer.parseInt(memberLimit);
-                                                    }
-                                                    eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId, attendees));
-                                                }
-                                                eventArrayAdapter.notifyDataSetChanged();
-                                            }
-
-                                        }
-                                    }
-                                }
-                            });
+                            eventIds = (List<String>) doc.get("Events");
+                            break;
                         }
+
                     }
+                    getEvents();
 
                 }
             }
         });
     }
 
+    /**
+     * Method to grab the events from the users attending list
+     */
+    public void getEvents() {
+        db.eventRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
+                if (error != null) {
+                    Log.e("Firestore", error.toString());
+                    return;
+                }
+                if (querySnapshots != null) {
+                    for (QueryDocumentSnapshot doc : querySnapshots) {
+                        if(eventIds != null) {
+                            if (eventIds.contains(doc.getId())) {
+                                String eventId = doc.getId();
+                                String eventOrganizer = doc.getString("Event Organizer");
+                                String eventTitle = doc.getString("Event Title");
+                                String eventDate = doc.getString("Event Date");
+                                String eventDescription = doc.getString("Event Description");
+                                String eventPoster = doc.getString("Event Poster");
+                                String eventLocation = doc.getString("Event Location");
+                                String memberLimit = doc.getString("Member Limit");
+                                HashMap<String, String> attendees = (HashMap<String,String>) doc.get("Attendees");
+                                int parsedMemberLimit = 0; // Default value, you can change it based on your requirements
+
+                                if (memberLimit != null && !memberLimit.isEmpty()) {
+                                    parsedMemberLimit = Integer.parseInt(memberLimit);
+                                }
+                                eventDataList.add(new Event(eventTitle, eventOrganizer, eventDate, eventDescription, eventPoster, eventLocation, parsedMemberLimit, eventId, attendees));
+                            }
+
+                        }
+
+                    }
+                    eventArrayAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+    }
 
     public void change(String uuid, Event event) {
         Intent myIntent;

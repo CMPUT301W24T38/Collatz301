@@ -73,6 +73,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="100dp"
             android:spinnerMode="dropdown"
+            android:background="#a1bf84"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toBottomOf="@+id/select_poster_button" />
