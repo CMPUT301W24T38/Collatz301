@@ -2,13 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -22,11 +20,21 @@
         android:theme="@style/Theme.CollatzCheckIn"
         tools:targetApi="33">
         <activity
+            android:name=".event.QrActivity"
+            android:exported="false" />
+        <activity
+            android:name=".event.EventViewAttendee"
+            android:exported="false" />
+        <activity
             android:name=".event.CameraActivity"
             android:exported="false" />
         <activity
             android:name=".attendee.events.EventSignUp"
             android:exported="false" />
+        <activity android:name=".event.CreateEvent"
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".event.EventView"
             android:exported="false" />
@@ -40,13 +48,13 @@
             android:name=".event.SendNotification"
             android:exported="false" />
         <activity
+            android:name=".event.CreateEvent"
+            android:exported="false" />
+        <activity
             android:name=".event.MapActivity"
             android:exported="false" />
         <activity
             android:name=".event.EventList"
-            android:exported="false" />
-        <activity
-            android:name=".event.CreateEvent"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -78,7 +86,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".event.Capture"
+        <activity
+            android:name=".event.Capture"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             android:theme="@style/zxing_CaptureTheme">
@@ -93,6 +102,7 @@
         </service>
         <!-- [END firebase_service] -->
 
+            android:theme="@style/zxing_CaptureTheme" />
     </application>
 
 </manifest>

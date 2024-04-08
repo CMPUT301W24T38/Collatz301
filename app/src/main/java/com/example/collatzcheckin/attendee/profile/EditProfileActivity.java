@@ -24,6 +24,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +51,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -66,15 +68,17 @@ import java.util.Locale;
 public class EditProfileActivity extends AppCompatActivity {
     Button cancel;
     Button confirm;
-    ShapeableImageView pfp;
+    ImageView pfp;
     Uri imagePath;
     TextView name, email;
     Switch geo, notif;
     AttendeeDB attendeeDB = new AttendeeDB();
     User user;
     PhotoUploader photoUploader = new PhotoUploader();
+    private boolean geoenabled;
     private FusedLocationProviderClient fusedLocationClient;
     private final static int REQUEST_CODE = 100;
+    private LocationRequest locationRequest;
 
 
     /**
@@ -87,11 +91,25 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_edit);
+        locationRequest = LocationRequest.create()
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                .setInterval(10000);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
         initViews();
         setData();
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (user.getGeolocation()) {
+                geoenabled = true;
+            }else{
+                geoenabled = false;
+            }
+        } else {
+            geoenabled = false;
+        }
+
+        geo.setChecked(geoenabled);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -101,7 +119,9 @@ public class EditProfileActivity extends AppCompatActivity {
                 if (isChecked) {
                     requestLocationUpdates();
                 } else {
+                    geo.setChecked(false);
                     stopLocationUpdates();
+
                 }
             }
         });
@@ -134,7 +154,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(String uri) {
                             user.setPfp(uri);
-                            attendeeDB.addUser(user);
+                            attendeeDB.updateUser(user);
                             Intent resultIntent = new Intent();
                             resultIntent.putExtra("updatedUser", user);
                             setResult(RESULT_OK, resultIntent);
@@ -148,7 +168,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         public void onSuccess(String uri) {
                             user.setPfp(uri);
                             user.setGenpfp(uri);
-                            attendeeDB.addUser(user);
+                            attendeeDB.updateUser(user);
                             Intent resultIntent = new Intent();
                             resultIntent.putExtra("updatedUser", user);
                             setResult(RESULT_OK, resultIntent);
@@ -163,7 +183,7 @@ public class EditProfileActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(String uri) {
                             user.setGenpfp(uri);
-                            attendeeDB.addUser(user);
+                            attendeeDB.updateUser(user);
                             Intent resultIntent = new Intent();
                             resultIntent.putExtra("updatedUser", user);
                             setResult(RESULT_OK, resultIntent);
@@ -171,12 +191,13 @@ public class EditProfileActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    attendeeDB.addUser(user);
+                    attendeeDB.updateUser(user);
                     Intent resultIntent = new Intent();
                     resultIntent.putExtra("updatedUser", user);
                     setResult(RESULT_OK, resultIntent);
                     finish();
                 }
+
             }
         });
 
@@ -192,7 +213,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void requestLocationUpdates() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            fusedLocationClient.requestLocationUpdates(new LocationRequest(), locationCallback, null);
+            fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null);
         } else {
             askPermission();
         }
@@ -200,6 +221,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void stopLocationUpdates() {
         fusedLocationClient.removeLocationUpdates(locationCallback);
+
     }
 
     private final LocationCallback locationCallback = new LocationCallback() {
@@ -210,11 +232,18 @@ public class EditProfileActivity extends AppCompatActivity {
             if (location != null) {
                 double latitude = location.getLatitude();
                 double longitude = location.getLongitude();
+                Log.d(TAG, "Latitude: " + latitude + ", Longitude: " + longitude);
                 user.setLatitude(latitude);
                 user.setLongitude(longitude);
+
+            } else {
+                Log.e(TAG, "Location is null");
             }
         }
     };
+
+
+
 
     private void askPermission(){
         ActivityCompat.requestPermissions(EditProfileActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
@@ -225,10 +254,12 @@ public class EditProfileActivity extends AppCompatActivity {
 
         if (requestCode==REQUEST_CODE){
             if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                geo.setChecked(true);
                 requestLocationUpdates();
             }
             else{
-                Toast.makeText(this,"Required Permission",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Please enable location services from settings",Toast.LENGTH_SHORT).show();
+
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -259,7 +290,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private void initViews() {
         cancel = findViewById(R.id.cancel_button);
         confirm = findViewById(R.id.confirm_button);
-        pfp = findViewById(R.id.editpfp);
+        pfp = findViewById(R.id.pfp);
         name = findViewById(R.id.editName);
         email = findViewById(R.id.editEmail);
         geo = (Switch) findViewById(R.id.enablegeo);

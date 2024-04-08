@@ -45,9 +45,8 @@ public class EventDB {
         this.eventRef = eventDB.db.collection("events");
     }
     /**
-    * This class adds an event to Firestore database
+    * This method adds an event to Firestore database
     * @param event
-    * This is an event to add
     */
     public void addEvent(Event event) {
         HashMap<String, Object> eventData = new HashMap<>();
@@ -62,6 +61,11 @@ public class EventDB {
         eventRef.document(event.getEventID()).set(eventData);
     }
 
+    /**
+     * This method signs a given user up for an event
+     * @param event
+     * @param uuid
+     */
     public void userSignUp(String event, String uuid) {
         eventRef.document(event).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -81,27 +85,27 @@ public class EventDB {
             }
         });
     }
-
-    public void getAttendeeList(String event) {
-        eventRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
-                if (error != null) {
-                    Log.e("Firestore", error.toString());
-                    return;
-                }
-
-                    for (QueryDocumentSnapshot doc : querySnapshots) {
-                        String organizer = doc.getString("Event Organizer");
-                        if (organizer.matches(event)) {
-
-                            attendees = (HashMap<String,String>) doc.get("Attendees");
-                            Log.w(TAG, String.valueOf(attendees));
-                        }
-                    }
-
-
-                }
-            });
-        }
+//
+//    public void getAttendeeList(String event) {
+//        eventRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable QuerySnapshot querySnapshots, @Nullable FirebaseFirestoreException error) {
+//                if (error != null) {
+//                    Log.e("Firestore", error.toString());
+//                    return;
+//                }
+//
+//                    for (QueryDocumentSnapshot doc : querySnapshots) {
+//                        String organizer = doc.getString("Event Organizer");
+//                        if (organizer.matches(event)) {
+//
+//                            attendees = (HashMap<String,String>) doc.get("Attendees");
+//                            Log.w(TAG, String.valueOf(attendees));
+//                        }
+//                    }
+//
+//
+//                }
+//            });
+//        }
 }

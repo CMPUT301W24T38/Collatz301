@@ -70,7 +70,7 @@ public class EditEventFragment extends Fragment {
         eventLocationInput = view.findViewById(R.id.event_location_input);
         eventDateInput = view.findViewById(R.id.event_date_input);
         posterImage = view.findViewById(R.id.poster_image);
-        String eventid = event.getEventTitle();
+        String eventid = event.getEventID();
         storageReference = FirebaseStorage.getInstance().getReference("posters/"+eventid);
         try {
             final File localFile = File.createTempFile("images", "jpg");
@@ -141,19 +141,23 @@ public class EditEventFragment extends Fragment {
         //SimpleDateFormat date_formatter = new SimpleDateFormat("yyyy_MM-dd_HH_mm_ss", Locale.CANADA);
         //Date now = new Date();
         //String poster_filename = date_formatter.format(now);
-        storageReference.putFile(imageUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>(){
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot){
-                        Toast.makeText(getContext(), "Successfully Uploaded",Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener(){
-                    @Override
-                    public void onFailure(@NonNull Exception e){
+        if (imageUri != null) {
+            storageReference.putFile(imageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Toast.makeText(getContext(), "Successfully Uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
 
-                        Toast.makeText(getContext(), "Failed To Upload",Toast.LENGTH_SHORT).show();
-                    }
-                });
+                            Toast.makeText(getContext(), "Failed To Upload", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        } else {
+            Toast.makeText(getContext(), "Select an image first", Toast.LENGTH_LONG).show();
+        }
     }
     private final ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -175,7 +179,7 @@ public class EditEventFragment extends Fragment {
         String event_Description = eventDescriptionInput.getText().toString();
         String event_Date = eventDateInput.getText().toString();
         String event_Location = eventLocationInput.getText().toString();
-        db.eventRef.document(event.getEventTitle()) // Assuming "Concert" is the document ID
+        db.eventRef.document(event.getEventID()) // Assuming "Concert" is the document ID
                 .update("Event Description", event_Description,
                         "Event Date", event_Date,
                         "Event Location", event_Location)
