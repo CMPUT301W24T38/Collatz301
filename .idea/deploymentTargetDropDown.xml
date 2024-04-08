@@ -5,6 +5,12 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="createEventButton()">
+        <State />
+      </entry>
+      <entry key="eventListView()">
+        <State />
+      </entry>
       <entry key="testPlainText()">
         <State />
       </entry>

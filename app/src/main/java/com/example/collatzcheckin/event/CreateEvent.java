@@ -76,6 +76,7 @@ public class CreateEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
+
         Intent intent = getIntent();
         String uuid = intent.getStringExtra("uuid");
         ArrayList<Event> events = (ArrayList<Event>) intent.getSerializableExtra("events");
