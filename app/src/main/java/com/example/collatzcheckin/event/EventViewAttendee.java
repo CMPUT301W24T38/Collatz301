@@ -97,4 +97,4 @@ public class EventViewAttendee extends AppCompatActivity {
         });
     }
 }
-}
+

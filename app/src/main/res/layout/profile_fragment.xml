@@ -54,6 +54,8 @@
                 android:layout_marginTop="392dp"
                 android:text="Notifications:"
                 android:textSize="18sp"
+                android:visibility="gone"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -150,6 +152,7 @@
                 android:layout_marginTop="392dp"
                 android:textStyle="bold"
                 android:textSize="18sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toEndOf="@+id/notif"
                 app:layout_constraintTop_toTopOf="parent" />
 

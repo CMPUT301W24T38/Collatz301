@@ -93,7 +93,7 @@ public class CameraFragment extends Fragment {
                         if (geo != null && geo.equals("true")) {
                             db.collection("user")
                                     .document(userId)
-                                    .update("Latitude", latitude,"Longitude",longitude)
+                                    .update("Latitude", String.valueOf(latitude),"Longitude",String.valueOf(longitude))
                                     .addOnSuccessListener(aVoid -> Log.d("UserLocation", "Location updated successfully"))
                                     .addOnFailureListener(e -> Log.e("UserLocation", "Error updating location", e));
                         }

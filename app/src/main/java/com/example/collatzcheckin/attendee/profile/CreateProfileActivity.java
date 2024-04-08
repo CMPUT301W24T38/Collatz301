@@ -1,9 +1,19 @@
 package com.example.collatzcheckin.attendee.profile;
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.Manifest.permission.POST_NOTIFICATIONS;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.content.pm.PackageManager;
+import android.nfc.Tag;
 import android.os.Bundle;
-
+import android.util.Log;
+import android.widget.Toast;
+;
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeCallbackManager;
 import com.example.collatzcheckin.attendee.AttendeeDB;
@@ -70,7 +80,7 @@ public class CreateProfileActivity extends AppCompatActivity implements SignInUs
      **/
     private void validation() {
         user = new User(uuid, "Guest", "");
-        boolean hasLocationPermission = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        boolean hasLocationPermission = ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
         user.setGeolocation(hasLocationPermission);
         attendeeDB.addUser(user);
         photoUploader.uploadGenProfile(uuid, "Guest", new OnSuccessListener<String>() {
@@ -93,16 +103,14 @@ public class CreateProfileActivity extends AppCompatActivity implements SignInUs
         if (requestCode == PERMISSION_REQUEST_CODE) {
 
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                Log.d(TAG,"Location permission granted");
-                Toast.makeText(this, "Location permission granted", Toast.LENGTH_SHORT).show();
+                Log.d("Tag", "Location permission granted");
             } else {
-                Log.d(TAG,"Location permissions not granted");
+                Log.d("TAg","Location Denied");
             }
             if (grantResults.length > 1 && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                Log.d(TAG,"Notification permissions granted");
+                Log.d("TAg","Notifications Allowed");
             } else {
-                Log.d(TAG,"Notification permissions not granted");
+                Log.d("TAg","Notifications Denied");
 
             }
             validation();
