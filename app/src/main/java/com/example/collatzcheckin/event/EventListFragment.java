@@ -135,7 +135,7 @@ public class EventListFragment extends Fragment {
                 }
                 if (querySnapshots != null) {
                     eventDataList.clear();
-//                    eventArrayAdapter.notifyDataSetChanged();
+                    //eventArrayAdapter.notifyDataSetChanged();
 
                     //Grab all events from firestore and populate eventList
                     for (QueryDocumentSnapshot doc : querySnapshots) {
@@ -182,7 +182,7 @@ public class EventListFragment extends Fragment {
                 }
                 if (querySnapshots != null) {
                     eventDataList.clear();
-//                    eventArrayAdapter.notifyDataSetChanged();
+                    //eventArrayAdapter.notifyDataSetChanged();
 
 
                     for (QueryDocumentSnapshot doc : querySnapshots) {

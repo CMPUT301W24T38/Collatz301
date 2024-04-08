@@ -60,7 +60,6 @@ id delete_event
 id delete_user
 id editEmail
 id editName
-id editUsername
 id edit_event
 id edit_event_date
 id edit_event_description
@@ -128,6 +127,7 @@ id share_button
 id share_qr
 id sign_up
 id signed_up_success
+id signup_button
 id submit_event_edit_button
 id textView
 id textView2

@@ -93,7 +93,6 @@ public class CreateEvent extends AppCompatActivity {
 
 
         Button selectPosterButton = findViewById(R.id.select_poster_button);
-        Button uploadPosterButton = findViewById(R.id.upload_poster_button);
         Button backButton = findViewById(R.id.back_button_create_event);
         Button addEventButton = findViewById(R.id.add_event);
 
@@ -147,13 +146,6 @@ public class CreateEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectPoster();
-            }
-        });
-        uploadPosterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadPoster(id);
-
             }
         });
 

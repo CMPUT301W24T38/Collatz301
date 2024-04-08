@@ -18,10 +18,12 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.admin.controls.events.AdminEventViewFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 @RunWith(AndroidJUnit4.class)
 public class AdminEventViewFragmentTest {
 
+    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Rule
     public ActivityScenarioRule<AdminMainActivity> activityScenarioRule =
             new ActivityScenarioRule<>(AdminMainActivity.class);

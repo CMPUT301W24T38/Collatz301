@@ -1,6 +1,7 @@
 
 package com.example.collatzcheckin.admin.controls.events;
 
+        import android.net.Uri;
         import android.os.Bundle;
 
         import androidx.fragment.app.Fragment;
@@ -10,6 +11,7 @@ package com.example.collatzcheckin.admin.controls.events;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.Button;
+        import android.widget.ImageView;
         import android.widget.TextView;
         import android.widget.Toast;
 
@@ -20,8 +22,13 @@ package com.example.collatzcheckin.admin.controls.events;
         import com.example.collatzcheckin.R;
         import com.example.collatzcheckin.admin.controls.AdministratorDB;
         import com.example.collatzcheckin.admin.controls.profile.UserListFragment;
+        import com.google.android.gms.tasks.OnSuccessListener;
+        import com.google.firebase.storage.FileDownloadTask;
         import com.google.firebase.storage.FirebaseStorage;
         import com.google.firebase.storage.StorageReference;
+
+        import java.io.File;
+        import java.io.IOException;
 
 
 /**
@@ -42,6 +49,8 @@ public class AdminEventViewFragment extends Fragment implements AdministratorDB.
     TextView eventMonth;
     TextView eventDay;
     TextView eventTime;
+    ImageView posterImage;
+    StorageReference storageReference;
 
     /**
      * Constructs a new AdminEventViewFragment with the specified event
@@ -72,6 +81,23 @@ public class AdminEventViewFragment extends Fragment implements AdministratorDB.
         imageButton = view.findViewById(R.id.remove_event_poster);
         backButton = view.findViewById(R.id.back_button_event_view);
         eventTitle = view.findViewById(R.id.event_title);
+        posterImage = view.findViewById(R.id.poster_image);
+
+        storageReference = FirebaseStorage.getInstance().getReference("posters/"+event.getEventID());
+        try {
+            final File localFile = File.createTempFile("images", "jpg");
+            storageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                    // Set the downloaded image to the ImageView
+                    posterImage.setImageURI(Uri.fromFile(localFile));
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle exception
+        }
+
         eventTitle.setText(event.getEventTitle());
 
         eventDescription = view.findViewById(R.id.event_description);
@@ -110,7 +136,7 @@ public class AdminEventViewFragment extends Fragment implements AdministratorDB.
             public void onClick(View v) {
                 StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("posters/" + event.getEventID());
                 imageRef.delete();
-                event.setEventPoster("default_poster");
+                posterImage.setImageResource(R.drawable.ic_launcher_background);
             }
         });
 

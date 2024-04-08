@@ -36,24 +36,15 @@
 
         <Button
             android:id="@+id/select_poster_button"
-            android:layout_width="168dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="100dp"
             android:backgroundTint="@color/primary_button"
             android:text="Select Image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/poster_image" />
-
-        <Button
-            android:id="@+id/upload_poster_button"
-            android:layout_width="168dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/secondary_button"
-            android:text="Upload Image"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/poster_image" />
 
         <Button
@@ -73,6 +64,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="100dp"
             android:spinnerMode="dropdown"
+            android:background="#906b6e6c"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toBottomOf="@+id/select_poster_button" />
@@ -109,7 +101,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="text"
-            android:hint="Event Date"
+            android:hint="Month Day Year Time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_event_name" />

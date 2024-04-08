@@ -3409,7 +3409,6 @@ id east
 id edge
 id editEmail
 id editName
-id editUsername
 id edit_event
 id edit_event_date
 id edit_event_description
@@ -3703,6 +3702,7 @@ id showHome
 id showTitle
 id sign_up
 id signed_up_success
+id signup_button
 id sin
 id skipCollapsed
 id skipped

@@ -3408,7 +3408,6 @@ int id east 0x7f0800d2
 int id edge 0x7f0800d3
 int id editEmail 0x7f0800d4
 int id editName 0x7f0800d5
-int id editUsername 0x7f0800d6
 int id edit_event 0x7f0800d7
 int id edit_event_date 0x7f0800d8
 int id edit_event_description 0x7f0800d9
@@ -3702,6 +3701,7 @@ int id showHome 0x7f0801f8
 int id showTitle 0x7f0801f9
 int id sign_up 0x7f0801fa
 int id signed_up_success 0x7f0801fb
+int id signup_button 0x7f08027f
 int id sin 0x7f0801fc
 int id skipCollapsed 0x7f0801fd
 int id skipped 0x7f0801fe

@@ -93,6 +93,12 @@ public class AdministratorDB {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) { // Document successfully deleted
+                        StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("posters/" + event.getEventID());
+                        imageRef.delete();
+                        StorageReference qrRef = FirebaseStorage.getInstance().getReference().child("qr/" + event.getEventID() + ".jpg");
+                        qrRef.delete();
+                        StorageReference shareRef = FirebaseStorage.getInstance().getReference().child("qr/" + event.getEventID() + "_share.jpg");
+                        shareRef.delete();
                         if (finalCheckVar) {
                             // remove references of event to be deleted from all users
                             for (String attendee : signedUp) {
@@ -135,7 +141,8 @@ public class AdministratorDB {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) { // Document successfully deleted
-
+                        StorageReference imageRef = FirebaseStorage.getInstance().getReference().child("images/" + user.getUid());
+                        imageRef.delete();
                         for (String eventID : attending){
                             Log.d("attending", eventID);
                             eventRef.document(eventID)

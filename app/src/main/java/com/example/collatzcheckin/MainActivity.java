@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         // adds functionality to allow attendee to navigate
         bottomNavigationView.setOnItemSelectedListener(item -> {
             // show home page
-            replaceFragment(new EventListFragment());
+            //replaceFragment(new EventListFragment());
             int iconPressed= item.getItemId();
             // navigate to profile page
             if (iconPressed == R.id.profile) {
