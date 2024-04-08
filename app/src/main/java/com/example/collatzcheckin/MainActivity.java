@@ -31,6 +31,7 @@ import java.util.HashMap;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 //import com.google.firebase.messaging.Message;
 import com.google.firebase.messaging.RemoteMessage;
@@ -127,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
         // show home page
         replaceFragment(new EventListFragment());
         askNotificationPermission();
+        requestPermissions();
 
 
         // creating the nav bar
@@ -175,6 +177,15 @@ public class MainActivity extends AppCompatActivity {
                 // Directly ask for the permission
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
             }
+        }
+    }
+    private void requestPermissions() {
+        // Check if the permission is already granted
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED) {
+
+        } else {
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
         }
     }
 }

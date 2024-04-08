@@ -51,6 +51,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -77,6 +78,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private boolean geoenabled;
     private FusedLocationProviderClient fusedLocationClient;
     private final static int REQUEST_CODE = 100;
+    private LocationRequest locationRequest;
 
 
     /**
@@ -89,6 +91,9 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_edit);
+        locationRequest = LocationRequest.create()
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                .setInterval(10000);
 
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
@@ -208,7 +213,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void requestLocationUpdates() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            fusedLocationClient.requestLocationUpdates(new LocationRequest(), locationCallback, null);
+            fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null);
         } else {
             askPermission();
         }
@@ -227,12 +232,12 @@ public class EditProfileActivity extends AppCompatActivity {
             if (location != null) {
                 double latitude = location.getLatitude();
                 double longitude = location.getLongitude();
-                // Update user's latitude and longitude
+                Log.d(TAG, "Latitude: " + latitude + ", Longitude: " + longitude);
                 user.setLatitude(latitude);
                 user.setLongitude(longitude);
+
             } else {
                 Log.e(TAG, "Location is null");
-                // Handle null location
             }
         }
     };

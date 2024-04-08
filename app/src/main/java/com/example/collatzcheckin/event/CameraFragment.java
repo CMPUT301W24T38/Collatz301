@@ -2,24 +2,35 @@ package com.example.collatzcheckin.event;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
-
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.example.collatzcheckin.R;
+import com.example.collatzcheckin.attendee.AttendeeDB;
 import com.example.collatzcheckin.attendee.events.EventSignUp;
 import com.example.collatzcheckin.authentication.AnonAuthentication;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -30,11 +41,15 @@ import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CameraFragment#newInstance} factory method to
+ * Use the {@link CameraFragment# newInstance} factory method to
  * create an instance of this fragment.
  */
 public class CameraFragment extends Fragment {
     View view;
+    private Location currentLocation;
+    AttendeeDB attendeeDB = new AttendeeDB();
+    FusedLocationProviderClient fusedLocationProviderClient;
+    private static final int REQUEST_CODE_LOCATION = 1001;
 
 
     /**
@@ -46,8 +61,8 @@ public class CameraFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view =  inflater.inflate(R.layout.activity_camera, container, false);
-
+        view = inflater.inflate(R.layout.activity_camera, container, false);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
         //Open camera
         Button scanButton = view.findViewById(R.id.scan_button);
         scanButton.setOnClickListener(new View.OnClickListener() {
@@ -59,10 +74,34 @@ public class CameraFragment extends Fragment {
         });
         return view;
     }
+
     /**
      * Method to open up camera
      */
     //Open camera with settings
+
+    private void updateUserLocation(String userId, double latitude, double longitude) {
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("user").document(userId).update("Geo","true");
+        db.collection("user")
+                .document(userId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String geo = documentSnapshot.getString("Geo");
+                        if (geo != null && geo.equals("true")) {
+                            db.collection("user")
+                                    .document(userId)
+                                    .update("Latitude", latitude,"Longitude",longitude)
+                                    .addOnSuccessListener(aVoid -> Log.d("UserLocation", "Location updated successfully"))
+                                    .addOnFailureListener(e -> Log.e("UserLocation", "Error updating location", e));
+                        }
+                    }
+                }).addOnFailureListener(e -> {
+                    Log.e("ERRLOLOLOL","lol noooo",e);
+                });
+    }
     private void scan() {
         ScanOptions options = new ScanOptions();
         options.setPrompt("Press volume up to turn on flash");
@@ -72,6 +111,38 @@ public class CameraFragment extends Fragment {
         barLauncher.launch(options);
 
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        // Check if permission is granted
+        if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            // Request location updates
+            fusedLocationProviderClient.requestLocationUpdates(new LocationRequest(), new LocationCallback() {
+                @Override
+                public void onLocationResult(@NonNull LocationResult locationResult) {
+                    super.onLocationResult(locationResult);
+                    final AnonAuthentication authentication = new AnonAuthentication();
+                    String uuid = authentication.identifyUser();
+                    Location location = locationResult.getLastLocation();
+                    if (location != null) {
+                        // Get latitude and longitude
+                        double latitude = location.getLatitude();
+                        double longitude = location.getLongitude();
+                        // Update user location in Firestore
+                        updateUserLocation(uuid, latitude, longitude);
+                    }
+                }
+            }, null);
+        } else {
+            // Permission not granted, request it
+            ActivityCompat.requestPermissions(requireActivity(),
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_CODE_LOCATION);
+        }
+    }
+
+
+
 
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result -> {
         if (result.getContents() != null) {
@@ -144,13 +215,32 @@ public class CameraFragment extends Fragment {
                                     attendees.put(uuid, Integer.toString(parsedCount));
                                     db.eventRef.document(documentSnapshot.getId()).update("Attendees", attendees);
                                     builder.setMessage("You have successfully checked in to the event!");
-                                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.dismiss();
-                                        }
-                                    }).show();
-                                    //User is not signed up for event
+                                    if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.ACCESS_FINE_LOCATION)
+                                            != PackageManager.PERMISSION_GRANTED) {
+                                        ActivityCompat.requestPermissions(requireActivity(),
+                                                new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                                                REQUEST_CODE_LOCATION);
+                                    } else {
+                                        fusedLocationProviderClient.getLastLocation()
+                                                .addOnSuccessListener(location -> {
+                                                    if (location != null) {
+                                                        // Get latitude and longitude
+                                                        FirebaseFirestore.getInstance().collection("user").document(uuid).update("Geo","true");
+                                                        double latitude = location.getLatitude();
+                                                        double longitude = location.getLongitude();
+                                                        // Update user location in Firestore
+                                                        updateUserLocation(uuid, latitude, longitude);
+                                                        // Show success message
+                                                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                dialog.dismiss();
+                                                            }
+                                                        }).show();
+                                                    }
+                                                });
+
+                                    }
                                 } else {
                                     builder.setMessage("You have not signed up for this event.");
                                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {

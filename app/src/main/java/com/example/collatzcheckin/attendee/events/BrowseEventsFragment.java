@@ -156,10 +156,10 @@ public class BrowseEventsFragment extends Fragment {
         Intent myIntent;
         if (event.getEventOrganizer().equals(authentication.identifyUser())){
                 myIntent = new Intent(getContext(), EventView.class);
-            }
-            else {
-                myIntent = new Intent(getContext(), EventViewAttendee.class);
-            }
+        }
+        else {
+                myIntent = new Intent(getContext(), EventSignUp.class);
+        }
         myIntent.putExtra("event", event);
         startActivity(myIntent);
     }

@@ -191,7 +191,12 @@ public class ProfileFragment extends Fragment implements FirebaseFindUserCallbac
         name.setText(user.getName());
         email.setText(user.getEmail());
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            geo.setText("Enabled");
+            if (user.getGeolocation()){
+                geo.setText("Enabled");
+            }else{
+                geo.setText("Disabled");
+            }
+
         } else {
             geo.setText("Disabled");
         }

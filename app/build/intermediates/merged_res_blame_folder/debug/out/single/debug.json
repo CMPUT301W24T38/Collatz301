@@ -8,12 +8,12 @@
         "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/baseline_camera_alt_24.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_event_view_attendee.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_event_view_attendee.xml"
-    },
-    {
         "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_update_profile.xml.flat",
         "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_update_profile.xml"
+    },
+    {
+        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_event_view_attendee.xml.flat",
+        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_event_view_attendee.xml"
     },
     {
         "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_fragment_sign_up_confirmation.xml.flat",
@@ -90,10 +90,6 @@
     {
         "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_event_sign_up.xml.flat",
         "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_event_sign_up.xml"
-    },
-    {
-        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_fragment_browse_events.xml.flat",
-        "source": "com.example.collatzcheckin.app-main-57:/layout/fragment_browse_events.xml"
     },
     {
         "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_profile_icon.xml.flat",
@@ -182,6 +178,10 @@
     {
         "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_event_view_organizer.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/event_view_organizer.xml"
     },
     {
         "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-hdpi_ic_launcher.webp.flat",
