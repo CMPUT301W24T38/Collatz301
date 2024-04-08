@@ -60,8 +60,7 @@ public class CreateProfileActivity extends AppCompatActivity implements SignInUs
         if(exists) {
             finish();
         } else {
-            validation();
-            finish();
+            requestPermission();
         }
     }
 
@@ -70,6 +69,8 @@ public class CreateProfileActivity extends AppCompatActivity implements SignInUs
      **/
     private void validation() {
         user = new User(uuid, "Guest", "");
+        boolean hasLocationPermission = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        user.setGeolocation(hasLocationPermission);
         attendeeDB.addUser(user);
         photoUploader.uploadGenProfile(uuid, "Guest", new OnSuccessListener<String>() {
             @Override
@@ -78,5 +79,33 @@ public class CreateProfileActivity extends AppCompatActivity implements SignInUs
                 String test = "test";
             }
         });
+    }
+
+    private void requestPermission() {
+
+        ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION, POST_NOTIFICATIONS}, PERMISSION_REQUEST_CODE);
+
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                Log.d(TAG,"Location permission granted");
+                Toast.makeText(this, "Location permission granted", Toast.LENGTH_SHORT).show();
+            } else {
+                Log.d(TAG,"Location permissions not granted");
+            }
+            if (grantResults.length > 1 && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                Log.d(TAG,"Notification permissions granted");
+            } else {
+                Log.d(TAG,"Notification permissions not granted");
+
+            }
+            validation();
+            finish();
+        }
     }
 }
