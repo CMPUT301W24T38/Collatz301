@@ -24,6 +24,7 @@ public class CreateProfileActivity extends AppCompatActivity implements SignInUs
     private final AttendeeDB attendeeDB = new AttendeeDB();
     private User user;
     PhotoUploader photoUploader = new PhotoUploader();
+    private static final int PERMISSION_REQUEST_CODE = 200;
 
     /**
      * Method to run on creation of the activity. Handles user profile creation
