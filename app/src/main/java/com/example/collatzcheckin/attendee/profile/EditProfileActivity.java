@@ -119,7 +119,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 if (isChecked) {
                     requestLocationUpdates();
                 } else {
-                    geo.setChecked(false);
                     stopLocationUpdates();
 
                 }
