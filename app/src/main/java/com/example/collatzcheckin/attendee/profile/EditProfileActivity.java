@@ -79,6 +79,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private FusedLocationProviderClient fusedLocationClient;
     private final static int REQUEST_CODE = 100;
     private LocationRequest locationRequest;
+    private Boolean isValid = true;
 
 
     /**
@@ -141,62 +142,83 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 String newName = name.getText().toString();
                 String oldName = user.getName();
+                if(newName.length() < 1) {
+                    name.setError("Please Enter Name");
+                    isValid = false;
+                } else {
+                    isValid = true;
+                    user.setName(newName);
+                }
 
-                user.setName(newName);
                 String newEmail = email.getText().toString();
-                user.setEmail(newEmail);
+                if(newEmail.trim().isEmpty()) {
+                    isValid = true;
+                    user.setEmail(newEmail);
+                } else if (!isValidEmailAddress(newEmail)) {
+                    email.setError("Please Enter Valid Email");
+                    isValid = false;
+                } else {
+                    isValid = true;
+                    user.setEmail(newEmail);
+                }
+
+
                 user.setGeolocation(geo.isChecked());
                 user.setNotifications(notif.isChecked());
 
-                //handling case when user uploads picture
-                if (imagePath!=null) {
-                    photoUploader.uploadProfile(user.getUid(), imagePath, new OnSuccessListener<String>() {
-                        @Override
-                        public void onSuccess(String uri) {
-                            user.setPfp(uri);
-                            attendeeDB.updateUser(user);
-                            Intent resultIntent = new Intent();
-                            resultIntent.putExtra("updatedUser", user);
-                            setResult(RESULT_OK, resultIntent);
-                            finish();
-                        }
-                    });
-                    // handing case when user changes name so generated pfp will have to change
-                } else if (user.getGenpfp().equals(user.getPfp()) && !newName.equals(oldName)) {
-                    photoUploader.uploadGenProfile(user.getUid(), newName, new OnSuccessListener<String>() {
-                        @Override
-                        public void onSuccess(String uri) {
-                            user.setPfp(uri);
-                            user.setGenpfp(uri);
-                            attendeeDB.updateUser(user);
-                            Intent resultIntent = new Intent();
-                            resultIntent.putExtra("updatedUser", user);
-                            setResult(RESULT_OK, resultIntent);
-                            finish();
-                        }
-                    });
-                    //handling case when user has a custom pfp and name has changed so when they
-                    // remove pfp it will display the correct letter using new name
-                } else if (!user.getGenpfp().equals(user.getPfp()) && !newName.equals(oldName)){
-                    photoUploader.updateGenProfile(user.getUid(), newName, new OnSuccessListener<String>() {
+                if(isValid) {
+                    //handling case when user uploads picture
+                    if (imagePath!=null) {
+                        photoUploader.uploadProfile(user.getUid(), imagePath, new OnSuccessListener<String>() {
+                            @Override
+                            public void onSuccess(String uri) {
+                                user.setPfp(uri);
+                                attendeeDB.updateUser(user);
+                                Intent resultIntent = new Intent();
+                                resultIntent.putExtra("updatedUser", user);
+                                setResult(RESULT_OK, resultIntent);
+                                finish();
+                            }
+                        });
+                        // handing case when user changes name so generated pfp will have to change
+                    } else if (user.getGenpfp().equals(user.getPfp()) && !newName.equals(oldName)) {
+                        photoUploader.uploadGenProfile(user.getUid(), newName, new OnSuccessListener<String>() {
+                            @Override
+                            public void onSuccess(String uri) {
+                                user.setPfp(uri);
+                                user.setGenpfp(uri);
+                                attendeeDB.updateUser(user);
+                                Intent resultIntent = new Intent();
+                                resultIntent.putExtra("updatedUser", user);
+                                setResult(RESULT_OK, resultIntent);
+                                finish();
+                            }
+                        });
+                        //handling case when user has a custom pfp and name has changed so when they
+                        // remove pfp it will display the correct letter using new name
+                    } else if (!user.getGenpfp().equals(user.getPfp()) && !newName.equals(oldName)){
+                        photoUploader.updateGenProfile(user.getUid(), newName, new OnSuccessListener<String>() {
 
-                        @Override
-                        public void onSuccess(String uri) {
-                            user.setGenpfp(uri);
-                            attendeeDB.updateUser(user);
-                            Intent resultIntent = new Intent();
-                            resultIntent.putExtra("updatedUser", user);
-                            setResult(RESULT_OK, resultIntent);
-                            finish();
-                        }
-                    });
-                } else {
-                    attendeeDB.updateUser(user);
-                    Intent resultIntent = new Intent();
-                    resultIntent.putExtra("updatedUser", user);
-                    setResult(RESULT_OK, resultIntent);
-                    finish();
+                            @Override
+                            public void onSuccess(String uri) {
+                                user.setGenpfp(uri);
+                                attendeeDB.updateUser(user);
+                                Intent resultIntent = new Intent();
+                                resultIntent.putExtra("updatedUser", user);
+                                setResult(RESULT_OK, resultIntent);
+                                finish();
+                            }
+                        });
+                    } else {
+                        attendeeDB.updateUser(user);
+                        Intent resultIntent = new Intent();
+                        resultIntent.putExtra("updatedUser", user);
+                        setResult(RESULT_OK, resultIntent);
+                        finish();
+                    }
                 }
+
+
 
             }
         });
@@ -321,6 +343,18 @@ public class EditProfileActivity extends AppCompatActivity {
      */
     public void setPfp(User user) {
         Glide.with(this).load(user.getPfp()).into(pfp);
+    }
+
+    /**
+     * Set Profile picture
+     *
+     * @param email           EMail String
+     */
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
     }
 
 }

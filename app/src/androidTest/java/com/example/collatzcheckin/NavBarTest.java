@@ -21,7 +21,6 @@ public class NavBarTest {
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Rule
     public ActivityScenarioRule<MainActivity> scenario = new ActivityScenarioRule<MainActivity>(MainActivity.class);
-
     @Before
     public void setUp() throws InterruptedException {
         // Initialize Firebase and anonymous authentication

@@ -24,7 +24,6 @@ public class CreateProfileActivity extends AppCompatActivity implements SignInUs
     private final AttendeeDB attendeeDB = new AttendeeDB();
     private User user;
     PhotoUploader photoUploader = new PhotoUploader();
-
     /**
      * Method to run on creation of the activity. Handles user profile creation
      * @param savedInstanceState If the activity is being re-initialized after

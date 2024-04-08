@@ -83,7 +83,6 @@ public class AnonAuthentication {
                                 Log.w(TAG, "signInAnonymously:failure", task.getException());
                                 Toast.makeText(context, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
-
                                 createProfile[0] = false;
                             }
                         }

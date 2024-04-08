@@ -25,7 +25,6 @@ public class AttendeeProfileTest {
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Rule
     public ActivityScenarioRule<MainActivity> scenario = new ActivityScenarioRule<MainActivity>(MainActivity.class);
-
     @Before
     public void setUp() throws InterruptedException {
         // Initialize Firebase and anonymous authentication
@@ -39,6 +38,7 @@ public class AttendeeProfileTest {
         Thread.sleep(7000);
         Log.e("ESPRESSOLOGIN", String.valueOf(mAuth.getUid()));
     }
+
     @Test
     public void profileActivity() throws InterruptedException {
         Thread.sleep(1000);

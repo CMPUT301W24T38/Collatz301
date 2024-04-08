@@ -25,7 +25,6 @@ import com.example.collatzcheckin.event.Event;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class AttendeeSignUpTest {
-
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     @Rule
     public ActivityScenarioRule<MainActivity> scenario = new ActivityScenarioRule<MainActivity>(MainActivity.class);
