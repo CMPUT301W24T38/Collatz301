@@ -49,7 +49,7 @@ public class AdminProfileFragment extends Fragment implements FirebaseFindUserCa
 
 
     /**
-     * This constructs an instance of ProfileFragment
+     * This constructs an instance of AdminProfileFragment
      */
     public AdminProfileFragment(){
     }
@@ -113,6 +113,12 @@ public class AdminProfileFragment extends Fragment implements FirebaseFindUserCa
         return view;
     }
 
+    /**
+     * Callback method invoked when user data is retrieved from Firebase
+     * Handles the retrieved user data by setting it in the UI
+     *
+     * @param user The User object containing the retrieved user data
+     */
     @Override
     public void onCallback(User user) {
         // Handle the retrieved user data
@@ -120,6 +126,11 @@ public class AdminProfileFragment extends Fragment implements FirebaseFindUserCa
         setData(user);
     }
 
+    /**
+     * Initializes the views used in the user interface
+     *
+     * @param view The root view of the fragment layout
+     */
     private void initViews(View view) {
         update = view.findViewById(R.id.up_button);
         admin = view.findViewById(R.id.admin_button);
@@ -131,6 +142,11 @@ public class AdminProfileFragment extends Fragment implements FirebaseFindUserCa
         notification = view.findViewById(R.id.notiftext);
     }
 
+    /**
+     * Sets data for the user interface based on the given User object
+     *
+     * @param user The User object whose data will be displayed
+     */
     public void setData(User user) {
         name.setText(user.getName());
         email.setText(user.getEmail());
@@ -147,6 +163,11 @@ public class AdminProfileFragment extends Fragment implements FirebaseFindUserCa
         setPfp(user);
     }
 
+    /**
+     * Sets the profile picture for the user interface based on the given User object
+     *
+     * @param user The User object whose profile picture will be displayed
+     */
     public void setPfp(User user) {
         Glide.with(this).load(user.getPfp()).into(pfp);
     }

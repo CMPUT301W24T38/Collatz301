@@ -131,7 +131,23 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8241e9d1-9f76-40b7-9b3a-48c92879850a" name="Changes" comment="commit" />
+    <list default="true" id="8241e9d1-9f76-40b7-9b3a-48c92879850a" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/example/collatzcheckin/AdminEventViewFragmentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/AdminBrowseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/AdminBrowseFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/AdminProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/AdminProfileFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/AdministratorDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/AdministratorDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/AdministratorDBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/AdministratorDBConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/events/AdminEventListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/events/AdminEventListFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/events/AdminEventViewFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/events/AdminEventViewFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/profile/UserArrayAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/profile/UserArrayAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/profile/UserListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/profile/UserListFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/profile/UserViewFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/admin/controls/profile/UserViewFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/attendee/AttendeeDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/attendee/AttendeeDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/attendee/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/collatzcheckin/attendee/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_event_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_event_view.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,7 +191,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="admin-update2" />
+        <entry key="$PROJECT_DIR$" value="APR7_Merge_Logan" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -357,6 +373,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android Instrumented Tests.AdminEventViewFragmentTest" />
         <item itemvalue="Android Instrumented Tests.AdminEventViewFragmentTest" />
         <item itemvalue="Android Instrumented Tests.AdminEventViewFragmentTest" />
         <item itemvalue="Android Instrumented Tests.AdminEventViewFragmentTest" />

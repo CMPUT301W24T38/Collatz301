@@ -153,6 +153,8 @@
             app:layout_constraintEnd_toStartOf="@id/delete_event"
             app:layout_constraintStart_toStartOf="parent" />
 
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
@@ -162,6 +164,7 @@
         android:text="BACK"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

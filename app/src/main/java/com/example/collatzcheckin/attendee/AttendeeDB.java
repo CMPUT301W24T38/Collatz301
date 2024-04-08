@@ -14,6 +14,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -105,7 +106,7 @@ public class AttendeeDB {
      * @param user Object of type user that holds user data
      */
         public void addUser(User user) {
-            HashMap<String, String> userData = new HashMap<>();
+            HashMap<String, Object> userData = new HashMap<>();
             String[] str = {};
 
             userData.put("Name", user.getName());
@@ -116,6 +117,7 @@ public class AttendeeDB {
             userData.put("Pfp", user.getPfp());
             userData.put("GenPfp", user.getGenpfp());
             userData.put("Admin", (String.valueOf(user.isAdmin())));
+            userData.put("Events", new ArrayList<String>());
             if (user.getGeolocation()) {
                 userData.put("Longitude", String.valueOf(user.getLongitude()));
                 userData.put("Latitude", String.valueOf(user.getLatitude()));

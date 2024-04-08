@@ -17,13 +17,19 @@ import com.example.collatzcheckin.MainActivity;
 import com.example.collatzcheckin.R;
 import com.example.collatzcheckin.attendee.AttendeeDB;
 import com.example.collatzcheckin.attendee.User;
+import com.example.collatzcheckin.event.Event;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * The UserListFragment displays a list of users for administrative purposes
+ * It retrieves user data from Firestore and populates the list accordingly
+ */
 public class UserListFragment extends Fragment {
     ListView userList;
 
@@ -35,6 +41,12 @@ public class UserListFragment extends Fragment {
 
     AttendeeDB db;
 
+    /**
+     * Method to run on creation of the fragment. Handles admin browse profiles
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down then this Bundle contains the data it most
+     *                           recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,9 +72,13 @@ public class UserListFragment extends Fragment {
                         String username = doc.getString("Name");
                         String uid = doc.getString("Uid");
                         String email = doc.getString("Email");
+                        List<String> eventIds = (List<String>) doc.get("Events");
+                        String pfp = doc.getString("Pfp");
 
 
-                       userDataList.add(new User(uid, username, email));
+
+                       userDataList.add(new User(uid, username, email, eventIds, pfp));
+
                     }
 
                     userArrayAdapter.notifyDataSetChanged();
@@ -76,7 +92,7 @@ public class UserListFragment extends Fragment {
                 // Retrieve the user object associated with the clicked item
                 User user = (User) adapter.getItemAtPosition(position);
                 Log.d("UserListFragment", "Clicked user: " + user);
-
+                Log.d("UserListFragment", "Clicked user events: " + user.getEventIds());
                 if (user != null) {
                     Log.d("UserListFragment", "User details: Name: " + user.getName() + ", UID: " + user.getUid() + ", Email: " + user.getEmail());
                 } else {

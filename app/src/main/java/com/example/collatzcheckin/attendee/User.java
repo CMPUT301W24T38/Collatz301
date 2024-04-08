@@ -18,6 +18,7 @@ public class User implements Serializable {
     private String genpfp;
     private String email;
     private List<Event> events;
+    private List<String> eventIds;
     private String[] attendingEvents;
     private List<String> organizingEvents;
     private boolean notifications;
@@ -106,6 +107,27 @@ public class User implements Serializable {
         this.pfp = "generated";
         this.genpfp = "generated";
     }
+    /**
+     * This constructs a user class
+     * @param name name of user
+     * @param contactInformation user email
+     * @param uid The unique identifier for this user to reference in firestore to find their
+     *              item collection
+     * @param eventIds List of eventIds the user has signed up for
+     */
+    public User(String uid, String name, String contactInformation, List<String> eventIds, String pfp) {
+        this.name = name;
+        this.email = contactInformation;
+        this.uid = uid;
+        this.events = new ArrayList<Event>();;
+        this.organizingEvents = new ArrayList<String>();
+        this.attendingEvents = new String[0];
+        this.geolocation = false;
+        this.notifications = false;
+        this.pfp = pfp;
+        this.genpfp = "generated";
+        this.eventIds = eventIds;
+    }
 
     /**
      * This constructs a user class
@@ -152,6 +174,7 @@ public class User implements Serializable {
         this.pfp = pfp;
         this.genpfp = genpfp;
     }
+
 
     /**
      * Getter for name
@@ -401,5 +424,21 @@ public class User implements Serializable {
     public void setAdmin(boolean is_admin) {
         this.is_admin = is_admin;
     }
+
+    /**
+     * Getter for list of event ids
+     * @return list of event ids
+     */
+    public List<String> getEventIds() {
+        return eventIds;
+    }
+    /**
+     * Setter for list of event ids
+     * @param eventIds list of event ids
+     */
+    public void setEventIds(List<String> eventIds) {
+        this.eventIds = eventIds;
+    }
+
 
 }
