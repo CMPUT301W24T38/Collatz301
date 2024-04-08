@@ -250,7 +250,7 @@ public class CreateEvent extends AppCompatActivity {
             return;
         }
         if (limit.matches("")){
-            limit = "999";
+            limit = "999999999999";
         }
         if (!isNumeric(limit)){
             Toast.makeText(this, "Please enter a number for your event limit", Toast.LENGTH_LONG).show();

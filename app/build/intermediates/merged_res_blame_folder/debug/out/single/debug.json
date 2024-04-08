@@ -1,242 +1,234 @@
 [
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_admin_profile_fragment.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/admin_profile_fragment.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_baseline_camera_alt_24.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/baseline_camera_alt_24.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_list_item_user.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/list_item_user.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_update_profile.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_update_profile.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/drawable_container.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/drawable/container.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_event_view_attendee.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_event_view_attendee.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_fragment_event_view.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/fragment_event_view.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_fragment_sign_up_confirmation.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/fragment_sign_up_confirmation.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_fragment_admin_user_view.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/fragment_admin_user_view.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_user_view_organizer.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/user_view_organizer.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/drawable_image_placeholder.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/drawable/image_placeholder.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_fragment_browse_events.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/fragment_browse_events.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_fragment_admin_event_view.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/fragment_admin_event_view.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_attendee_list.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_attendee_list.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_event_list_background.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/event_list_background.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_event_list_content.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/event_list_content.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_event_view.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_event_view.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_content.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/content.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_main.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_main.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_fragment_sign_up_confirmation.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/fragment_sign_up_confirmation.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_baseline_search_24.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/baseline_search_24.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_attendee_list_content.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/attendee_list_content.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_event_list_content.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/event_list_content.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_profile_fragment.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/profile_fragment.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_profile_edit.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/profile_edit.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_attendee_list_content.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/attendee_list_content.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_user_view_organizer.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/user_view_organizer.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_eventbg.png.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/eventbg.png"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_activity_camera.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/activity_camera.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_fragment_admin_attendee_list.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/fragment_admin_attendee_list.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/drawable_baseline_search_24.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/drawable/baseline_search_24.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_bg.png.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/bg.png"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_activity_main.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/activity_main.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_fragment_blank.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/fragment_blank.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_fragment_admin_event_view.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/fragment_admin_event_view.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_event_sign_up.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_event_sign_up.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_fragment_browse_events.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/fragment_browse_events.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_profile_icon.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/profile_icon.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_ic_launcher_background.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/ic_launcher_background.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_map.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_map.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/xml_backup_rules.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/xml/backup_rules.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_container.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/container.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/menu_bottom_nav_bar.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/menu/bottom_nav_bar.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_create_event.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_create_event.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_profile_edit.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/profile_edit.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_fragment_edit_event.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/fragment_edit_event.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_activity_create_event.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/activity_create_event.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_send_notification_activity.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/send_notification_activity.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_activity_map.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/activity_map.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_profile_fragment.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/profile_fragment.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_activity_update_profile.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/activity_update_profile.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_baseline_home_24.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/baseline_home_24.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_admin_browse.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/admin_browse.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_qr.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_qr.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_admin_profile_fragment.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/admin_profile_fragment.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_fragment_event_view.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/fragment_event_view.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/drawable_bg.png.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/drawable/bg.png"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/xml_backup_rules.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/xml/backup_rules.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_activity_event_view.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/activity_event_view.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_fragment_event_list.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/fragment_event_list.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_list_item_user.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/list_item_user.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_activity_attendee_list.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/activity_attendee_list.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_content.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/content.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/ic_launcher_foreground.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_activity_event_view_attendee.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/activity_event_view_attendee.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_baseline_person_24.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/baseline_person_24.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/drawable_baseline_home_24.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/drawable/baseline_home_24.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_activity_camera.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/activity_camera.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_fragment_admin_attendee_list.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/fragment_admin_attendee_list.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_send_notification_activity.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/send_notification_activity.xml"
+    },
+    {
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_activity_qr.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/activity_qr.xml"
+    },
+    {
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_activity_event_sign_up.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/activity_event_sign_up.xml"
+    },
+    {
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/drawable_baseline_camera_alt_24.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/drawable/baseline_camera_alt_24.xml"
     },
     {
         "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_event_view_organizer.xml.flat",
         "source": "com.example.collatzcheckin.app-main-57:/layout/event_view_organizer.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_spinner_dropdown_item.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/spinner_dropdown_item.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_admin_browse.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/admin_browse.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/drawable_profile_icon.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/drawable/profile_icon.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_fragment_admin_user_view.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/fragment_admin_user_view.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/layout_fragment_admin_user_list.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/layout/fragment_admin_user_list.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_fragment_edit_event.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/fragment_edit_event.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_fragment_blank.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/fragment_blank.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/menu_bottom_nav_bar.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/menu/bottom_nav_bar.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/drawable_event_list_background.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/drawable/event_list_background.xml"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_fragment_event_list.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/fragment_event_list.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_spinner_dropdown_item.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/spinner_dropdown_item.xml"
-    },
-    {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/drawable_image_placeholder.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/drawable/image_placeholder.xml"
-    },
-    {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-xxxhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_fragment_admin_user_list.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/fragment_admin_user_list.xml"
-    },
-    {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/xml_data_extraction_rules.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/xml/data_extraction_rules.xml"
-    },
-    {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/mipmap-xxhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-merged_res-55:/layout_event_view_organizer.xml.flat",
-        "source": "/Users/juanjoseph/.gradle/daemon/8.2/com.example.collatzcheckin.app-main-57:/layout/event_view_organizer.xml"
+        "merged": "com.example.collatzcheckin.app-merged_res-55:/drawable_baseline_person_24.xml.flat",
+        "source": "com.example.collatzcheckin.app-main-57:/drawable/baseline_person_24.xml"
     }
 ]
